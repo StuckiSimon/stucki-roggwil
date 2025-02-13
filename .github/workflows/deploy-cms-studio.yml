@@ -25,7 +25,7 @@ jobs:
       - name: Upload Build Artifact 📦
         uses: actions/upload-pages-artifact@v3
         with:
-          path: cms/build
+          path: cms/dist
 
   deploy:
     name: Deploy to GitHub Pages 🚀
