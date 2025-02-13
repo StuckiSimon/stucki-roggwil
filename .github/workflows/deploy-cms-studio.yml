@@ -1,0 +1,46 @@
+name: Deploy CMS Studio
+on:
+  push:
+    branches: [main]
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: Build Sanity Studio 🧘
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+      - name: Install dependencies 📦
+        working-directory: cms
+        run: npm ci
+      - name: Build studio 🏗️
+        working-directory: cms
+        run: npm run build
+      - name: Upload Build Artifact 📦
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: cms/build
+
+  deploy:
+    name: Deploy to GitHub Pages 🚀
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
