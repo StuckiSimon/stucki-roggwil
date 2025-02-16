@@ -10,7 +10,7 @@ jobs:
     name: Build Sanity Studio 🧘
     runs-on: ubuntu-latest
     env:
-      SANITY_STUDIO_BASEPATH: "stucki-roggwil"
+      SANITY_STUDIO_BASEPATH: "/stucki-roggwil"
     steps:
       - uses: actions/checkout@v4
         with:
