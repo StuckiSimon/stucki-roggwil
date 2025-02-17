@@ -23,4 +23,4 @@ jobs:
           echo -e "${{ secrets.SCP_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SCP_HOST }} >> ~/.ssh/known_hosts
-          ssh ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }} -v "echo 'SSH connection established'" || exit 1
+          ssh ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }} "echo 'SSH connection established'" || exit 1
