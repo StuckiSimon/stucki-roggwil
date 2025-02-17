@@ -8,6 +8,11 @@ concurrency:
   cancel-in-progress: true
 
 # Key Generation: https://www.plesk.com/kb/support/how-to-set-up-ssh-keys-for-plesk-server/
+# As local subscription user (not root), generate a key pair, using:
+# ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa_deployment
+# As defined in /etc/ssh/sshd_config on AuthorizedKeysFile, the key need to be present in ~/.ssh/authorized_keys
+# /.ssh/id_rsa_deployment.pub > ~/.ssh/authorized_keys
+# use the private key in the secret SCP_KEY
 jobs:
   init:
     runs-on: ubuntu-latest
