@@ -7,19 +7,14 @@ concurrency:
   cancel-in-progress: true
 
 # Key Generation: https://www.plesk.com/kb/support/how-to-set-up-ssh-keys-for-plesk-server/
-env:
-  SCP_KEY: "tempkeystring"
-  SCP_USERNAME: "tempuser"
-  SCP_HOST: "tempdomain.com"
-  REMOTE_PATH: "temppath/"
 jobs:
   init:
     runs-on: ubuntu-latest
     steps:
-      - name: "Print"
+      - name: "Setup SSH"
         run: |
-          echo "Action Output"
-          echo ${{ env.SCP_KEY }}
-          echo ::add-mask::${{ env.SCP_KEY }}
-          echo ${{ env.SCP_KEY }}
-          echo "tempkeystring"
+          mkdir ~/.ssh
+          echo -e "${{ secrets.SCP_KEY }}" > ~/.ssh/id
+          chmod 600 ~/.ssh/id
+          ssh-keyscan -H ${{ secrets.SCP_HOST }} >> ~/.ssh/known_hosts
+          ssh ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }} "echo 'SSH connection established'" || exit 1
