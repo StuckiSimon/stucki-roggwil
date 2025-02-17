@@ -1,0 +1,25 @@
+name: Deploy Website
+on:
+  push:
+    branches: [main]
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+# Key Generation: https://www.plesk.com/kb/support/how-to-set-up-ssh-keys-for-plesk-server/
+env:
+  SCP_KEY: "tempkeystring"
+  SCP_USERNAME: "tempuser"
+  SCP_HOST: "tempdomain.com"
+  REMOTE_PATH: "temppath/"
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Print"
+        run: |
+          echo "Action Output"
+          echo ${{ env.SCP_KEY }}
+          echo ::add-mask::${{ env.SCP_KEY }}
+          echo ${{ env.SCP_KEY }}
+          echo "tempkeystring"
