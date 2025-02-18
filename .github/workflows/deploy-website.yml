@@ -32,6 +32,7 @@ jobs:
           name: website
           path: website/out
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH
@@ -46,4 +47,4 @@ jobs:
         with:
           name: website
       - name: Deploy website
-        run: scp -r website/out ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}
+        run: scp -r website ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}
