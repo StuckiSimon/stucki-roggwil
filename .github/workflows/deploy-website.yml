@@ -14,13 +14,36 @@ concurrency:
 # /.ssh/id_rsa_deployment.pub > ~/.ssh/authorized_keys
 # use the private key in the secret SCP_KEY
 jobs:
-  init:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: "Setup SSH"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: npm ci
+        working-directory: website
+      - name: Build website
+        run: npm run build
+        working-directory: website
+      - name: Upload bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: website
+          path: website/out
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
         run: |
           mkdir ~/.ssh
           echo -e "${{ secrets.SCP_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SCP_HOST }} >> ~/.ssh/known_hosts
           ssh ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }} "echo 'SSH connection established'" || exit 1
+      - name: Download bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: website
+      - name: Deploy website
+        run: scp -r website/out ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}
