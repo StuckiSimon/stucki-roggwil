@@ -48,4 +48,4 @@ jobs:
           name: website
           path: website
       - name: Deploy website
-        run: scp -r website ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}
+        run: scp -r website/* ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}
