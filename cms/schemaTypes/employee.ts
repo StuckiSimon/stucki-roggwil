@@ -24,5 +24,16 @@ export const employeeType = defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'order',
+      type: 'number',
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Order',
+      name: 'order',
+      by: [{field: 'order', direction: 'asc'}],
+    },
   ],
 })

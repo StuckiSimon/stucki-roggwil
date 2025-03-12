@@ -32,5 +32,16 @@ export const serviceType = defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'order',
+      type: 'number',
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Order',
+      name: 'order',
+      by: [{field: 'order', direction: 'asc'}],
+    },
   ],
 })
