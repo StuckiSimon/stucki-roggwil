@@ -1,0 +1,42 @@
+@use '../styles/variables' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--stucki-light-blue);
+  border-radius: 10px;
+  gap: var(--stucki-spacing-03);
+}
+
+.image {
+  border-radius: 10px 10px 0 0;
+}
+
+.wrapper {
+  padding: var(--stucki-spacing-06);
+}
+
+.title {
+  padding-bottom: var(--stucki-spacing-04);
+}
+
+.footer {
+  padding: 0 var(--stucki-spacing-04) var(--stucki-spacing-04) var(--stucki-spacing-04);
+}
+
+.container {
+  --stucki-card-container-template-columns: repeat(3, 1fr);
+  padding: var(--stucki-spacing-08) 0;
+  display: grid;
+  gap: var(--stucki-spacing-04);
+  grid-template-columns: var(--stucki-card-container-template-columns);
+
+  @media (max-width: $breakpoint-s) {
+    --stucki-card-container-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    --stucki-card-container-template-columns: repeat(1, 1fr);
+  }
+}
