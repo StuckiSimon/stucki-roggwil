@@ -1,0 +1,49 @@
+.root {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  min-width: 100%;
+  min-height: 100vh;
+  background-image: url('./hero-image.jpg');
+  background-size: cover;
+}
+
+.coverImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  text-align: right;
+  padding: 100px 0;
+}
+
+.question {
+  font-family: var(--font-merriweather), serif;
+  font-size: 90px;
+  color: var(--stucki-white);
+  border-radius: 22px;
+  border: 5px solid var(--stucki-white);
+  padding: var(--stucki-spacing-05) var(--stucki-spacing-07);
+  transform: translate3d(-100px, 0, 0);
+}
+
+.answer {
+  font-family: var(--font-merriweather), serif;
+  font-size: 90px;
+  color: var(--stucki-blue);
+  border-radius: 22px;
+  background-color: var(--stucki-white);
+  padding: var(--stucki-spacing-05) var(--stucki-spacing-07);
+  transform: translate3d(0, -30px, 0);
+}
+
+.buttonContainer {
+  padding-top: var(--stucki-spacing-06);
+  display: flex;
+  gap: var(--stucki-spacing-05);
+}
