@@ -1,0 +1,27 @@
+@use '../styles/variables' as *;
+@use '../styles/typography-helpers' as *;
+
+.typography {
+  font-family: $font;
+
+  &.color-black {
+    color: var(--stucki-black);
+  }
+
+  &.color-white {
+    color: var(--stucki-white);
+  }
+
+  &.color-blue {
+    color: var(--stucki-blue);
+  }
+
+  &.addressBlock {
+  }
+}
+
+@include font-type(1);
+
+@media (max-width: $breakpoint-s) {
+  @include font-type(2);
+}
