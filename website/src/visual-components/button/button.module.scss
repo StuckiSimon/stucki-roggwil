@@ -1,0 +1,33 @@
+@use '../styles/typography-helpers' as *;
+
+.root {
+  --stucki-button-bg-color: var(--stucki-blue);
+  --stucki-button-text-color: var(--stucki-white);
+  --stucki-button-border-color: var(--stucki-blue);
+
+  @include static-font('buttontext');
+  color: var(--stucki-button-text-color);
+  background-color: var(--stucki-button-bg-color);
+  border: 2px solid var(--stucki-button-border-color);
+  border-radius: 10px;
+  padding: var(--stucki-spacing-05) var(--stucki-spacing-07);
+  display: inline-block;
+
+  &.secondary {
+    --stucki-button-bg-color: transparent;
+    --stucki-button-text-color: var(--stucki-blue);
+    --stucki-button-border-color: var(--stucki-blue);
+  }
+
+  &.accent {
+    --stucki-button-bg-color: var(--stucki-white);
+    --stucki-button-text-color: var(--stucki-blue);
+    --stucki-button-border-color: var(--stucki-white);
+  }
+
+  &.accent.secondary {
+    --stucki-button-bg-color: transparent;
+    --stucki-button-text-color: var(--stucki-white);
+    --stucki-button-border-color: var(--stucki-white);
+  }
+}

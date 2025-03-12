@@ -1,0 +1,10 @@
+@use '../styles/typography-helpers' as *;
+
+.root {
+  @include static-font('buttontext');
+  color: var(--stucki-black);
+
+  &.accent {
+    color: var(--stucki-white);
+  }
+}
