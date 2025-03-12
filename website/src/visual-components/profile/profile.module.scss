@@ -1,0 +1,21 @@
+@use '../styles/variables' as *;
+
+.container {
+  --stucki-profile-container-template-columns: repeat(4, 1fr);
+  padding: var(--stucki-spacing-08) 0;
+  display: grid;
+  gap: var(--stucki-spacing-04);
+  grid-template-columns: var(--stucki-profile-container-template-columns);
+
+  @media (max-width: $breakpoint-m) {
+    --stucki-profile-container-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: $breakpoint-s) {
+    --stucki-profile-container-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    --stucki-profile-container-template-columns: repeat(1, 1fr);
+  }
+}
