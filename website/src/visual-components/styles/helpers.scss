@@ -1,0 +1,9 @@
+@use 'sass:math';
+
+// Contains reusable sass helpers to be imported in arbitrary SASS files
+
+$browser-context: 16; // Browser Default
+
+@function rem-calc($pixels, $context: $browser-context) {
+  @return #{math.div($pixels, $context)}rem;
+}

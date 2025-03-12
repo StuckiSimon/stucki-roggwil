@@ -1,0 +1,160 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+@use 'variables' as *;
+@use 'helpers' as *;
+
+/**
+ * Each entry represents a font type containing information for all different viewports.
+ * font-size: value order: desktop, mobile in px (will be converted to rem in function)
+ * line-height: value order same as font-size, in unit-less value, optionally a single value can be passed.
+ * letter-spacing(optional): value order same as font-size, in px, optionally a single value can be passed.
+ */
+$font-definitions: (
+  'title-1': (
+    'font-weight': $font-weight-bold,
+    'font-size': (
+      90,
+      60,
+    ),
+    'line-height': 1,
+    'letter-spacing': 0,
+  ),
+  'title-2': (
+    'font-weight': $font-weight-bold,
+    'font-size': (
+      48,
+      36,
+    ),
+    'line-height': 1,
+    'letter-spacing': 0,
+  ),
+  'sub-title': (
+    'font-weight': $font-weight-bold,
+    'font-size': (
+      30,
+      24,
+    ),
+    'line-height': 1.2,
+    'letter-spacing': 0,
+  ),
+  'buttontext': (
+    'font-weight': $font-weight-bold,
+    'font-size': (
+      20,
+      18,
+    ),
+    'line-height': 1,
+    'letter-spacing': 0,
+  ),
+  'text': (
+    'font-weight': $font-weight-regular,
+    'font-size': (
+      18,
+      16,
+    ),
+    'line-height': 1.2,
+    'letter-spacing': 0,
+  ),
+);
+
+/**
+ * Helper intended for typography component. This should not be used for other components.
+ */
+@mixin font-type($index) {
+  @each $name, $definition in $font-definitions {
+    .#{$name} {
+      $font-size-definition: map.get($definition, 'font-size');
+      $font-size: 16;
+      @if meta.type-of($font-size-definition) == 'list' {
+        $font-size: list.nth($font-size-definition, $index);
+      } @else {
+        $font-size: $font-size-definition;
+      }
+      $line-height-definition: map.get($definition, 'line-height');
+      $letter-spacing-definition: map.get($definition, 'letter-spacing');
+      $line-height: 1;
+      $letter-spacing: 0;
+      @if meta.type-of($line-height-definition) == 'list' {
+        $line-height: list.nth($line-height-definition, $index);
+      } @else {
+        $line-height: $line-height-definition;
+      }
+      @if meta.type-of($letter-spacing-definition) == 'number' and $index == 1 {
+        $letter-spacing: #{$letter-spacing-definition};
+      }
+      @if meta.type-of($letter-spacing-definition) == 'list' {
+        $letter-spacing: list.nth($letter-spacing-definition, $index);
+      }
+
+      $font-weight-definition: map.get($definition, 'font-weight');
+      $font-weight: $font-weight-regular;
+      @if meta.type-of($font-weight-definition) == 'number' {
+        $font-weight: $font-weight-definition;
+      }
+      font-weight: $font-weight;
+      font-size: rem-calc($font-size);
+      line-height: $line-height;
+      letter-spacing: rem-calc($letter-spacing);
+    }
+  }
+}
+
+/**
+ * Reusable helper to generate static-font styles.
+ * This is intended for use in visual-components for static text
+ */
+@mixin static-font($typography) {
+  @if $typography != 'buttontext' and $typography != 'text' {
+    @error 'static-font mixin is intended for buttontext and text only';
+  }
+  $font-definition: map.get($font-definitions, $typography);
+  $font-size-definition: map.get($font-definition, 'font-size');
+  $font-weight-definition: map.get($font-definition, 'font-weight');
+  $line-height-definition: map.get($font-definition, 'line-height');
+  $letter-spacing-definition: map.get($font-definition, 'letter-spacing');
+
+  $font-size: 18;
+  $font-size-s: 14;
+  @if meta.type-of($font-size-definition) == 'list' {
+    $font-size: list.nth($font-size-definition, 1);
+    $font-size-s: list.nth($font-size-definition, 2);
+  } @else {
+    $font-size: $font-size-definition;
+    $font-size-s: $font-size-definition;
+  }
+
+  $font-weight: $font-weight-regular;
+  @if meta.type-of($font-weight-definition) == 'number' {
+    $font-weight: $font-weight-definition;
+  }
+
+  $line-height: 1;
+  $line-height-s: 1;
+  @if meta.type-of($line-height-definition) == 'list' {
+    $line-height: list.nth($line-height-definition, 1);
+    $line-height-s: list.nth($line-height-definition, 2);
+  } @else {
+    $line-height: $line-height-definition;
+    $line-height-s: $line-height-definition;
+  }
+
+  $letter-spacing: 0;
+  $letter-spacing-s: 0;
+  @if meta.type-of($letter-spacing-definition) == 'list' {
+    $letter-spacing: list.nth($letter-spacing-definition, 1);
+    $letter-spacing-s: list.nth($letter-spacing-definition, 2);
+  }
+
+  font-weight: $font-weight;
+  font-size: rem-calc($font-size);
+  font-family: $font;
+  line-height: $line-height;
+  letter-spacing: rem-calc($letter-spacing);
+
+  @media (max-width: $breakpoint-s) {
+    font-size: rem-calc($font-size-s);
+    line-height: $line-height-s;
+    letter-spacing: rem-calc($letter-spacing-s);
+  }
+}

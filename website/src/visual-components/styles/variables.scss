@@ -1,0 +1,10 @@
+// This file contains common SASS variables which may be included in other SASS files.
+
+$breakpoint-xs: 640px;
+$breakpoint-s: 1024px;
+$breakpoint-m: 1440px;
+
+$font: var(--font-inter), sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
