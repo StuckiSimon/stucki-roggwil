@@ -4,9 +4,7 @@ import styles from './footer.module.scss';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Typography } from '@/visual-components/typography/typography';
 
-type Props = {};
-
-export const Footer: React.FC<Props> = ({}) => {
+export const Footer: React.FC = () => {
   return (
     <footer className={styles.root}>
       <GridContainer>
