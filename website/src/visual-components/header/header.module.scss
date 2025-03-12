@@ -1,0 +1,25 @@
+.root {
+  width: 100%;
+
+  &:not(.accent) {
+    background-color: var(--stucki-blue);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--stucki-spacing-06) 0;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav {
+  display: flex;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: var(--stucki-spacing-07);
+}
