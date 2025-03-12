@@ -1,0 +1,73 @@
+@use '../styles/variables' as *;
+
+$grid-desktop-column-count: 12;
+$grid-tablet-column-count: 6;
+$grid-mobile-column-count: 4;
+
+.container {
+  --stucki-grid-gutter: ;
+  --stucki-grid-container-padding: 80px;
+  --stucki-grid-template-columns: repeat(#{$grid-desktop-column-count}, 1fr);
+
+  display: grid;
+  grid-template-columns: var(--stucki-grid-template-columns);
+  grid-column-gap: var(--stucki-grid-gutter);
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 var(--stucki-grid-container-padding);
+
+  @media (max-width: $breakpoint-s) {
+    --stucki-grid-container-padding: 30px;
+    --stucki-grid-template-columns: repeat(#{$grid-tablet-column-count}, 1fr);
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    --stucki-grid-template-columns: repeat(#{$grid-mobile-column-count}, 1fr);
+  }
+}
+
+.subgridContainer {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+@for $i from 1 through $grid-desktop-column-count {
+  .span#{$i} {
+    grid-column: span #{$i};
+
+    @if $i > 6 {
+      @media (max-width: $breakpoint-s) {
+        grid-column: span #{$grid-tablet-column-count};
+      }
+    }
+
+    @if $i > 4 {
+      @media (max-width: $breakpoint-xs) {
+        grid-column: span #{$grid-mobile-column-count};
+      }
+    }
+  }
+}
+
+@for $i from 1 through $grid-tablet-column-count {
+  .spanTablet#{$i} {
+    @media (max-width: $breakpoint-s) {
+      grid-column: span #{$i};
+    }
+
+    @if $i > 4 {
+      @media (max-width: $breakpoint-xs) {
+        grid-column: span #{$grid-tablet-column-count};
+      }
+    }
+  }
+}
+
+@for $i from 1 through $grid-mobile-column-count {
+  .spanMobile#{$i} {
+    @media (max-width: $breakpoint-xs) {
+      grid-column: span #{$i};
+    }
+  }
+}
