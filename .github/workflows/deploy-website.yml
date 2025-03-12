@@ -1,6 +1,7 @@
 name: Deploy Website
 on:
   workflow_dispatch:
+  repository_dispatch:
   push:
     branches: [main]
 concurrency:
