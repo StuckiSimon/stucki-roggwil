@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Merriweather } from 'next/font/google';
 import '../visual-components/styles/globals.scss';
+import Script from 'next/script';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
+      <Script src="https://cloud.umami.is/script.js" defer data-website-id="42e8edaa-5be5-4997-b7f7-ef7e1dcd96a8" />
       <body className={`${inter.variable} ${merriweather.variable}`}>{children}</body>
     </html>
   );
