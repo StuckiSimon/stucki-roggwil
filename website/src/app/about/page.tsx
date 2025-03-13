@@ -26,7 +26,7 @@ export default async function About() {
 
   return (
     <Layout>
-      <PageHero title="Über Uns" subline="Seit bald 30 Jahren sind wir für Sie da." />
+      <PageHero title="Über uns" subline="Seit bald 30 Jahren sind wir für Sie da." />
       <GridContainer>
         <GridItem>
           <ProfileContainer>
