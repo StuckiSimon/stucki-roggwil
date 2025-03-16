@@ -1,0 +1,37 @@
+@use '../styles/variables' as *;
+
+.root {
+  --stucki-spacer-size: var(--stucki-spacer-current-space);
+  display: block;
+  width: var(--stucki-spacer-size);
+  min-width: var(--stucki-spacer-size);
+  height: var(--stucki-spacer-size);
+  min-height: var(--stucki-spacer-size);
+  font-size: 0;
+
+  @media (max-width: $breakpoint-m) {
+    --stucki-spacer-size: var(--stucki-spacer-m-space);
+  }
+
+  @media (max-width: $breakpoint-s) {
+    --stucki-spacer-size: var(--stucki-spacer-s-space);
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    --stucki-spacer-size: var(--stucki-spacer-xs-space);
+  }
+
+  &.horizontal {
+    height: 1px;
+    min-height: 1px;
+  }
+
+  &.vertical {
+    width: 1px;
+    min-width: 1px;
+  }
+
+  &.inline {
+    display: inline-block;
+  }
+}
