@@ -1,3 +1,5 @@
+@use '../visual-components/styles/variables' as *;
+
 .root {
   position: absolute;
   top: 0;
@@ -15,16 +17,21 @@
 }
 
 .container {
+  --stucki-hero-font-size: 90px;
   display: flex;
   align-items: end;
   flex-direction: column;
   text-align: right;
   padding: 100px 0;
+
+  @media (max-width: $breakpoint-s) {
+    --stucki-hero-font-size: 50px;
+  }
 }
 
 .question {
   font-family: var(--font-merriweather), serif;
-  font-size: 90px;
+  font-size: var(--stucki-hero-font-size);
   color: var(--stucki-white);
   border-radius: 22px;
   border: 5px solid var(--stucki-white);
@@ -34,7 +41,7 @@
 
 .answer {
   font-family: var(--font-merriweather), serif;
-  font-size: 90px;
+  font-size: var(--stucki-hero-font-size);
   color: var(--stucki-blue);
   border-radius: 22px;
   background-color: var(--stucki-white);
@@ -46,4 +53,9 @@
   padding-top: var(--stucki-spacing-06);
   display: flex;
   gap: var(--stucki-spacing-05);
+
+  @media (max-width: $breakpoint-s) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
