@@ -17,3 +17,14 @@
     height: 30px;
   }
 }
+
+.social {
+  display: flex;
+  gap: var(--stucki-spacing-07);
+  justify-content: flex-end;
+
+  @media (max-width: $breakpoint-s) {
+    padding-top: var(--stucki-spacing-07);
+    justify-content: flex-start;
+  }
+}

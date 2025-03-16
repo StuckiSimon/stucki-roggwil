@@ -4,6 +4,9 @@ import styles from './footer.module.scss';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
+import instagramSvg from './instagram.svg';
+import facebookSvg from './facebook.svg';
+import linkedinSvg from './linkedin.svg';
 
 export const Footer: React.FC = () => {
   return (
@@ -19,6 +22,7 @@ export const Footer: React.FC = () => {
             St. Urbanstrasse 35
             <Spacer size="02" />
             4914 Roggwil (BE)
+            <Spacer size="04" />
           </Typography>
         </GridItem>
         <GridItem span="4">
@@ -28,7 +32,17 @@ export const Footer: React.FC = () => {
             <a href="mailto:info@stucki-roggwil.ch">info@stucki-roggwil.ch</a>
           </Typography>
         </GridItem>
-        <GridItem span="5"></GridItem>
+        <GridItem span="5" className={styles.social}>
+          <a href="https://www.instagram.com/garage_stucki_roggwil/" target="_blank">
+            <img src={instagramSvg.src} alt="Garage Stucki AG auf Instagram" />
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100057358815976" target="_blank">
+            <img src={facebookSvg.src} alt="Garage Stucki AG auf Facebook" />
+          </a>
+          <a href="https://www.linkedin.com/company/garage-stucki-ag/" target="_blank">
+            <img src={linkedinSvg.src} alt="Garage Stucki AG auf LinkedIn" />
+          </a>
+        </GridItem>
       </GridContainer>
     </footer>
   );
