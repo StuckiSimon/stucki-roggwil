@@ -4,12 +4,14 @@ import styles from './header.module.scss';
 import logoSvg from '@/visual-components/shared-assets/logo.svg';
 import { Link } from '@/visual-components/link/link';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
+import { MobileNav } from '@/visual-components/header/mobile-nav';
+import { HeaderScrollHandler } from '@/visual-components/header/header-scroll-handler';
 
 type Props = {
   accent?: boolean;
 };
 
-type NavItem = {
+export type NavItem = {
   target: string;
   label: string;
 };
@@ -33,8 +35,10 @@ export const Header: React.FC<Props> = ({ accent = false }) => {
       label: 'Kontakt',
     },
   ] satisfies NavItem[];
+
   return (
     <header
+      id="stucki-app-header"
       className={classNames(styles.root, {
         [styles.accent]: accent,
       })}
@@ -54,26 +58,11 @@ export const Header: React.FC<Props> = ({ accent = false }) => {
                 </li>
               ))}
             </ul>
-            <div className={styles.mobileNav}>
-              <input type="checkbox" id="mobile-nav-toggle" className={styles.toggle} />
-              <label htmlFor="mobile-nav-toggle" className={styles.toggleLabel}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </label>
-              <ul className={styles.mobileNavList}>
-                {navItems.map((item) => (
-                  <li key={item.target}>
-                    <Link href={item.target} accent>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <MobileNav navItems={navItems} />
           </div>
         </GridItem>
       </GridContainer>
+      <HeaderScrollHandler className={styles.scrolled} htmlSelector="#stucki-app-header" />
     </header>
   );
 };
