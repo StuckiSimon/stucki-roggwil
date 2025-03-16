@@ -9,7 +9,30 @@ type Props = {
   accent?: boolean;
 };
 
+type NavItem = {
+  target: string;
+  label: string;
+};
+
 export const Header: React.FC<Props> = ({ accent = false }) => {
+  const navItems = [
+    {
+      target: '/stock',
+      label: 'Lagerfahrzeuge',
+    },
+    {
+      target: '/services',
+      label: 'Dienstleistungen',
+    },
+    {
+      target: '/about',
+      label: 'Über uns',
+    },
+    {
+      target: '/contact',
+      label: 'Kontakt',
+    },
+  ] satisfies NavItem[];
   return (
     <header
       className={classNames(styles.root, {
@@ -23,27 +46,31 @@ export const Header: React.FC<Props> = ({ accent = false }) => {
               <img src={logoSvg.src} alt="Garage Stucki AG" className={styles.logo} />
             </Link>
             <ul className={styles.nav}>
-              <li>
-                <Link href="/stock" accent>
-                  Lagerfahrzeuge
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" accent>
-                  Dienstleistungen
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" accent>
-                  Über uns
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" accent>
-                  Kontakt
-                </Link>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.target}>
+                  <Link href={item.target} accent>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
+            <div className={styles.mobileNav}>
+              <input type="checkbox" id="mobile-nav-toggle" className={styles.toggle} />
+              <label htmlFor="mobile-nav-toggle" className={styles.toggleLabel}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+              <ul className={styles.mobileNavList}>
+                {navItems.map((item) => (
+                  <li key={item.target}>
+                    <Link href={item.target} accent>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </GridItem>
       </GridContainer>
