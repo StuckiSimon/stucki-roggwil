@@ -1,9 +1,19 @@
+@use '../styles/variables' as *;
+
 .root {
   background-color: var(--stucki-blue);
   padding: var(--stucki-spacing-09) 0;
+
+  @media (max-width: $breakpoint-s) {
+    padding: var(--stucki-spacing-07) 0;
+  }
 }
 
 .logo {
   height: 60px;
   margin-bottom: var(--stucki-spacing-07);
+
+  @media (max-width: $breakpoint-s) {
+    height: 30px;
+  }
 }
