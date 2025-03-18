@@ -4,6 +4,9 @@
   --stucki-button-bg-color: var(--stucki-blue);
   --stucki-button-text-color: var(--stucki-white);
   --stucki-button-border-color: var(--stucki-blue);
+  --stucki-button-hover-bg-color: var(--stucki-white);
+  --stucki-button-hover-text-color: var(--stucki-blue);
+  --stucki-button-hover-border-color: var(--stucki-blue);
 
   @include static-font('buttontext');
   color: var(--stucki-button-text-color);
@@ -12,6 +15,11 @@
   border-radius: 10px;
   padding: var(--stucki-spacing-05) var(--stucki-spacing-07);
   display: inline-block;
+
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 
   &.secondary {
     --stucki-button-bg-color: transparent;
@@ -23,11 +31,21 @@
     --stucki-button-bg-color: var(--stucki-white);
     --stucki-button-text-color: var(--stucki-blue);
     --stucki-button-border-color: var(--stucki-white);
+    --stucki-button-hover-bg-color: var(--stucki-blue);
+    --stucki-button-hover-text-color: var(--stucki-white);
   }
 
   &.accent.secondary {
     --stucki-button-bg-color: transparent;
     --stucki-button-text-color: var(--stucki-white);
     --stucki-button-border-color: var(--stucki-white);
+    --stucki-button-hover-border-color: var(--stucki-white);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--stucki-button-hover-text-color);
+    background-color: var(--stucki-button-hover-bg-color);
+    border-color: var(--stucki-button-hover-border-color);
   }
 }
