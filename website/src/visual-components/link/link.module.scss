@@ -1,10 +1,43 @@
 @use '../styles/typography-helpers' as *;
 
 .root {
+  --stucki-link-color: var(--stucki-black);
+  --stucki-link-hover-color: var(--stucki-blue);
+
   @include static-font('buttontext');
-  color: var(--stucki-black);
+  color: var(--stucki-link-color);
 
   &.accent {
-    color: var(--stucki-white);
+    --stucki-link-color: var(--stucki-white);
+    --stucki-link-hover-color: var(--stucki-light-blue);
+  }
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: var(--stucki-link-hover-color);
+  }
+}
+
+.animatedUnderline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition:
+      width 0.2s ease-in-out,
+      left 0.2s ease-in-out;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+    left: 0;
   }
 }
