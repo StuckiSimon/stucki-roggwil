@@ -55,7 +55,7 @@ export default async function Services() {
   >(SERVICES_QUERY);
 
   return (
-    <Layout>
+    <Layout activePath="/services">
       <PageHero title="Was können wir für Sie tun?" subline="Wir sind die Antwort auf Ihre Fragen." />
       <GridContainer>
         <GridItem>

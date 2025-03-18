@@ -4,7 +4,7 @@ import { CarmarketFrame } from '@/app/stock/carmarket-frame';
 
 export default async function Stock() {
   return (
-    <Layout>
+    <Layout activePath="/stock">
       <GridContainer>
         <GridItem>
           <CarmarketFrame />

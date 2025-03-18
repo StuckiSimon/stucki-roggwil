@@ -7,7 +7,7 @@ import positionImg from './position.png';
 
 export default async function Contact() {
   return (
-    <Layout>
+    <Layout activePath="/contact">
       <PageHero title="Kontakt" subline="So erreichen Sie uns." />
       <Spacer size="08" />
       <GridContainer>

@@ -9,6 +9,7 @@ import { HeaderScrollHandler } from '@/visual-components/header/header-scroll-ha
 
 type Props = {
   accent?: boolean;
+  activePath?: string;
 };
 
 export type NavItem = {
@@ -16,7 +17,7 @@ export type NavItem = {
   label: string;
 };
 
-export const Header: React.FC<Props> = ({ accent = false }) => {
+export const Header: React.FC<Props> = ({ accent = false, activePath }) => {
   const navItems = [
     {
       target: '/stock',
@@ -52,7 +53,7 @@ export const Header: React.FC<Props> = ({ accent = false }) => {
             <ul className={styles.nav}>
               {navItems.map((item) => (
                 <li key={item.target}>
-                  <Link href={item.target} accent>
+                  <Link href={item.target} accent animated active={activePath === item.target}>
                     {item.label}
                   </Link>
                 </li>

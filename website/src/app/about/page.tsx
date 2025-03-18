@@ -25,7 +25,7 @@ export default async function About() {
   >(EMPLOYEES_QUERY);
 
   return (
-    <Layout>
+    <Layout activePath="/about">
       <PageHero title="Über uns" subline="Seit bald 30 Jahren sind wir für Sie da." />
       <GridContainer>
         <GridItem>

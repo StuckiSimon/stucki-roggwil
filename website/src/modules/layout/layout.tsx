@@ -8,13 +8,14 @@ type Props = {
   accent?: boolean;
   children: ReactNode;
   className?: string;
+  activePath?: string;
 };
 
-export const Layout: React.FC<Props> = ({ accent = false, children, className }) => {
+export const Layout: React.FC<Props> = ({ accent = false, children, className, activePath }) => {
   return (
     <div className={classNames(styles.root, className)}>
       <div>
-        <Header accent={accent} />
+        <Header accent={accent} activePath={activePath} />
         {children}
       </div>
       <Footer />
