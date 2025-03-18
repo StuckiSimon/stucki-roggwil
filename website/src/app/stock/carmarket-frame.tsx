@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import styles from './carmarket-frame.module.scss';
 import { notNil } from '@/core/util/is-nil';
+import styles from './carmarket-frame.module.scss';
 
 export const CarmarketFrame: React.FC = () => {
   const mounted = useRef(false);
