@@ -6,7 +6,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 
 export default async function Home() {
   return (
-    <Layout accent backdrop={<div className={styles.root}></div>}>
+    <Layout className={styles.root} accent>
       <GridContainer>
         <GridItem>
           <div className={styles.container}>
