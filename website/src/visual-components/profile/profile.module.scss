@@ -4,7 +4,7 @@
   --stucki-profile-container-template-columns: repeat(4, 1fr);
   padding: var(--stucki-spacing-08) 0;
   display: grid;
-  gap: var(--stucki-spacing-04);
+  gap: var(--stucki-spacing-06) var(--stucki-spacing-04);
   grid-template-columns: var(--stucki-profile-container-template-columns);
 
   @media (max-width: $breakpoint-m) {
@@ -22,4 +22,10 @@
 
 .text {
   max-width: 80%;
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 600/450;
+  background-color: var(--stucki-light-blue);
 }

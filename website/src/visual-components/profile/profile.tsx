@@ -14,7 +14,7 @@ export const Profile: React.FC<Props> = ({ title, subtitle, image }) => {
   const hasImage = notNil(image);
   return (
     <div>
-      {hasImage ? <img src={`${image}?w=600&h=450&fit=crop`} alt={title} /> : null}
+      {hasImage ? <img src={`${image}?w=600&h=450&fit=crop`} alt={title} /> : <div className={styles.placeholder} />}
       <Spacer size="04" />
       <Typography variant="sub-title" color="blue" className={styles.title}>
         {title}
