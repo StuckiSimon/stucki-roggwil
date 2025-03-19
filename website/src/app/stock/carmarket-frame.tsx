@@ -1,19 +1,15 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { notNil } from '@/core/util/is-nil';
 import styles from './carmarket-frame.module.scss';
 
 export const CarmarketFrame: React.FC = () => {
-  const mounted = useRef(false);
   useEffect(() => {
-    if (mounted.current) {
-      return;
-    }
-    mounted.current = true;
-
     if (notNil(window.carmarketFrameConfiguration)) {
-      window.location.reload();
-      return;
+      window.cmBuildIframe(window.carmarketFrameConfiguration);
+      return () => {
+        window.cmDestroyIframe();
+      };
     }
 
     window.carmarketFrameConfiguration = {
@@ -46,6 +42,10 @@ export const CarmarketFrame: React.FC = () => {
     script.type = 'module';
 
     document.body.appendChild(script);
+
+    return () => {
+      window.cmDestroyIframe?.();
+    };
   }, []);
   return <div id="carmarket-frame" className={styles.root} />;
 };
