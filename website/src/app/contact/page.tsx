@@ -52,7 +52,7 @@ export default async function Contact() {
           <Typography variant="buttontext">Mo - Fr</Typography>
           <Spacer size="03" />
           <Typography variant="text">
-            06:30 - 12:00
+            07:30 - 12:00
             <Spacer size="02" />
             13:30 - 18:00
           </Typography>
