@@ -11,5 +11,5 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI}.html !-f
     RewriteCond %{DOCUMENT_ROOT}/404.html -f
-    RewriteRule ^(.*)$ /404.html [L]
+    RewriteRule ^(.*)$ /404.html [L,R=404]
 </IfModule>
