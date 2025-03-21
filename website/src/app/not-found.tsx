@@ -26,6 +26,7 @@ export const NotFoundPage: React.FC = () => {
           <Link href="/">zur Startseite</Link>
         </GridItem>
       </GridContainer>
+      <Spacer size="09" />
     </Layout>
   );
 };
