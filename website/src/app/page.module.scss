@@ -76,6 +76,10 @@
     font: var(--font-merriweather), serif;
     font-size: 42px;
     font-weight: 700;
+
+    @media (max-width: $breakpoint-s) {
+      font-size: 36px;
+    }
   }
 
   @media (max-width: 800px) {
