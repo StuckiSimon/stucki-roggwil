@@ -56,3 +56,31 @@
     align-items: flex-end;
   }
 }
+
+.teaser {
+  background-color: var(--stucki-blue);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-wrap: wrap;
+  height: 250px;
+  width: 250px;
+  rotate: -20deg;
+  position: absolute;
+  transform: translateY(-120%) translateX(100px);
+
+  .teaserText {
+    text-align: center;
+    color: var(--stucki-white);
+    font: var(--font-merriweather), serif;
+    font-size: 42px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 800px) {
+    position: relative;
+    transform: translateY(0) translateX(0);
+    margin-bottom: var(--stucki-spacing-07);
+  }
+}

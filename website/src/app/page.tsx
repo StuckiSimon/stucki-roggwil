@@ -3,8 +3,25 @@ import styles from './page.module.scss';
 import { Typography } from '@/visual-components/typography/typography';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { ButtonLink } from '@/visual-components/button/button';
+import { fetchSanityData } from '@/sanity/client';
+import { notNil } from '@/core/util/is-nil';
+
+const HOME_QUERY = `
+  *[_type == "homeTeaser" && isActive == true][0]{
+    "ctaText": ctaText,
+    "assetUrl": asset->pdfFile.asset->url
+  }
+  `;
 
 export default async function Home() {
+  const homeTeasers = await fetchSanityData<{
+    ctaText: string;
+    assetUrl: string;
+  }>(HOME_QUERY);
+
+  const teaser = homeTeasers.result;
+  const hasTeaser = notNil(teaser);
+
   return (
     <Layout className={styles.root} accent>
       <GridContainer>
@@ -25,6 +42,13 @@ export default async function Home() {
             </div>
           </div>
         </GridItem>
+        {hasTeaser ? (
+          <GridItem>
+            <a className={styles.teaser} href={teaser.assetUrl}>
+              <span className={styles.teaserText}>{teaser.ctaText}</span>
+            </a>
+          </GridItem>
+        ) : null}
       </GridContainer>
     </Layout>
   );
