@@ -1,8 +1,14 @@
+import type { Metadata } from 'next';
 import { fetchSanityData } from '@/sanity/client';
 import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Profile, ProfileContainer } from '@/visual-components/profile/profile';
+
+export const metadata: Metadata = {
+  title: 'Über Uns | Garage Stucki AG',
+  description: 'Erfahren Sie mehr über die Garage Stucki AG in Roggwil. Lernen Sie unser Team kennen.',
+};
 
 const EMPLOYEES_QUERY = `
   *[_type== "employee"]{

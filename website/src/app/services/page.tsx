@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import { fetchSanityData } from '@/sanity/client';
 import { Layout } from '@/modules/layout/layout';
 import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { Card, CardContainer } from '@/visual-components/card/card';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
+
+export const metadata: Metadata = {
+  title: 'Dienstleistungen | Garage Stucki AG',
+  description:
+    'Rundum-Service in Roggwil: Reifen wechseln, Neu-/Gebrauchtwagen finden & Mietwagen buchen. Jetzt informieren!',
+};
 
 const SERVICES_QUERY = `
   *[_type== "service"]{

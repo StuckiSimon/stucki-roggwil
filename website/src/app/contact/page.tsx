@@ -1,9 +1,15 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
 import positionImg from './position.png';
+
+export const metadata: Metadata = {
+  title: 'Kontakt | Garage Stucki AG',
+  description: 'So erreichen Sie uns: Garage Stucki AG in Roggwil. Kontaktieren Sie uns telefonisch oder per E-Mail.',
+};
 
 export default async function Contact() {
   return (
