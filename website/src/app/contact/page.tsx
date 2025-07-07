@@ -71,11 +71,9 @@ export default async function Contact() {
           <Spacer size="03" />
           <Typography variant="text">geschlossen</Typography>
           <Spacer size="08" />
-          <Typography variant="buttontext">Ausnahmen</Typography>
+          <Typography variant="buttontext">Betriebsferien</Typography>
           <Spacer size="03" />
-          <Typography variant="text">
-            Betriebsferien von <b>21. Juli – 1. August</b>
-          </Typography>
+          <Typography variant="text">ab 21. Juli bis 1. August</Typography>
           <Spacer size="08" />
         </GridItem>
       </GridContainer>
