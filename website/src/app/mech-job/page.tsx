@@ -53,15 +53,16 @@ export default async function MechJob() {
         <GridItem span="8">
           <Spacer size="07" />
           <Typography variant="buttontext">
-            Klein aber fein: Die Garage Stucki AG ist ein langjährig etablierter Garagenbetrieb im Oberaargau. Dank
-            unserer regionalen Verankerung und der Partnerschaft mit KGM/SsangYong und Le GARAGE bieten wir ein breites
-            Spektrum an Leistungen. Unser Angebot umfasst Verkauf, Reparaturen und Servicearbeiten von Personenwagen,
-            Lieferwagen und Wohnmobilen. Wir sind ein kompetenter und zuverlässiger Ansprechpartner.
+            Klein aber fein: Die Garage Stucki AG ist ein langjährig etablierter Garagen&shy;betrieb im Ober&shy;aargau.
+            Dank unserer regionalen Veran&shy;kerung und der Partner&shy;schaft mit KGM/&shy;SsangYong und
+            Le&nbsp;GARAGE bieten wir ein breites Spektrum an Leistungen. Unser Angebot umfasst Verkauf, Reparaturen und
+            Service&shy;arbeiten von Personen&shy;wagen, Liefer&shy;wagen und Wohn&shy;mobilen. Wir sind ein kompetenter
+            und zuverlässiger Ansprech&shy;partner.
           </Typography>
           <Spacer size="04" />
           <Typography variant="buttontext">
             Zur Verstärkung unseres Teams suchen wir per sofort oder nach Vereinbarung eine motivierte Persönlichkeit,
-            die sich beruflich weiterentwickeln möchte.
+            die sich beruflich weiter&shy;entwickeln möchte.
           </Typography>
           <Spacer size="06" />
           <Typography variant="buttontext">Deine Aufgaben</Typography>
