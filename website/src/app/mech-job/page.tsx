@@ -4,6 +4,7 @@ import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
+import { Link } from '@/visual-components/link/link';
 
 export const metadata: Metadata = {
   title: 'Automobil-Mechatroniker/in oder Automobil-Fachmann/-frau 100% | Garage Stucki AG',
@@ -161,8 +162,7 @@ export default async function MechJob() {
           <Spacer size="06" />
           <Typography>Bei Fragen sind wir gerne für dich da. Wir freuen uns auf deine Bewerbung an:</Typography>
           <Typography>
-            Martin Stucki,
-            <a href="mailto:martin@stucki-roggwil.ch">martin@stucki-roggwil.ch</a>
+            Martin Stucki, <Link href="mailto:martin@stucki-roggwil.ch">martin@stucki-roggwil.ch</Link>
           </Typography>
           <Spacer size="08" />
         </GridItem>
