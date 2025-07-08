@@ -1,19 +1,21 @@
 import React from 'react';
-import { notNil } from '@/core/util/is-nil';
+import isNil, { notNil } from '@/core/util/is-nil';
 import styles from './profile.module.scss';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
+import Link from 'next/link';
 
 type Props = {
   title: string;
   subtitle: string;
   image: string | null;
+  href?: string;
 };
 
-export const Profile: React.FC<Props> = ({ title, subtitle, image }) => {
+export const Profile: React.FC<Props> = ({ title, subtitle, image, href }) => {
   const hasImage = notNil(image);
-  return (
-    <div>
+  const content = (
+    <>
       {hasImage ? <img src={`${image}?w=600&h=450&fit=crop`} alt={title} /> : <div className={styles.placeholder} />}
       <Spacer size="04" />
       <Typography variant="sub-title" color="blue" className={styles.title}>
@@ -23,8 +25,9 @@ export const Profile: React.FC<Props> = ({ title, subtitle, image }) => {
       <Typography variant="text" className={styles.text}>
         {subtitle}
       </Typography>
-    </div>
+    </>
   );
+  return isNil(href) ? <div>{content}</div> : <Link href={href}>{content}</Link>;
 };
 
 export const ProfileContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
