@@ -13,6 +13,8 @@ const HOME_QUERY = `
   }
   `;
 
+const JOB_PATH = '/mech-job';
+
 export default async function Home() {
   const homeTeasers = await fetchSanityData<{
     ctaText: string;
@@ -20,7 +22,7 @@ export default async function Home() {
   }>(HOME_QUERY);
 
   const teaser = homeTeasers.result;
-  const hasTeaser = notNil(teaser);
+  const hasTeaser = notNil(JOB_PATH) || notNil(teaser);
 
   return (
     <Layout className={styles.root} accent>
@@ -43,11 +45,19 @@ export default async function Home() {
           </div>
         </GridItem>
         {hasTeaser ? (
-          <GridItem>
-            <a className={styles.teaser} href={teaser.assetUrl}>
-              <span className={styles.teaserText}>{teaser.ctaText}</span>
-            </a>
-          </GridItem>
+          notNil(JOB_PATH) ? (
+            <GridItem>
+              <a className={styles.teaser} href={JOB_PATH}>
+                <span className={styles.teaserText}>Wir suchen dich!</span>
+              </a>
+            </GridItem>
+          ) : (
+            <GridItem>
+              <a className={styles.teaser} href={teaser.assetUrl}>
+                <span className={styles.teaserText}>{teaser.ctaText}</span>
+              </a>
+            </GridItem>
+          )
         ) : null}
       </GridContainer>
     </Layout>
