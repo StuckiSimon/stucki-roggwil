@@ -44,6 +44,7 @@ export default async function About() {
                 image={employee.imageUrl}
               />
             ))}
+            <Profile title="Wir suchen!" subtitle="Du auch?" href="/mech-job" image={null} />
           </ProfileContainer>
         </GridItem>
       </GridContainer>
