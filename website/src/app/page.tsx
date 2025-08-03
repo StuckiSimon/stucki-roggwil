@@ -13,7 +13,7 @@ const HOME_QUERY = `
   }
   `;
 
-const JOB_PATH = '/mech-job';
+const JOB_PATH = null; // '/mech-job';
 
 export default async function Home() {
   const homeTeasers = await fetchSanityData<{
@@ -47,7 +47,7 @@ export default async function Home() {
         {hasTeaser ? (
           notNil(JOB_PATH) ? (
             <GridItem>
-              <a className={styles.teaser} href={JOB_PATH}>
+              <a className={styles.teaser} href={JOB_PATH ?? ''}>
                 <span className={styles.teaserText}>Wir suchen dich!</span>
               </a>
             </GridItem>
