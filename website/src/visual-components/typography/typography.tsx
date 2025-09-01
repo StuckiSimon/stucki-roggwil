@@ -4,7 +4,7 @@ import styles from './typography.module.scss';
 
 export type TypographyVariant = 'title-1' | 'title-2' | 'title-3' | 'sub-title' | 'buttontext' | 'text';
 
-export type TypographyColor = 'black' | 'blue' | 'white';
+export type TypographyColor = 'black' | 'blue' | 'white' | 'grey';
 
 const VARIANT_DEFAULT_TAG_MAP: Record<TypographyVariant, keyof JSX.IntrinsicElements> = {
   'title-1': 'h1',

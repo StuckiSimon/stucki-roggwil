@@ -15,6 +15,10 @@
   &.color-blue {
     color: var(--stucki-blue);
   }
+
+  &.color-grey {
+    color: var(--stucki-grey);
+  }
 }
 
 @include font-type(1);
