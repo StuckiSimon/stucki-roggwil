@@ -4,6 +4,7 @@ import { Link } from '@/visual-components/link/link';
 import { ButtonLink } from '@/visual-components/button/button';
 import { InlineSpacer, Spacer } from '@/visual-components/spacer/spacer';
 import { Typography } from '@/visual-components/typography/typography';
+import { formatNumber } from '@/modules/i18n/formatter';
 
 type Props = {
   imageUrl: string;
@@ -49,8 +50,8 @@ export const LeasingTeaser: React.FC<Props> = ({
           </Typography>
         </span>
         <Spacer size="02" />
-        <Typography variant="text">
-          {totalKm} km, {leasingDurationMonths} Monate Laufzeit
+        <Typography variant="sub-text" color="grey">
+          {formatNumber(totalKm)} km, {leasingDurationMonths} Monate Laufzeit
         </Typography>
         <Spacer size="06" />
         <ButtonLink href="/contact">Kontakt</ButtonLink>
