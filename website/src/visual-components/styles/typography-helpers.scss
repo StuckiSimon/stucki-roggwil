@@ -65,6 +65,15 @@ $font-definitions: (
     'line-height': 1.2,
     'letter-spacing': 0,
   ),
+  'sub-text': (
+    'font-weight': $font-weight-regular,
+    'font-size': (
+      16,
+      14,
+    ),
+    'line-height': 1,
+    'letter-spacing': 0,
+  ),
 );
 
 /**
