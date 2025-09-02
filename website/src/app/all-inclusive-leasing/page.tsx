@@ -50,11 +50,11 @@ export default async function AllInclusiveLeasing() {
         <GridItem span="6">
           <Spacer size="07" />
           <Typography variant="title-3" color="blue">
-            7 Vorteile
+            7 Vorteile bei einem All-Inclusive Leasing mit uns
           </Typography>
           <Spacer size="03" />
           <Typography variant="text">
-            Erfahren Sie weshalb das All-Inclusive Leasing ihr perfekter Einstieg in die E-Mobilität ist!
+            Erfahren Sie, weshalb das All-Inclusive Leasing ihr perfekter Einstieg in die E-Mobilität ist.
           </Typography>
           <Spacer size="07" />
         </GridItem>
@@ -63,12 +63,12 @@ export default async function AllInclusiveLeasing() {
             <Fact
               id={1}
               title="Wallbox Installation"
-              description="Wir beteiligen uns mit bis zu 1'500.– CHF an den Installationskoten für eine Wallbox bei Ihnen zu Hause."
+              description="Wir beteiligen uns mit bis zu 1'000.– CHF an den Installationskosten für eine Wallbox bei Ihnen zu Hause."
             />
             <Fact
               id={2}
-              title="Einfach"
-              description="Wir übernehmen Kosten für Reifen, Service Garantie und vieles weitere."
+              title="Alles dabei"
+              description="Wir übernehmen Kosten für Reifen, Service, Garantieabwicklung und vieles mehr."
             />
             <Fact
               id={3}
@@ -77,7 +77,7 @@ export default async function AllInclusiveLeasing() {
             />
             <Fact
               id={4}
-              title="Geringes Restwertrisiko"
+              title="Kein Restwertrisiko"
               description="Durch das Leasing entfällt das Restwertrisiko für Sie."
             />
             <Fact
@@ -100,10 +100,10 @@ export default async function AllInclusiveLeasing() {
         </GridItem>
         <GridItem>
           <Typography variant="title-3" color="blue">
-            Unsere All-Inclusve Fahrzeuge
+            Unsere All-Inclusive Fahrzeuge
           </Typography>
           <Spacer size="03" />
-          <Typography variant="text">Passende Angebote für Ihr Nutzungsprofil</Typography>
+          <Typography variant="text">Wir haben das passende Angebot für Ihr Nutzungsprofil.</Typography>
           <Spacer size="09" />
         </GridItem>
         <GridItem span="8" spanTablet="6">
@@ -125,11 +125,10 @@ export default async function AllInclusiveLeasing() {
         <GridItem>
           <Spacer size="09" />
         </GridItem>
-        <GridItem span="1"></GridItem>
-        <GridItem span="10">
+        <GridItem>
           <CallToActionFragment
             title="Nicht das passende Fahrzeug dabei?"
-            text="Möchten Sie mehr Informationen für ein All-Inclusive Leasing für ein anderes Fahrzeug?"
+            text="Gerne liefern wir Ihnen mehr Informationen zu einem All-Inclusive Leasing für ein anderes Fahrzeug."
           >
             <ButtonLink href="/contact">Kontaktieren Sie uns</ButtonLink>
           </CallToActionFragment>
