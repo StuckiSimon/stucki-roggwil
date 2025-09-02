@@ -82,7 +82,7 @@ export default async function AllInclusiveLeasing() {
             />
             <Fact
               id={5}
-              title="Flexibel"
+              title="Individuell"
               description="Wählen Sie die Leasingdauer und Kilometerleistung, die zu Ihrem Lebensstil passt."
             />
             <Fact
