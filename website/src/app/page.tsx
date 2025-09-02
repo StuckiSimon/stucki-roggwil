@@ -14,6 +14,7 @@ const HOME_QUERY = `
   `;
 
 const JOB_PATH = null; // '/mech-job';
+const ALL_INCLUSIVE_LEASING_PATH = '/all-inclusive-leasing';
 
 export default async function Home() {
   const homeTeasers = await fetchSanityData<{
@@ -22,7 +23,7 @@ export default async function Home() {
   }>(HOME_QUERY);
 
   const teaser = homeTeasers.result;
-  const hasTeaser = notNil(JOB_PATH) || notNil(teaser);
+  const hasTeaser = notNil(JOB_PATH) || notNil(ALL_INCLUSIVE_LEASING_PATH) || notNil(teaser);
 
   return (
     <Layout className={styles.root} accent>
@@ -49,6 +50,12 @@ export default async function Home() {
             <GridItem>
               <a className={styles.teaser} href={JOB_PATH ?? ''}>
                 <span className={styles.teaserText}>Wir suchen dich!</span>
+              </a>
+            </GridItem>
+          ) : notNil(ALL_INCLUSIVE_LEASING_PATH) ? (
+            <GridItem>
+              <a className={styles.teaser} href={ALL_INCLUSIVE_LEASING_PATH}>
+                <span className={styles.teaserText}>All-Inclusive Leasing</span>
               </a>
             </GridItem>
           ) : (
