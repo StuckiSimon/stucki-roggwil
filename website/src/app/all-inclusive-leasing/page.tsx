@@ -54,7 +54,7 @@ export default async function AllInclusiveLeasing() {
           </Typography>
           <Spacer size="03" />
           <Typography variant="text">
-            Erfahren Sie, weshalb das All-Inclusive Leasing ihr perfekter Einstieg in die E-Mobilität ist.
+            Erfahren Sie, weshalb das All-Inclusive Leasing Ihr perfekter Einstieg in die Elektromobilität ist.
           </Typography>
           <Spacer size="07" />
         </GridItem>
