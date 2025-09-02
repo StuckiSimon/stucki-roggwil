@@ -37,9 +37,13 @@ export const LeasingTeaser: React.FC<Props> = ({
         <Spacer size="04" />
         <Typography variant="text">{description}</Typography>
         <Spacer size="06" />
+        <Typography variant="sub-text" color="grey">
+          z.B. mit {formatNumber(totalKm)} km, {leasingDurationMonths} Monate Laufzeit
+        </Typography>
+        <Spacer size="02" />
         <span>
           <Typography variant="text" tag="span">
-            Für{' '}
+            für{' '}
           </Typography>
           <Typography tag="span" variant="buttontext" color="blue">
             {monthlyLeasingRate}.– CHF
@@ -49,10 +53,6 @@ export const LeasingTeaser: React.FC<Props> = ({
             / Monat leasen
           </Typography>
         </span>
-        <Spacer size="02" />
-        <Typography variant="sub-text" color="grey">
-          {formatNumber(totalKm)} km, {leasingDurationMonths} Monate Laufzeit
-        </Typography>
         <Spacer size="06" />
         <ButtonLink href="/contact">Kontakt</ButtonLink>
         <InlineSpacer size="05" />
