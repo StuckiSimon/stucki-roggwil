@@ -68,7 +68,7 @@ export default async function AllInclusiveLeasing() {
             <Fact
               id={2}
               title="Alles dabei"
-              description="Wir übernehmen Kosten für Reifen, Service, Garantieabwicklung und vieles mehr."
+              description="Wir übernehmen Ihre Kosten für alles rund um Reifen, Servicearbeiten, Garantieabwicklung und vieles mehr."
             />
             <Fact
               id={3}

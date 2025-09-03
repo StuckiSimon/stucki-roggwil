@@ -57,7 +57,7 @@ export const LeasingTeaser: React.FC<Props> = ({
         <ButtonLink href="/contact">Kontakt</ButtonLink>
         <InlineSpacer size="05" />
         <Link href={detailsUrl} className={styles.detailsLink}>
-          Details zum Fahrzeug
+          Fahrzeuginfos
         </Link>
       </div>
     </div>
