@@ -22,6 +22,7 @@ export const serviceType = defineType({
           {title: 'Angebot', value: 'stock'},
           {title: 'freizeitmobilestucki.ch', value: 'freizeitmobile'},
           {title: 'KGM Modelle', value: 'kgm-models'},
+          {title: 'All-Inclusive Leasing', value: 'all-inclusive-leasing'},
         ],
       },
     }),

@@ -43,6 +43,11 @@ function getLink(linkTarget: string): { href: string; text: string } {
         href: 'https://stucki-roggwil.kgm.ch/brochures-and-pricelists/',
         text: 'KGM Modelle',
       };
+    case 'all-inclusive-leasing':
+      return {
+        href: '/all-inclusive-leasing',
+        text: 'All-Inclusive Leasing',
+      };
     default:
       return {
         href: '/contact',
