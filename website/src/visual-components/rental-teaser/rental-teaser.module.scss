@@ -1,0 +1,23 @@
+@use '../styles/variables' as *;
+
+.root {
+  display: flex;
+  position: relative;
+  gap: var(--stucki-spacing-06);
+
+  @media (max-width: $breakpoint-xs) {
+    flex-direction: column;
+  }
+}
+
+.imageContainer {
+  flex: 2;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.content {
+  flex: 3;
+}
