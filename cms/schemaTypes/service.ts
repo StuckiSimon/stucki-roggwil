@@ -24,6 +24,7 @@ export const serviceType = defineType({
           {title: 'KGM Modelle', value: 'kgm-models'},
           {title: 'All-Inclusive Leasing', value: 'all-inclusive-leasing'},
           {title: 'Reifenservice', value: 'tire-service'},
+          {title: 'Autovermietung', value: 'rental'},
         ],
       },
     }),

@@ -53,6 +53,11 @@ function getLink(linkTarget: string): { href: string; text: string } {
         href: '/tire-service',
         text: 'Reifenservice',
       };
+    case 'rental':
+      return {
+        href: '/vehicle-rent',
+        text: 'Autovermietung',
+      };
     default:
       return {
         href: '/contact',
