@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default async function TireService() {
   return (
     <Layout>
-      <PageHero title="Reifenservice" subline="Volle Fahrt mit unseren Reifenservices." />
+      <PageHero title="Reifenservice" subline="Volle Fahrt voraus mit unseren Reifenservices." />
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
@@ -37,7 +37,7 @@ export default async function TireService() {
             <Fact
               id={1}
               title="Wechsel"
-              description="Saisonaler Wechsel zwischen Sommer- und Winterreifen für optimale Leistung."
+              description="Saisonaler Wechsel zwischen Sommer- und Winterreifen für optimale Sicherheit."
             />
             <Fact
               id={2}
@@ -61,7 +61,7 @@ export default async function TireService() {
             />
             <Fact
               id={6}
-              title="Räderwechsel"
+              title="Radwechsel"
               description="Professioneller Wechsel von Kompletträdern für maximale Sicherheit und Komfort."
             />
           </FactList>
