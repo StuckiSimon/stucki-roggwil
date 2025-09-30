@@ -48,6 +48,11 @@ function getLink(linkTarget: string): { href: string; text: string } {
         href: '/all-inclusive-leasing',
         text: 'All-Inclusive Leasing',
       };
+    case 'tire-service':
+      return {
+        href: '/tire-service',
+        text: 'Reifenservice',
+      };
     default:
       return {
         href: '/contact',
