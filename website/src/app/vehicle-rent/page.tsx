@@ -15,7 +15,7 @@ import { LeasingTeaserLayout } from '@/visual-components/leasing-teaser-layout/l
 export const metadata: Metadata = {
   title: 'Fahrzeugvermietung | Garage Stucki AG',
   description:
-    'Mieten Sie Transporter und Kleinbusse bei der Garage Stucki AG in Roggwil. Flexible Mietdauer, faire Konditionen und top gewartete Fahrzeuge.',
+    'Mieten Sie einen Transporter oder Kleinbus bei der Garage Stucki AG in Roggwil. Flexible Mietdauer, faire Konditionen und top gewartete Fahrzeuge.',
 };
 
 const RENTAL_VEHICLES_QUERY = `
@@ -43,7 +43,7 @@ export default async function VehicleRent() {
 
   return (
     <Layout>
-      <PageHero title="Fahrzeugvermietung" subline="Mieten Sie Transporter und Kleinbusse bei uns." />
+      <PageHero title="Fahrzeugvermietung" subline="Mieten Sie einen Transporter oder Kleinbus bei uns." />
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
@@ -52,8 +52,8 @@ export default async function VehicleRent() {
           </Typography>
           <Spacer size="03" />
           <Typography variant="text">
-            Flexibel, unkompliziert und passend für Ihren Bedarf – mieten Sie Transporter oder Kleinbusse einfach bei
-            uns.
+            Flexibel, unkompliziert und passend für Ihren Bedarf – mieten Sie einen Transporter oder Kleinbus einfach
+            bei uns.
           </Typography>
           <Spacer size="07" />
         </GridItem>
@@ -62,22 +62,22 @@ export default async function VehicleRent() {
             <Fact
               id={1}
               title="Flexible Mietdauer"
-              description="Mieten Sie Fahrzeuge tageweise – ganz nach Ihrem Bedarf."
+              description="Flexible Mietdauer: Wählen Sie die Mietdauer nach Ihrem Bedarf – tageweise oder länger."
             />
             <Fact
               id={2}
               title="Faire Konditionen"
-              description="Transparente Preise ohne versteckte Kosten. Kaution von 200.– CHF sowie Selbstbehalt von 1'000.– CHF."
+              description="Transparente Preise ohne versteckte Kosten – nur 200.– CHF Kaution und 1'000.– CHF Selbstbehalt."
             />
             <Fact
               id={3}
               title="Top gewartete Fahrzeuge"
-              description="Unsere Mietfahrzeuge sind stets geprüft und gepflegt."
+              description="Unsere Mietfahrzeuge sind regelmässig geprüft und in einwandfreiem Zustand."
             />
             <Fact
               id={4}
               title="Individuelle Beratung"
-              description="Wir helfen Ihnen, das passende Fahrzeug für Ihren Einsatzzweck zu finden."
+              description="Wir finden gemeinsam und unkompliziert das passende Fahrzeug für Ihren Transport."
             />
           </FactList>
           <Spacer size="09" />
@@ -112,7 +112,7 @@ export default async function VehicleRent() {
             title="Fragen zur Fahrzeugmiete?"
             text="Kontaktieren Sie uns für eine individuelle Beratung oder ein Angebot."
           >
-            <ButtonLink href="/contact">Kontaktieren Sie uns</ButtonLink>
+            <ButtonLink href="/contact">Jetzt unverbindlich anfragen</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>
