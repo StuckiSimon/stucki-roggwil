@@ -58,6 +58,11 @@ function getLink(linkTarget: string): { href: string; text: string } {
         href: '/vehicle-rent',
         text: 'Autovermietung',
       };
+    case 'why-stucki':
+      return {
+        href: '/reasons-for',
+        text: 'Wieso Stucki AG?',
+      };
     default:
       return {
         href: '/contact',

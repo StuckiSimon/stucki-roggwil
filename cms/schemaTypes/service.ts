@@ -25,6 +25,7 @@ export const serviceType = defineType({
           {title: 'All-Inclusive Leasing', value: 'all-inclusive-leasing'},
           {title: 'Reifenservice', value: 'tire-service'},
           {title: 'Autovermietung', value: 'rental'},
+          {title: 'Wieso Stucki AG?', value: 'why-stucki'},
         ],
       },
     }),
