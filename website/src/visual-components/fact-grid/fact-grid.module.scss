@@ -1,0 +1,6 @@
+.root {
+  position: relative;
+  display: grid;
+  gap: var(--stucki-spacing-08);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}

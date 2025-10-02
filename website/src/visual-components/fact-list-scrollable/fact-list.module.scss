@@ -10,6 +10,10 @@
   scrollbar-width: none;
   mask-image: linear-gradient(to right, black 0%, black calc(100% - 70px), transparent 100%);
   padding-right: 70px;
+
+  & > * {
+    flex: 0 0 min(80vw, 480px);
+  }
 }
 
 .scrollRight {
