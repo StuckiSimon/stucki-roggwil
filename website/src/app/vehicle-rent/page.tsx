@@ -5,7 +5,7 @@ import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
-import { FactList } from '@/visual-components/fact-list/fact-list';
+import { FactList } from '@/visual-components/fact-list-scrollable/fact-list';
 import { Fact } from '@/visual-components/fact/fact';
 import { ButtonLink } from '@/visual-components/button/button';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';

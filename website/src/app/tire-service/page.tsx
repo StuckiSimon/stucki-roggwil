@@ -4,10 +4,10 @@ import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
-import { FactList } from '@/visual-components/fact-list/fact-list';
 import { Fact } from '@/visual-components/fact/fact';
 import { ButtonLink } from '@/visual-components/button/button';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
+import { FactGrid } from '@/visual-components/fact-grid/fact-grid';
 
 export const metadata: Metadata = {
   title: 'Alles rund um Reifen | Garage Stucki AG',
@@ -33,7 +33,7 @@ export default async function TireService() {
           <Spacer size="07" />
         </GridItem>
         <GridItem>
-          <FactList>
+          <FactGrid>
             <Fact
               id={1}
               title="Wechsel"
@@ -64,7 +64,7 @@ export default async function TireService() {
               title="Radwechsel"
               description="Professioneller Wechsel von Kompletträdern für maximale Sicherheit und Komfort."
             />
-          </FactList>
+          </FactGrid>
           <Spacer size="09" />
         </GridItem>
         <GridItem>
