@@ -17,7 +17,7 @@ const merriweather = Merriweather({
 export const metadata: Metadata = {
   title: 'Garage Stucki AG | Ihr Partner für Autos in Roggwil',
   description:
-    'Ihre erste Adresse für Autos in Roggwil — Ihr Partner für alle Marken im Oberaargau und der Region Olten. Mit offizieller Vertretung von KGM und langjähriger Erfahrung mit Ford bieten wir Ihnen die gesamte Fahrzeugpalette im Neuwagen- und Gebrauchtwagenbereich.',
+    'Ihre erste Adresse für Autos in Roggwil — Ihr Partner für alle Marken im Oberaargau, Langenthal und der Region Olten. Mit offizieller Vertretung von KGM und langjähriger Erfahrung mit Ford bieten wir Ihnen die gesamte Fahrzeugpalette im Neuwagen- und Occasionbereich.',
 };
 
 export default function RootLayout({

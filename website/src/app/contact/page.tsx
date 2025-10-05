@@ -8,7 +8,8 @@ import positionImg from './position.png';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Garage Stucki AG',
-  description: 'So erreichen Sie uns: Garage Stucki AG in Roggwil. Kontaktieren Sie uns telefonisch oder per E-Mail.',
+  description:
+    'So erreichen Sie uns: Garage Stucki AG in Roggwil – direkt bei Langenthal. Kontaktieren Sie uns telefonisch oder per E-Mail.',
 };
 
 export default async function Contact() {
