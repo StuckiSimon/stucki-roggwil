@@ -17,7 +17,7 @@ export const CarmarketFrame: React.FC = () => {
       id: 'cly5yzmcs2xcc07w99f167a6m',
       language: 'de',
       dealerIds: [4657],
-      excludedFilters: ['geo'],
+      excludedFilters: ['geo', 'promotions', 'interiorColor', 'upholstery'],
 
       searchPlaceholder: 'z.B. KGM',
 
