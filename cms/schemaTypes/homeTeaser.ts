@@ -18,5 +18,15 @@ export const homeTeaserType = defineType({
       type: 'reference',
       to: [{type: 'asset'}],
     }),
+    defineField({
+      name: 'linkTarget',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Job', value: 'job'},
+          {title: 'All-Inclusive Leasing', value: 'all-inclusive-leasing'},
+        ],
+      },
+    }),
   ],
 })
