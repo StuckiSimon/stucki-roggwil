@@ -5,25 +5,30 @@ import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { ButtonLink } from '@/visual-components/button/button';
 import { fetchSanityData } from '@/sanity/client';
 import { notNil } from '@/core/util/is-nil';
+import Link from 'next/link';
 
 const HOME_QUERY = `
   *[_type == "homeTeaser" && isActive == true][0]{
     "ctaText": ctaText,
-    "assetUrl": asset->pdfFile.asset->url
+    "assetUrl": asset->pdfFile.asset->url,
+    linkTarget
   }
   `;
 
-const JOB_PATH = null; // '/mech-job';
-const ALL_INCLUSIVE_LEASING_PATH = '/all-inclusive-leasing';
+const LINK_TARGET_MAP = {
+  job: '/mech-job',
+  'all-inclusive-leasing': '/all-inclusive-leasing',
+};
 
 export default async function Home() {
   const homeTeasers = await fetchSanityData<{
     ctaText: string;
-    assetUrl: string;
+    assetUrl?: string;
+    linkTarget?: string;
   }>(HOME_QUERY);
 
   const teaser = homeTeasers.result;
-  const hasTeaser = notNil(JOB_PATH) || notNil(ALL_INCLUSIVE_LEASING_PATH) || notNil(teaser);
+  const hasTeaser = notNil(teaser);
 
   return (
     <Layout className={styles.root} accent>
@@ -46,25 +51,14 @@ export default async function Home() {
           </div>
         </GridItem>
         {hasTeaser ? (
-          notNil(JOB_PATH) ? (
-            <GridItem>
-              <a className={styles.teaser} href={JOB_PATH ?? ''}>
-                <span className={styles.teaserText}>Wir suchen dich!</span>
-              </a>
-            </GridItem>
-          ) : notNil(ALL_INCLUSIVE_LEASING_PATH) ? (
-            <GridItem>
-              <a className={styles.teaser} href={ALL_INCLUSIVE_LEASING_PATH}>
-                <span className={styles.teaserText}>All-Inclusive Leasing</span>
-              </a>
-            </GridItem>
-          ) : (
-            <GridItem>
-              <a className={styles.teaser} href={teaser.assetUrl}>
-                <span className={styles.teaserText}>{teaser.ctaText}</span>
-              </a>
-            </GridItem>
-          )
+          <GridItem>
+            <Link
+              className={styles.teaser}
+              href={teaser.assetUrl ?? LINK_TARGET_MAP[teaser.linkTarget as keyof typeof LINK_TARGET_MAP] ?? '#'}
+            >
+              <span className={styles.teaserText}>{teaser.ctaText}</span>
+            </Link>
+          </GridItem>
         ) : null}
       </GridContainer>
     </Layout>
