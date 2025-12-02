@@ -5,6 +5,8 @@ import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
 import positionImg from './position.png';
+import { fetchSanityData } from '@/sanity/client';
+import { notNil } from '@/core/util/is-nil';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Garage Stucki AG',
@@ -12,7 +14,22 @@ export const metadata: Metadata = {
     'So erreichen Sie uns: Garage Stucki AG in Roggwil – direkt bei Langenthal. Kontaktieren Sie uns telefonisch oder per E-Mail.',
 };
 
+const OPENING_HOUR_EXCEPTION_QUERY = `
+  *[_type == "openingHourException" && isActive == true][0]{
+    title,
+    text
+  }
+  `;
+
 export default async function Contact() {
+  const openingHourExceptionData = await fetchSanityData<{
+    title: string;
+    text: string;
+  }>(OPENING_HOUR_EXCEPTION_QUERY);
+
+  const openingHourException = openingHourExceptionData.result;
+  const hasOpeningHourException = notNil(openingHourException);
+
   return (
     <Layout activePath="/contact">
       <PageHero title="Kontakt" subline="So erreichen Sie uns." />
@@ -72,6 +89,14 @@ export default async function Contact() {
           <Spacer size="03" />
           <Typography variant="text">geschlossen</Typography>
           <Spacer size="08" />
+          {hasOpeningHourException ? (
+            <>
+              <Typography variant="buttontext">{openingHourException.title}</Typography>
+              <Spacer size="03" />
+              <Typography variant="text">{openingHourException.text}</Typography>
+              <Spacer size="08" />
+            </>
+          ) : null}
         </GridItem>
       </GridContainer>
     </Layout>
