@@ -30,12 +30,17 @@ jobs:
       - name: Build website
         run: npm run build
         working-directory: website
+      - name: Create ZIP archive
+        run: |
+          cd website/out
+          zip -r ../out.zip .
+          cd ../..
       - name: Upload bundle
         uses: actions/upload-artifact@v4
         with:
           name: website
           include-hidden-files: true
-          path: website/out
+          path: website/out.zip
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -53,4 +58,14 @@ jobs:
           name: website
           path: website
       - name: Deploy website
-        run: scp -r website/. ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}
+        run: scp website/out.zip ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }}:${{ secrets.REMOTE_PATH }}/out.zip
+      - name: Unzip on server
+        run: |
+          ssh ${{ secrets.SCP_USERNAME }}@${{ secrets.SCP_HOST }} "\
+            cd ${{ secrets.REMOTE_PATH }} && \
+            find . -maxdepth 1 -name 'backup-*.zip' -type f -mtime +14 -delete && \
+            zip -r backup-$(date +%Y%m%d%H%M%S).zip . -x './out.zip' './backup-*.zip' && \
+            find . ! -name 'out.zip' ! -name 'backup-*.zip' ! -name '.' -exec rm -rf {} + && \
+            unzip -o out.zip -d . && \
+            rm out.zip
+          "
