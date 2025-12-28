@@ -23,6 +23,7 @@ export default (app: Hono<{ Bindings: Env }>) => {
       return c.json(
         {
           message: 'List of slots',
+          date: new Date().toISOString(),
           page,
         },
         201,
