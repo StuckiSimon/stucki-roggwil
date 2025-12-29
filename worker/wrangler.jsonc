@@ -38,4 +38,11 @@
    * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
    */
   // "services": [  {   "binding": "MY_SERVICE",   "service": "my-service"  } ]
+  "d1_databases": [
+    {
+      "binding": "DATABASE",
+      "database_name": "db-stucki-roggwil",
+      "database_id": "6db47531-faa0-4c28-a81a-2d02fd57c920"
+    }
+  ]
 }
