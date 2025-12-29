@@ -2,9 +2,12 @@ import { validator } from 'hono/validator';
 import { z } from 'zod';
 import { Hono } from 'hono';
 import { AppContext } from '../types';
+import { loadUpcomingCapacities } from '../modules/db/capacityRepository';
+import { isDayAvailableForHours } from '../modules/booking/isDayAvailableForHours';
+import { getSlotsForDuration } from '../modules/booking/getSlotsForDuration';
 
 const schema = z.object({
-  page: z.coerce.number(),
+  duration: z.coerce.number(),
 });
 
 export default (app: Hono<{ Bindings: Env }>) => {
@@ -17,16 +20,24 @@ export default (app: Hono<{ Bindings: Env }>) => {
       }
       return parsed.data;
     }),
-    (c) => {
-      const { page } = c.req.valid('query');
+    async (c) => {
+      const { duration } = c.req.valid('query');
+
+      const capacities = await loadUpcomingCapacities();
+
+      const availableDays = capacities.filter((capacity) => {
+        return isDayAvailableForHours(capacity, duration);
+      });
+
+      const slots = availableDays.flatMap(({ date }) => getSlotsForDuration(date, duration));
 
       return c.json(
         {
-          message: 'List of slots',
-          date: new Date().toISOString(),
-          page,
+          generated: new Date().toISOString(),
+          duration,
+          slots,
         },
-        201,
+        200,
       );
     },
   );
