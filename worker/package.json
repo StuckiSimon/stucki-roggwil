@@ -9,6 +9,7 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "hono": "^4.11.3",
     "zod": "^4.2.1"
   },
