@@ -3,6 +3,7 @@ import { env } from 'hono/adapter';
 import { basicAuth } from 'hono/basic-auth';
 import slotsList from './endpoints/slotsList';
 import slotsCreate from './endpoints/slotsCreate';
+import auth from './endpoints/auth';
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -14,6 +15,7 @@ app.use('/api/private/*', async (c, next) => {
   })(c, next);
 });
 
+auth(app);
 slotsList(app);
 slotsCreate(app);
 
