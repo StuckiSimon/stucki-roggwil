@@ -6,5 +6,5 @@ type Props = {
 };
 
 export const BookingPreviewCell: React.FC<Props> = ({ hours }) => {
-  return <div className={styles.root}>{hours} h</div>;
+  return <span className={styles.root}>{hours} h</span>;
 };
