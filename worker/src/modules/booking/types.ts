@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { capacityLimitSchema } from './schemas';
+import { bookingAllocationSchema, capacityLimitSchema } from './schemas';
 
 export type Capacity = {
   date: string;
@@ -8,6 +8,8 @@ export type Capacity = {
 };
 
 export type CapacityLimit = z.infer<typeof capacityLimitSchema>;
+
+export type BookingAllocation = z.infer<typeof bookingAllocationSchema>;
 
 export type Slot = {
   date: string;
