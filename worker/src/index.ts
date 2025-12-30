@@ -8,11 +8,22 @@ import slotsList from './endpoints/slotsList';
 
 const app = new Hono<{ Bindings: Env }>();
 
+const MIN_ADMIN_KEY_LENGTH = 20;
+
 app.use('/api/private/*', async (c, next) => {
-  const password = String(env(c).ADMIN_KEY ?? '');
+  const adminKey = env(c).ADMIN_KEY;
+  if ((adminKey ?? '').length < MIN_ADMIN_KEY_LENGTH) {
+    return c.json(
+      {
+        error: 'Admin key is not set in environment variables or is too short',
+      },
+      500,
+    );
+  }
+
   return basicAuth({
     username: 'admin',
-    password,
+    password: adminKey,
   })(c, next);
 });
 
