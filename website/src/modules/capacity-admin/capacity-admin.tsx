@@ -10,7 +10,7 @@ import { CapacityEntry } from '@/modules/capacity-admin/types';
 import isNil, { notNil } from '@/core/util/is-nil';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
-import { CapacityUpdater } from '@/modules/capacity-admin/capacity-updater';
+import { BookingAllocationUpdater } from '@/modules/capacity-admin/booking-allocation-updater';
 
 export const CapacityAdmin: React.FC = () => {
   const { hasSetAdminPassword } = useAdminPassword();
@@ -55,7 +55,7 @@ export const CapacityAdmin: React.FC = () => {
       </GridItem>
       {(notNil(parseResult) && parseResult.success) || isNil(parseResult) ? (
         <GridItem>
-          <CapacityUpdater unfilteredEntries={parseResult?.data || null} />
+          <BookingAllocationUpdater unfilteredEntries={parseResult?.data || null} />
         </GridItem>
       ) : null}
       {notNil(parseResult) && !parseResult.success ? (
