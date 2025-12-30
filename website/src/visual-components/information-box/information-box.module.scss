@@ -1,0 +1,33 @@
+.root {
+  border-radius: var(--stucki-radius-l);
+  padding: var(--stucki-spacing-06);
+  margin: var(--stucki-spacing-05) 0;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--stucki-spacing-03);
+}
+
+.success {
+  background: var(--stucki-success-bg);
+  border-color: var(--stucki-success-border);
+  color: var(--stucki-success-text);
+}
+
+.warning {
+  background: var(--stucki-warning-bg);
+  border-color: var(--stucki-warning-border);
+  color: var(--stucki-warning-text);
+}
+
+.error {
+  background: var(--stucki-error-bg);
+  border-color: var(--stucki-error-border);
+  color: var(--stucki-error-text);
+}
+
+.info {
+  background: var(--stucki-light-blue);
+  border-color: var(--stucki-blue);
+  color: var(--stucki-blue);
+}
