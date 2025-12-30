@@ -12,20 +12,20 @@ type Props = {
 
 export const CapacityUpdater: React.FC<Props> = ({ unfilteredEntries }) => {
   const entries = isNil(unfilteredEntries) ? null : reduceBookedHourEntries(unfilteredEntries);
-  const weekCapacities = getWeeksForCapacityEntries(entries || []);
+  const weekCapacities = getWeeksForCapacityEntries(entries ?? []);
+
+  if (isNil(entries)) {
+    return null;
+  }
 
   return (
-    <>
-      {notNil(entries) ? (
-        <CalendarWeekList
-          weeks={weekCapacities.map(({ weekStart, days }) => ({
-            weekStart,
-            children: days.map((day) =>
-              isNil(day) ? null : <BookingPreviewCell hours={day.capacityHours} />,
-            ) as WeekChildren,
-          }))}
-        />
-      ) : null}
-    </>
+    <CalendarWeekList
+      weeks={weekCapacities.map(({ weekStart, days }) => ({
+        weekStart,
+        children: days.map((day) =>
+          isNil(day) ? null : <BookingPreviewCell hours={day.capacityHours} />,
+        ) as WeekChildren,
+      }))}
+    />
   );
 };
