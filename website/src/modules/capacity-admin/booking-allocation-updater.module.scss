@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--stucki-spacing-04);
+  padding: var(--stucki-spacing-06);
+  background: var(--stucki-light-blue);
+  border-radius: var(--stucki-radius-l);
+}
+
+.title {
+  flex: 1;
+}
