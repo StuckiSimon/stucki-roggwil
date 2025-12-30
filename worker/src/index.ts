@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { basicAuth } from 'hono/basic-auth';
+import { cors } from 'hono/cors';
 import auth from './endpoints/auth';
 import bookingsUpsert from './endpoints/bookingsUpsert';
 import capacitiesUpsert from './endpoints/capacitiesUpsert';
@@ -11,6 +12,7 @@ const app = new Hono<{ Bindings: Env }>();
 
 const MIN_ADMIN_KEY_LENGTH = 20;
 
+app.use('/api/*', cors());
 app.use('/api/private/*', async (c, next) => {
   const adminKey = env(c).ADMIN_KEY;
   if ((adminKey ?? '').length < MIN_ADMIN_KEY_LENGTH) {
