@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <Script src="https://cloud.umami.is/script.js" defer data-website-id="42e8edaa-5be5-4997-b7f7-ef7e1dcd96a8" />
+      {process.env.NODE_ENV === 'production' ? (
+        <Script src="https://cloud.umami.is/script.js" defer data-website-id="42e8edaa-5be5-4997-b7f7-ef7e1dcd96a8" />
+      ) : null}
       <body className={`${inter.variable} ${merriweather.variable}`}>{children}</body>
     </html>
   );
