@@ -1,0 +1,28 @@
+.weekBlock {
+  padding: var(--stucki-spacing-04) 0;
+  border-bottom: 4px solid var(--stucki-light-blue);
+}
+
+.weekHeader {
+  display: flex;
+  align-items: baseline;
+  gap: var(--stucki-spacing-04);
+  margin-bottom: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th {
+  text-align: center;
+  padding: var(--stucki-spacing-03);
+  width: 14.28%;
+}
+
+.th,
+.td {
+  border-left: 2px solid var(--stucki-light-blue);
+  border-right: 2px solid var(--stucki-light-blue);
+}
