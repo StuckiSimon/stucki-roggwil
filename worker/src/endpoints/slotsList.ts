@@ -1,7 +1,7 @@
 import { validator } from 'hono/validator';
 import { z } from 'zod';
 import { Hono } from 'hono';
-import { addDays } from 'date-fns';
+import { addDays, startOfDay } from 'date-fns';
 import { AppContext } from '../types';
 import { loadUpcomingCapacities } from '../modules/db/capacityRepository';
 import { isDayAvailableForHours } from '../modules/booking/isDayAvailableForHours';
@@ -31,8 +31,9 @@ export default (app: Hono<{ Bindings: Env }>) => {
       const { duration } = c.req.valid('query');
 
       const startDate = addDays(new Date(), MIN_BOOKING_NOTICE_DAYS);
+      const nextDay = startOfDay(addDays(startDate, 1));
 
-      const capacities = await loadUpcomingCapacities(startDate, BOOKING_DAYS_AHEAD - MIN_BOOKING_NOTICE_DAYS);
+      const capacities = await loadUpcomingCapacities(nextDay, BOOKING_DAYS_AHEAD - MIN_BOOKING_NOTICE_DAYS);
 
       const availableDays = capacities.filter((capacity) => {
         return isDayAvailableForHours(capacity, duration);
