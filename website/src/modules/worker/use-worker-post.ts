@@ -1,20 +1,17 @@
 import useSWRMutation from 'swr/mutation';
 import { WORKER_URL } from '@/core/config';
 import { useAdminPassword } from '@/modules/admin-layout/useAdminPassword';
-import { AUTH_USERNAME } from '@/modules/worker/constants';
+import { createWorkerAuthHeader } from '@/modules/worker/create-worker-auth-header';
 
 export function useWorkerPost<T>(key: string) {
   const { adminPassword } = useAdminPassword();
 
   const fetcher = async (key: string, { arg }: { arg: T }) => {
-    const encodedAuth = Buffer.from(`${AUTH_USERNAME}:${adminPassword}`).toString('base64');
+    const headers = createWorkerAuthHeader(adminPassword ?? '');
 
     const res = await fetch(`${WORKER_URL}${key}`, {
       method: 'POST',
-      headers: {
-        Authorization: `Basic ${encodedAuth}`,
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify(arg),
     });
     if (!res.ok) {
