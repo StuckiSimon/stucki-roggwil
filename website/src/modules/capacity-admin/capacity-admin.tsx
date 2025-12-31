@@ -8,9 +8,13 @@ import { CalendarWeekList, WeekChildren } from '@/modules/capacity-admin/calenda
 import { CapacityPreviewCell } from './capacity-preview-cell';
 import { usePostCapacities } from '@/modules/worker/use-post-capacities';
 import isNil from '@/core/util/is-nil';
-import { addDays, startOfWeek, format } from 'date-fns';
+import { addDays, format, startOfWeek } from 'date-fns';
 import { Button } from '@/visual-components/button/button';
 import { Spacer } from '@/visual-components/spacer/spacer';
+import { Typography } from '@/visual-components/typography/typography';
+import useLocalStorage from '@/core/storage/use-local-storage';
+import { StorageKey } from '@/core/storage/storage-key';
+import styles from './capacity-admin.module.scss';
 
 const MAX_WEEKS_AHEAD = 12;
 
@@ -50,6 +54,8 @@ export const CapacityAdmin: React.FC = () => {
     return nextWeekStart !== null;
   }, [capacitiesData]);
 
+  const [newWeekCapacity, setNewWeekCapacity] = useLocalStorage(StorageKey.DailyCapacity, '0');
+
   const handleAddWeek = async () => {
     if (!capacitiesData) {
       return;
@@ -58,6 +64,11 @@ export const CapacityAdmin: React.FC = () => {
     const nextWeekStart = getNextFreeWeekStart(capacitiesData.capacities);
     if (!nextWeekStart) {
       return;
+    }
+
+    let workDayCapacity = parseFloat(newWeekCapacity);
+    if (isNaN(workDayCapacity) || workDayCapacity < 0) {
+      workDayCapacity = 0;
     }
 
     const newCapacities: Capacity[] = [];
@@ -69,7 +80,7 @@ export const CapacityAdmin: React.FC = () => {
       newCapacities.push({
         date,
         bookedHours: 0,
-        capacityHours: isWorkDay ? 100 : 0,
+        capacityHours: isWorkDay ? workDayCapacity : 0,
       });
     }
 
@@ -137,9 +148,19 @@ export const CapacityAdmin: React.FC = () => {
         {hasAddableWeek ? (
           <>
             <Spacer size="07" />
-            <Button type="button" onClick={handleAddWeek}>
-              Neue Woche hinzufügen
-            </Button>
+            <div className={styles.addWeekRow}>
+              <Button type="button" onClick={handleAddWeek}>
+                Neue Woche hinzufügen
+              </Button>
+              <input
+                value={newWeekCapacity}
+                onChange={(e) => setNewWeekCapacity(e.target.value)}
+                className={styles.capacityInput}
+                aria-label="Kapazität für Werktage (h)"
+                title="Kapazität für Werktage (h)"
+              />
+              <Typography color="grey">h / Werktag</Typography>
+            </div>
           </>
         ) : null}
         <Spacer size="08" />

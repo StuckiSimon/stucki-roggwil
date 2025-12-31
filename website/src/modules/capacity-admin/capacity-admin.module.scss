@@ -1,0 +1,18 @@
+@use '../../visual-components/styles/variables' as *;
+
+.addWeekRow {
+  display: flex;
+  align-items: center;
+  gap: var(--stucki-spacing-06);
+  margin-bottom: var(--stucki-spacing-04);
+}
+
+.capacityInput {
+  font-family: $font;
+  width: 70px;
+  padding: var(--stucki-spacing-02) var(--stucki-spacing-03);
+  border: 1px solid var(--stucki-light-grey);
+  border-radius: var(--stucki-radius-m);
+  color: var(--stucki-blue);
+  background: var(--stucki-light-blue);
+}
