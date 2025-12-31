@@ -11,6 +11,7 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
   const [editing, setEditing] = useState(false);
   const [inputValue, setInputValue] = useState<string>(`${capacityHours}`);
   const [isErrored, setIsErrored] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
@@ -37,7 +38,7 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
     setInputValue(e.target.value);
   };
 
-  const finishEditing = () => {
+  const finishEditing = async () => {
     setEditing(false);
     const inputNumber = parseFloat(inputValue);
     if (isNaN(inputNumber) || inputNumber < 0) {
@@ -47,7 +48,12 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
 
     setIsErrored(false);
     if (inputNumber !== bookedHours) {
-      onBookedHoursChange(inputNumber);
+      try {
+        setIsLoading(true);
+        await onBookedHoursChange(inputNumber);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -72,6 +78,7 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
         {isOverbooked && overbookedPercent > 0 && (
           <span className={styles.overbooked} style={{ width: `${overbookedPercent}%` }} />
         )}
+        {isLoading ? <span className={styles.loadingIndicator} /> : null}
       </span>
       <span className={styles.label}>
         {bookedHours}h /{' '}

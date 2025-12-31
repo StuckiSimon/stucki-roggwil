@@ -1,6 +1,7 @@
 @import '../../visual-components/styles/global/custom-properties.scss';
 
 .root {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: var(--stucki-spacing-02);
@@ -62,4 +63,27 @@
 .input:focus {
   border-color: var(--stucki-blue);
   background: #f0f6ff;
+}
+
+.loadingIndicator {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--stucki-light-grey);
+  border-top: 2px solid var(--stucki-blue);
+  border-radius: 50%;
+  animation: stucki-spin 0.7s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes stucki-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
