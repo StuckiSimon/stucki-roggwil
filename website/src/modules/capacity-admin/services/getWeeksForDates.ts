@@ -20,7 +20,9 @@ export function getWeeksForDates<
       weeksMap.set(weekStart, [null, null, null, null, null, null, null]);
     }
     const days = weeksMap.get(weekStart)!;
-    days[date.getDay()] = entry;
+
+    const dayIndex = (date.getDay() + 6) % 7;
+    days[dayIndex] = entry;
 
     return weeksMap;
   }, new Map<string, Days<T>>());
