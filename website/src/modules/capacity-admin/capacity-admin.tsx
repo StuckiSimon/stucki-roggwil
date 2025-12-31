@@ -1,79 +1,56 @@
 'use client';
-import React, { useState } from 'react';
-import { z, ZodError } from 'zod';
+import React from 'react';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { useAdminPassword } from '@/modules/admin-layout/useAdminPassword';
-import { CapacityExcelReader } from '@/modules/capacity-admin/capacity-excel-reader';
-import { capacityRecordSchema } from '@/modules/capacity-admin/services/schemas';
-import { mapCapacityRecordToCapacityEntry } from '@/modules/capacity-admin/services/mapCapacityRecordToCapacityEntry';
-import { CapacityEntry } from '@/modules/capacity-admin/types';
-import isNil, { notNil } from '@/core/util/is-nil';
-import { Typography } from '@/visual-components/typography/typography';
-import { Spacer } from '@/visual-components/spacer/spacer';
-import { BookingAllocationUpdater } from '@/modules/capacity-admin/booking-allocation-updater';
+import { Capacity, useCapacities } from '@/modules/worker/use-capacities';
+import { getWeeksForDates } from '@/modules/capacity-admin/services/getWeeksForDates';
+import { CalendarWeekList, WeekChildren } from '@/modules/capacity-admin/calendar-week-list';
+import { CapacityPreviewCell } from './capacity-preview-cell';
+import { notNil } from '@/core/util/is-nil';
+import { usePostCapacities } from '@/modules/worker/use-post-capacities';
 
 export const CapacityAdmin: React.FC = () => {
   const { hasSetAdminPassword } = useAdminPassword();
-  const [parseResult, setParseResult] = useState<
-    | {
-        success: true;
-        data: CapacityEntry[];
-      }
-    | {
-        success: false;
-        errors: ZodError[];
-      }
-    | null
-  >(null);
+
+  const { data: capacitiesData, isLoading: isCapacitiesLoading, error: capacitiesError } = useCapacities();
+  const { trigger: postCapacities } = usePostCapacities();
+
+  const weeks = getWeeksForDates<Capacity>(capacitiesData?.capacities ?? []);
 
   if (!hasSetAdminPassword) {
     return null;
   }
-  const onDataParsed = (data: unknown) => {
-    const parseResult = z.array(capacityRecordSchema).safeParse(data);
-
-    if (!parseResult.success) {
-      setParseResult({
-        success: false,
-        errors: [parseResult.error],
-      });
-      return;
-    }
-
-    const parsedData = parseResult.data.map((record) => mapCapacityRecordToCapacityEntry(record));
-    setParseResult({
-      success: true,
-      data: parsedData,
-    });
-  };
 
   return (
     <GridContainer>
       <GridItem>
-        <CapacityExcelReader onDataParsed={onDataParsed} />
-        <Spacer size="07" />
+        <CalendarWeekList
+          weeks={weeks.map((week) => {
+            return {
+              weekStart: week.weekStart,
+              children: week.days.map((day) => {
+                const onBookedHoursChange = (hours: number) => {
+                  postCapacities([
+                    {
+                      date: day?.date ?? week.weekStart, // TODO: handle null date properly
+                      capacityHours: hours,
+                    },
+                  ]);
+                };
+                return notNil(day) ? (
+                  <CapacityPreviewCell
+                    bookedHours={day.bookedHours}
+                    capacityHours={day.capacityHours}
+                    onBookedHoursChange={onBookedHoursChange}
+                  />
+                ) : (
+                  <CapacityPreviewCell bookedHours={0} capacityHours={0} onBookedHoursChange={onBookedHoursChange} />
+                );
+              }) as WeekChildren,
+            };
+          })}
+        />
       </GridItem>
-      {(notNil(parseResult) && parseResult.success) || isNil(parseResult) ? (
-        <GridItem>
-          <BookingAllocationUpdater unfilteredEntries={parseResult?.data || null} />
-        </GridItem>
-      ) : null}
-      {notNil(parseResult) && !parseResult.success ? (
-        <GridItem span="6">
-          <Typography variant="title-3">🔴 Fehler beim lesen der Datei</Typography>
-          <Typography>
-            Bitte überprüfe, dass die Datei dem erwarteten Format entspricht. Es wird erwartet eine Datei mit den
-            Spalten begindat (Datum) und tagdauer (Kapazitätsstunden) erwartet.
-          </Typography>
-          <Spacer size="03" />
-          {parseResult.errors.map((error, index) => (
-            <div key={index}>
-              <pre>{error.message}</pre>
-            </div>
-          ))}
-          <Spacer size="05" />
-        </GridItem>
-      ) : null}
     </GridContainer>
   );
 };

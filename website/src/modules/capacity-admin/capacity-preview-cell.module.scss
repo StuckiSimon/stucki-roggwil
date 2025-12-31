@@ -1,0 +1,65 @@
+@import '../../visual-components/styles/global/custom-properties.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: var(--stucki-spacing-02);
+  border: 1px solid var(--stucki-light-grey);
+  border-radius: var(--stucki-radius-m);
+  background: var(--stucki-light-blue);
+  margin: auto;
+  cursor: pointer;
+}
+
+.barContainer {
+  display: flex;
+  width: 100%;
+  height: 8px;
+  border-radius: var(--stucki-radius-m);
+  margin-bottom: var(--stucki-spacing-01);
+  background: #e9eef6;
+}
+
+.booked {
+  background: var(--stucki-blue);
+  height: 100%;
+}
+
+.free {
+  background: var(--stucki-success-bg);
+  height: 100%;
+}
+
+.overbooked {
+  background: var(--stucki-error-bg);
+  height: 100%;
+}
+
+.label {
+  font-size: 0.95em;
+  color: var(--stucki-blue);
+  margin-top: var(--stucki-spacing-01);
+  text-align: center;
+  width: 100%;
+  height: 22px;
+}
+
+.input {
+  border: 1px solid #bfc8da;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--stucki-blue);
+  font-size: inherit;
+  font-weight: inherit;
+  width: 40px;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--stucki-blue);
+  background: #f0f6ff;
+}
