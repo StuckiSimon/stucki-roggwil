@@ -32,7 +32,7 @@ export default async function About() {
 
   return (
     <Layout activePath="/about">
-      <PageHero title="Über uns" subline="Seit bald 30 Jahren sind wir für Sie da." />
+      <PageHero title="Über uns" subline="Seit 30 Jahren sind wir für Sie da." />
       <GridContainer>
         <GridItem>
           <ProfileContainer>

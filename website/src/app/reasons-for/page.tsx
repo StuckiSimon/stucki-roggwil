@@ -42,7 +42,7 @@ export default async function ReasonsFor() {
             <Fact
               id={2}
               title="Langjährige Erfahrung"
-              description="Mit bald 30 Jahren Erfahrung als Ford-Spezialist und offizieller KGM-Vertretung sind wir Ihr kompetenter Ansprechpartner."
+              description="Mit 30 Jahren Erfahrung als Ford-Spezialist und offizieller KGM-Vertretung sind wir Ihr kompetenter Ansprechpartner."
             />
             <Fact
               id={3}
