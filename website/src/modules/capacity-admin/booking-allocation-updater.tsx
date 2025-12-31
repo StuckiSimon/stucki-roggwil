@@ -17,7 +17,10 @@ type Props = {
 
 export const BookingAllocationUpdater: React.FC<Props> = ({ unfilteredEntries }) => {
   const entries = isNil(unfilteredEntries) ? null : reduceBookedHourEntries(unfilteredEntries);
-  const weekCapacities = getWeeksForDates<CapacityEntry>(entries ?? []);
+  const weekCapacities = getWeeksForDates<CapacityEntry>(entries ?? [], (date) => ({
+    date,
+    capacityHours: 0,
+  }));
 
   const { trigger, error, data } = usePostBookings();
 
@@ -57,9 +60,7 @@ export const BookingAllocationUpdater: React.FC<Props> = ({ unfilteredEntries })
       <CalendarWeekList
         weeks={weekCapacities.map(({ weekStart, days }) => ({
           weekStart,
-          children: days.map((day) =>
-            isNil(day) ? null : <BookingPreviewCell hours={day.capacityHours} />,
-          ) as WeekChildren,
+          children: days.map((day) => <BookingPreviewCell hours={day.capacityHours} />) as WeekChildren,
         }))}
       />
     </div>

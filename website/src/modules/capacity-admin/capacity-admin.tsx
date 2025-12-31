@@ -6,7 +6,6 @@ import { Capacity, useCapacities } from '@/modules/worker/use-capacities';
 import { getWeeksForDates } from '@/modules/capacity-admin/services/getWeeksForDates';
 import { CalendarWeekList, WeekChildren } from '@/modules/capacity-admin/calendar-week-list';
 import { CapacityPreviewCell } from './capacity-preview-cell';
-import { notNil } from '@/core/util/is-nil';
 import { usePostCapacities } from '@/modules/worker/use-post-capacities';
 
 export const CapacityAdmin: React.FC = () => {
@@ -15,7 +14,11 @@ export const CapacityAdmin: React.FC = () => {
   const { data: capacitiesData, isLoading: isCapacitiesLoading, error: capacitiesError } = useCapacities();
   const { trigger: postCapacities } = usePostCapacities();
 
-  const weeks = getWeeksForDates<Capacity>(capacitiesData?.capacities ?? []);
+  const weeks = getWeeksForDates<Capacity>(capacitiesData?.capacities ?? [], (date) => ({
+    date,
+    bookedHours: 0,
+    capacityHours: 0,
+  }));
 
   if (!hasSetAdminPassword) {
     return null;
@@ -29,22 +32,20 @@ export const CapacityAdmin: React.FC = () => {
             return {
               weekStart: week.weekStart,
               children: week.days.map((day) => {
-                const onBookedHoursChange = (hours: number) => {
-                  postCapacities([
+                const onBookedHoursChange = async (hours: number) => {
+                  await postCapacities([
                     {
-                      date: day?.date ?? week.weekStart, // TODO: handle null date properly
+                      date: day.date,
                       capacityHours: hours,
                     },
                   ]);
                 };
-                return notNil(day) ? (
+                return (
                   <CapacityPreviewCell
                     bookedHours={day.bookedHours}
                     capacityHours={day.capacityHours}
                     onBookedHoursChange={onBookedHoursChange}
                   />
-                ) : (
-                  <CapacityPreviewCell bookedHours={0} capacityHours={0} onBookedHoursChange={onBookedHoursChange} />
                 );
               }) as WeekChildren,
             };
