@@ -4,10 +4,10 @@ import styles from './capacity-preview-cell.module.scss';
 type Props = {
   bookedHours: number;
   capacityHours: number;
-  onBookedHoursChange: (newValue: number) => Promise<void>;
+  onCapacityHoursChange: (newValue: number) => Promise<void>;
 };
 
-export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHours, onBookedHoursChange }) => {
+export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHours, onCapacityHoursChange }) => {
   const [editing, setEditing] = useState(false);
   const [inputValue, setInputValue] = useState<string>(`${capacityHours}`);
   const [isErrored, setIsErrored] = useState(false);
@@ -23,7 +23,7 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
 
   React.useEffect(() => {
     setInputValue(`${capacityHours}`);
-  }, [bookedHours]);
+  }, [capacityHours]);
 
   const isOverbooked = bookedHours > capacityHours;
   const bookedPercent = (Math.min(bookedHours, capacityHours) / capacityHours) * 100;
@@ -47,10 +47,10 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
     }
 
     setIsErrored(false);
-    if (inputNumber !== bookedHours) {
+    if (inputNumber !== capacityHours) {
       try {
         setIsLoading(true);
-        await onBookedHoursChange(inputNumber);
+        await onCapacityHoursChange(inputNumber);
       } finally {
         setIsLoading(false);
       }

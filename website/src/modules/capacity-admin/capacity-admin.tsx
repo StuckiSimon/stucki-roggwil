@@ -33,7 +33,7 @@ export const CapacityAdmin: React.FC = () => {
             return {
               weekStart: week.weekStart,
               children: week.days.map((day) => {
-                const onBookedHoursChange = async (hours: number) => {
+                const onCapacityHoursChange = async (hours: number) => {
                   await postCapacities([
                     {
                       date: day.date,
@@ -69,7 +69,7 @@ export const CapacityAdmin: React.FC = () => {
                   <CapacityPreviewCell
                     bookedHours={day.bookedHours}
                     capacityHours={day.capacityHours}
-                    onBookedHoursChange={onBookedHoursChange}
+                    onCapacityHoursChange={onCapacityHoursChange}
                   />
                 );
               }) as WeekChildren,
