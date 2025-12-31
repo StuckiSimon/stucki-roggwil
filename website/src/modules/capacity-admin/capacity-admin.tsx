@@ -7,11 +7,12 @@ import { getWeeksForDates } from '@/modules/capacity-admin/services/getWeeksForD
 import { CalendarWeekList, WeekChildren } from '@/modules/capacity-admin/calendar-week-list';
 import { CapacityPreviewCell } from './capacity-preview-cell';
 import { usePostCapacities } from '@/modules/worker/use-post-capacities';
+import isNil from '@/core/util/is-nil';
 
 export const CapacityAdmin: React.FC = () => {
   const { hasSetAdminPassword } = useAdminPassword();
 
-  const { data: capacitiesData, isLoading: isCapacitiesLoading, error: capacitiesError } = useCapacities();
+  const { data: capacitiesData, isLoading: isCapacitiesLoading, error: capacitiesError, mutate } = useCapacities();
   const { trigger: postCapacities } = usePostCapacities();
 
   const weeks = getWeeksForDates<Capacity>(capacitiesData?.capacities ?? [], (date) => ({
@@ -39,6 +40,30 @@ export const CapacityAdmin: React.FC = () => {
                       capacityHours: hours,
                     },
                   ]);
+                  await mutate(
+                    (prevData) => {
+                      if (isNil(prevData)) {
+                        return prevData;
+                      }
+                      const exists = prevData.capacities.some((c) => c.date === day.date);
+                      return {
+                        ...prevData,
+                        capacities: exists
+                          ? prevData.capacities.map((c) => (c.date === day.date ? { ...c, capacityHours: hours } : c))
+                          : [
+                              ...prevData.capacities,
+                              {
+                                date: day.date,
+                                capacityHours: hours,
+                                bookedHours: 0,
+                              },
+                            ],
+                      };
+                    },
+                    {
+                      revalidate: false,
+                    },
+                  );
                 };
                 return (
                   <CapacityPreviewCell
