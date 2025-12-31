@@ -63,10 +63,13 @@ export const CapacityAdmin: React.FC = () => {
     const newCapacities: Capacity[] = [];
     for (let i = 0; i < 7; i++) {
       const date = format(addDays(nextWeekStart, i), 'yyyy-MM-dd');
+      const dayOfWeek = addDays(nextWeekStart, i).getDay();
+      const isWorkDay = dayOfWeek >= 1 && dayOfWeek <= 5;
+
       newCapacities.push({
         date,
         bookedHours: 0,
-        capacityHours: 0,
+        capacityHours: isWorkDay ? 100 : 0,
       });
     }
 
