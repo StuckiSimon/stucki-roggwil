@@ -4,12 +4,12 @@ import styles from './capacity-preview-cell.module.scss';
 type Props = {
   bookedHours: number;
   capacityHours: number;
-  onBookedHoursChange: (newValue: number) => void;
+  onBookedHoursChange: (newValue: number) => Promise<void>;
 };
 
 export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHours, onBookedHoursChange }) => {
   const [editing, setEditing] = useState(false);
-  const [inputValue, setInputValue] = useState<string>(`${bookedHours}`);
+  const [inputValue, setInputValue] = useState<string>(`${capacityHours}`);
   const [isErrored, setIsErrored] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -21,7 +21,7 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
   }, [editing]);
 
   React.useEffect(() => {
-    setInputValue(`${bookedHours}`);
+    setInputValue(`${capacityHours}`);
   }, [bookedHours]);
 
   const isOverbooked = bookedHours > capacityHours;
@@ -60,7 +60,7 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
       finishEditing();
     } else if (e.key === 'Escape') {
       setEditing(false);
-      setInputValue(`${bookedHours}`);
+      setInputValue(`${capacityHours}`);
     }
   };
 
