@@ -4,7 +4,7 @@ import { CapacityEntry } from '@/modules/capacity-admin/types';
 import isNil, { notNil } from '@/core/util/is-nil';
 import { BookingPreviewCell } from '@/modules/capacity-admin/booking-preview-cell';
 import { CalendarWeekList, WeekChildren } from '@/modules/capacity-admin/calendar-week-list';
-import { getWeeksForCapacityEntries } from '@/modules/capacity-admin/services/getWeeksForCapacityEntries';
+import { getWeeksForDates } from '@/modules/capacity-admin/services/getWeeksForDates';
 import { Button } from '@/visual-components/button/button';
 import { Typography } from '@/visual-components/typography/typography';
 import { usePostBookings } from '@/modules/worker/use-post-bookings';
@@ -17,7 +17,7 @@ type Props = {
 
 export const BookingAllocationUpdater: React.FC<Props> = ({ unfilteredEntries }) => {
   const entries = isNil(unfilteredEntries) ? null : reduceBookedHourEntries(unfilteredEntries);
-  const weekCapacities = getWeeksForCapacityEntries(entries ?? []);
+  const weekCapacities = getWeeksForDates<CapacityEntry>(entries ?? []);
 
   const { trigger, error, data } = usePostBookings();
 

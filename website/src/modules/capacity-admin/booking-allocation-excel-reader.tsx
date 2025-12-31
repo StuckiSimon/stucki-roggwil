@@ -1,15 +1,15 @@
 'use client';
 import React from 'react';
 import { read, utils } from 'xlsx';
-import styles from './capacity-excel-reader.module.scss';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
+import styles from './booking-allocation-excel-reader.module.scss';
 
 type Props = {
   onDataParsed: (data: unknown) => void;
 };
 
-export const CapacityExcelReader: React.FC<Props> = ({ onDataParsed }) => {
+export const BookingAllocationExcelReader: React.FC<Props> = ({ onDataParsed }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const parseFile = (file: File) => {
