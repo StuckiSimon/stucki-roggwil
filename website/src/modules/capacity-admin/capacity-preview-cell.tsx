@@ -86,8 +86,6 @@ export const CapacityPreviewCell: React.FC<Props> = ({ bookedHours, capacityHour
           <input
             ref={inputRef}
             inputMode="numeric"
-            min={0}
-            max={60}
             value={inputValue}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
