@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'Feiern Sie mit uns 30 Jahre Garage Stucki AG! Besuchen Sie unsere Frühlingsausstellung während der Autoexpo Langenthal und entdecken Sie attraktive Angebote und Neuheiten.',
 };
 
-export default async function Fruehlingsausstellung() {
+export default async function SpringExhibition() {
   return (
     <Layout>
       <PageHero title="Frühlings&shy;ausstellung 2026" subline="30 Jahre Garage Stucki AG" />
