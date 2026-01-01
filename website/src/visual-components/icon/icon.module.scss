@@ -1,0 +1,30 @@
+@use '../styles/variables' as *;
+
+.root {
+  display: block;
+  width: var(--stucki-icon-size);
+  height: var(--stucki-icon-size);
+}
+
+.loader {
+  display: block;
+  width: var(--stucki-icon-size);
+  height: var(--stucki-icon-size);
+  background: transparent;
+}
+
+$sizes: 12, 14, 16, 24, 32, 48, 56, 64, 128;
+
+@each $size in $sizes {
+  .size#{$size} {
+    --stucki-icon-size: #{$size}px;
+  }
+}
+
+@media (max-width: $breakpoint-s) {
+  @each $size in $sizes {
+    .sizeS#{$size} {
+      --stucki-icon-size: #{$size}px;
+    }
+  }
+}
