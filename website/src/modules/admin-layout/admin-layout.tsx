@@ -5,12 +5,15 @@ import { Link } from '@/visual-components/link/link';
 import { PasswordSection } from '@/modules/admin-layout/password-section';
 import styles from './admin-layout.module.scss';
 import { InlineSpacer, Spacer } from '@/visual-components/spacer/spacer';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 type Props = {
   children: ReactNode;
 };
 
 export const AdminLayout: React.FC<Props> = ({ children }) => {
+  const { adminPath, adminBookingsPath, homePath } = usePathBuilder();
+
   return (
     <div className={styles.root}>
       <div>
@@ -20,11 +23,11 @@ export const AdminLayout: React.FC<Props> = ({ children }) => {
               <div>
                 <Typography variant="title-2">Admin Bereich</Typography>
                 <Spacer size="04" />
-                <Link href="/admin">Kapazitätsübersicht</Link>
+                <Link href={adminPath()}>Kapazitätsübersicht</Link>
                 <InlineSpacer size="03" />
                 <Typography tag="span">•</Typography>
                 <InlineSpacer size="03" />
-                <Link href="/admin/bookings">Anpassung Buchungen</Link>
+                <Link href={adminBookingsPath()}>Anpassung Buchungen</Link>
               </div>
 
               <PasswordSection />
@@ -37,7 +40,7 @@ export const AdminLayout: React.FC<Props> = ({ children }) => {
         <GridContainer>
           <GridItem>
             <Typography>Admin Bereich</Typography>
-            <Link href="/" accent>
+            <Link href={homePath()} accent>
               Zurück zur Hauptseite
             </Link>
           </GridItem>

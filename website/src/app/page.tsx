@@ -6,6 +6,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 import { fetchSanityData } from '@/sanity/client';
 import { notNil } from '@/core/util/is-nil';
 import Link from 'next/link';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 const HOME_QUERY = `
   *[_type == "homeTeaser" && isActive == true][0]{
@@ -15,18 +16,19 @@ const HOME_QUERY = `
   }
   `;
 
-const LINK_TARGET_MAP = {
-  job: '/mech-job',
-  'all-inclusive-leasing': '/all-inclusive-leasing',
-  'spring-exhibition': '/spring-exhibition',
-};
-
 export default async function Home() {
+  const { servicesPath, contactPath, mechJobPath, allInclusiveLeasingPath, springExhibitionPath } = usePathBuilder();
   const homeTeasers = await fetchSanityData<{
     ctaText: string;
     assetUrl?: string;
     linkTarget?: string;
   }>(HOME_QUERY);
+
+  const LINK_TARGET_MAP = {
+    job: mechJobPath(),
+    'all-inclusive-leasing': allInclusiveLeasingPath(),
+    'spring-exhibition': springExhibitionPath(),
+  };
 
   const teaser = homeTeasers.result;
   const hasTeaser = notNil(teaser);
@@ -42,10 +44,10 @@ export default async function Home() {
               Wir sind die Antwort auf Ihre Fragen.
             </Typography>
             <div className={styles.buttonContainer}>
-              <ButtonLink href="/services" accent>
+              <ButtonLink href={servicesPath()} accent>
                 Dienstleistungen
               </ButtonLink>
-              <ButtonLink href="/contact" accent secondary>
+              <ButtonLink href={contactPath()} accent secondary>
                 Kontakt
               </ButtonLink>
             </div>

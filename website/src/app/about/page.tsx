@@ -4,6 +4,7 @@ import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Profile, ProfileContainer } from '@/visual-components/profile/profile';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Über Uns | Garage Stucki AG',
@@ -21,6 +22,7 @@ const EMPLOYEES_QUERY = `
   `;
 
 export default async function About() {
+  const { aboutPath, mechJobPath } = usePathBuilder();
   const employees = await fetchSanityData<
     {
       firstName: string;
@@ -31,7 +33,7 @@ export default async function About() {
   >(EMPLOYEES_QUERY);
 
   return (
-    <Layout activePath="/about">
+    <Layout activePath={aboutPath()}>
       <PageHero title="Über uns" subline="Seit 30 Jahren sind wir für Sie da." />
       <GridContainer>
         <GridItem>
@@ -44,7 +46,7 @@ export default async function About() {
                 image={employee.imageUrl}
               />
             ))}
-            <Profile title="Wir suchen!" subtitle="Du auch?" href="/mech-job" image={null} />
+            <Profile title="Wir suchen!" subtitle="Du auch?" href={mechJobPath()} image={null} />
           </ProfileContainer>
         </GridItem>
       </GridContainer>

@@ -7,6 +7,7 @@ import { Spacer } from '@/visual-components/spacer/spacer';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { ButtonLink } from '@/visual-components/button/button';
 import { SectionLead } from '@/visual-components/section-lead/section-lead';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Frühlingsausstellung – 30 Jahre Garage Stucki AG während der Autoexpo Langenthal',
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default async function SpringExhibition() {
+  const { contactPath } = usePathBuilder();
+
   return (
     <Layout>
       <PageHero title="Frühlings&shy;ausstellung 2026" subline="30 Jahre Garage Stucki AG" />
@@ -64,7 +67,7 @@ export default async function SpringExhibition() {
             title="Interesse geweckt?"
             text="Haben Sie Fragen zur Frühlingsausstellung oder möchten Sie einen Termin vereinbaren?"
           >
-            <ButtonLink href="/contact">Kontaktieren Sie uns</ButtonLink>
+            <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>

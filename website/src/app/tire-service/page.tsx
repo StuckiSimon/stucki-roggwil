@@ -8,6 +8,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { FactGrid } from '@/visual-components/fact-grid/fact-grid';
 import { SectionLead } from '@/visual-components/section-lead/section-lead';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Alles rund um Reifen | Garage Stucki AG',
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function TireService() {
+  const { contactPath } = usePathBuilder();
+
   return (
     <Layout>
       <PageHero title="Reifenservice" subline="Volle Fahrt voraus mit unseren Reifenservices." />
@@ -71,7 +74,7 @@ export default async function TireService() {
             title="Jetzt Termin vereinbaren"
             text="Am 25. Oktober und 8. November finden unsere beliebten Reifenwechsel-Samstage statt."
           >
-            <ButtonLink href="/contact">Kontaktieren Sie uns</ButtonLink>
+            <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>

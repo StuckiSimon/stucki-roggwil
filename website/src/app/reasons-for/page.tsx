@@ -8,6 +8,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { FactGrid } from '@/visual-components/fact-grid/fact-grid';
 import { SectionLead } from '@/visual-components/section-lead/section-lead';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Warum Garage Stucki? | Garage Stucki AG',
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function ReasonsFor() {
+  const { contactPath } = usePathBuilder();
+
   return (
     <Layout>
       <PageHero title="Warum Garage Stucki?" subline="Ihre Vorteile bei uns auf einen Blick." />
@@ -86,7 +89,7 @@ export default async function ReasonsFor() {
             title="Überzeugen Sie sich selbst!"
             text="Besuchen Sie uns in Roggwil oder kontaktieren Sie uns für eine persönliche Beratung. Wir freuen uns auf Sie."
           >
-            <ButtonLink href="/contact">Jetzt Kontakt aufnehmen</ButtonLink>
+            <ButtonLink href={contactPath()}>Jetzt Kontakt aufnehmen</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>

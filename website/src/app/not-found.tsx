@@ -4,8 +4,11 @@ import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
 import { Link } from '@/visual-components/link/link';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const NotFoundPage: React.FC = () => {
+  const { servicesPath, homePath } = usePathBuilder();
+
   return (
     <Layout>
       <GridContainer>
@@ -18,12 +21,12 @@ export const NotFoundPage: React.FC = () => {
           <Typography variant="text" tag="span">
             Wie wär&#39;s mit etwas anderem:{' '}
           </Typography>
-          <Link href="/services">Zu den Dienstleistungen</Link>
+          <Link href={servicesPath()}>Zu den Dienstleistungen</Link>
           <Typography variant="text" tag="span">
             {' '}
             oder direkt{' '}
           </Typography>
-          <Link href="/">zur Startseite</Link>
+          <Link href={homePath()}>zur Startseite</Link>
         </GridItem>
       </GridContainer>
       <Spacer size="09" />

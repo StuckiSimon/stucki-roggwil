@@ -11,6 +11,7 @@ import { CallToActionFragment } from '@/visual-components/call-to-action-fragmen
 import { RentalTeaser } from '@/visual-components/rental-teaser/rental-teaser';
 import { LeasingTeaserLayout } from '@/visual-components/leasing-teaser-layout/leasing-teaser-layout';
 import { SectionLead } from '@/visual-components/section-lead/section-lead';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Fahrzeugvermietung | Garage Stucki AG',
@@ -29,6 +30,7 @@ const RENTAL_VEHICLES_QUERY = `
   `;
 
 export default async function VehicleRent() {
+  const { contactPath } = usePathBuilder();
   const vehicles = await fetchSanityData<
     {
       dailyRate: number;
@@ -104,7 +106,7 @@ export default async function VehicleRent() {
             title="Fragen zur Fahrzeugmiete?"
             text="Kontaktieren Sie uns für eine individuelle Beratung oder ein Angebot."
           >
-            <ButtonLink href="/contact">Jetzt unverbindlich anfragen</ButtonLink>
+            <ButtonLink href={contactPath()}>Jetzt unverbindlich anfragen</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>

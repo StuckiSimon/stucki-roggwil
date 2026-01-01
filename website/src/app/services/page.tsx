@@ -4,6 +4,7 @@ import { Layout } from '@/modules/layout/layout';
 import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { Card, CardContainer } from '@/visual-components/card/card';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Dienstleistungen | Garage Stucki AG',
@@ -21,56 +22,6 @@ const SERVICES_QUERY = `
   } | order(order asc)
   `;
 
-function getLink(linkTarget: string): { href: string; text: string } {
-  switch (linkTarget) {
-    case 'contact':
-      return {
-        href: '/contact',
-        text: 'Kontakt',
-      };
-    case 'stock':
-      return {
-        href: '/stock',
-        text: 'Angebot',
-      };
-    case 'freizeitmobile':
-      return {
-        href: 'https://www.freizeitmobilestucki.ch',
-        text: 'freizeitmobilestucki.ch',
-      };
-    case 'kgm-models':
-      return {
-        href: 'https://stucki-roggwil.kgm.ch/brochures-and-pricelists/',
-        text: 'KGM Modelle',
-      };
-    case 'all-inclusive-leasing':
-      return {
-        href: '/all-inclusive-leasing',
-        text: 'All-Inclusive Leasing',
-      };
-    case 'tire-service':
-      return {
-        href: '/tire-service',
-        text: 'Reifenservice',
-      };
-    case 'rental':
-      return {
-        href: '/vehicle-rent',
-        text: 'Autovermietung',
-      };
-    case 'why-stucki':
-      return {
-        href: '/reasons-for',
-        text: 'Wieso Stucki AG?',
-      };
-    default:
-      return {
-        href: '/contact',
-        text: 'Kontakt',
-      };
-  }
-}
-
 export default async function Services() {
   const services = await fetchSanityData<
     {
@@ -81,8 +32,68 @@ export default async function Services() {
     }[]
   >(SERVICES_QUERY);
 
+  const {
+    servicesPath,
+    stockPath,
+    allInclusiveLeasingPath,
+    tireServicePath,
+    vehicleRentPath,
+    reasonsForPath,
+    contactPath,
+  } = usePathBuilder();
+
+  function getLink(linkTarget: string): { href: string; text: string } {
+    switch (linkTarget) {
+      case 'contact':
+        return {
+          href: contactPath(),
+          text: 'Kontakt',
+        };
+      case 'stock':
+        return {
+          href: stockPath(),
+          text: 'Angebot',
+        };
+      case 'freizeitmobile':
+        return {
+          href: 'https://www.freizeitmobilestucki.ch',
+          text: 'freizeitmobilestucki.ch',
+        };
+      case 'kgm-models':
+        return {
+          href: 'https://stucki-roggwil.kgm.ch/brochures-and-pricelists/',
+          text: 'KGM Modelle',
+        };
+      case 'all-inclusive-leasing':
+        return {
+          href: allInclusiveLeasingPath(),
+          text: 'All-Inclusive Leasing',
+        };
+      case 'tire-service':
+        return {
+          href: tireServicePath(),
+          text: 'Reifenservice',
+        };
+      case 'rental':
+        return {
+          href: vehicleRentPath(),
+          text: 'Autovermietung',
+        };
+      case 'why-stucki':
+        return {
+          href: reasonsForPath(),
+          text: 'Wieso Stucki AG?',
+        };
+      default:
+        return {
+          href: contactPath(),
+          text: 'Kontakt',
+        };
+    }
+  }
+
   return (
-    <Layout activePath="/services">
+    <Layout activePath={servicesPath()}>
       <PageHero title="Was können wir für Sie tun?" subline="Wir sind die Antwort auf Ihre Fragen." />
       <GridContainer>
         <GridItem>

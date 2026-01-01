@@ -6,6 +6,7 @@ import { Link } from '@/visual-components/link/link';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { MobileNav } from '@/visual-components/header/mobile-nav';
 import { HeaderScrollHandler } from '@/visual-components/header/header-scroll-handler';
+import { usePathBuilder } from '@/core/router/use-path-builder.ts';
 
 type Props = {
   accent?: boolean;
@@ -18,21 +19,22 @@ export type NavItem = {
 };
 
 export const Header: React.FC<Props> = ({ accent = false, activePath }) => {
+  const { homePath, aboutPath, stockPath, servicesPath, contactPath } = usePathBuilder();
   const navItems = [
     {
-      target: '/stock',
+      target: stockPath(),
       label: 'Lagerfahrzeuge',
     },
     {
-      target: '/services',
+      target: servicesPath(),
       label: 'Dienstleistungen',
     },
     {
-      target: '/about',
+      target: aboutPath(),
       label: 'Über uns',
     },
     {
-      target: '/contact',
+      target: contactPath(),
       label: 'Kontakt',
     },
   ] satisfies NavItem[];
@@ -47,7 +49,7 @@ export const Header: React.FC<Props> = ({ accent = false, activePath }) => {
       <GridContainer>
         <GridItem>
           <div className={styles.container}>
-            <Link href="/">
+            <Link href={homePath()}>
               <img src={logoSvg.src} alt="Garage Stucki AG" className={styles.logo} />
             </Link>
             <ul className={styles.nav}>

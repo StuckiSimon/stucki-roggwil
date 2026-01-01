@@ -4,6 +4,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 import { InlineSpacer, Spacer } from '@/visual-components/spacer/spacer';
 import { Typography } from '@/visual-components/typography/typography';
 import { formatNumber, formatRappen } from '@/modules/i18n/formatter';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 type Props = {
   imageUrl: string;
@@ -14,6 +15,8 @@ type Props = {
 };
 
 export const RentalTeaser: React.FC<Props> = ({ imageUrl, title, description, dailyRate, additionalKm }) => {
+  const { contactPath } = usePathBuilder();
+
   return (
     <div className={styles.root}>
       <div className={styles.imageContainer}>
@@ -43,7 +46,7 @@ export const RentalTeaser: React.FC<Props> = ({ imageUrl, title, description, da
           </Typography>
         </span>
         <Spacer size="06" />
-        <ButtonLink href="/contact">Kontakt</ButtonLink>
+        <ButtonLink href={contactPath()}>Kontakt</ButtonLink>
       </div>
     </div>
   );

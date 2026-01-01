@@ -7,6 +7,7 @@ import { Spacer } from '@/visual-components/spacer/spacer';
 import positionImg from './position.png';
 import { fetchSanityData } from '@/sanity/client';
 import { notNil } from '@/core/util/is-nil';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Garage Stucki AG',
@@ -22,6 +23,7 @@ const OPENING_HOUR_EXCEPTION_QUERY = `
   `;
 
 export default async function Contact() {
+  const { contactPath } = usePathBuilder();
   const openingHourExceptionData = await fetchSanityData<{
     title: string;
     text: string;
@@ -31,7 +33,7 @@ export default async function Contact() {
   const hasOpeningHourException = notNil(openingHourException);
 
   return (
-    <Layout activePath="/contact">
+    <Layout activePath={contactPath()}>
       <PageHero title="Kontakt" subline="So erreichen Sie uns." />
       <Spacer size="08" />
       <GridContainer>

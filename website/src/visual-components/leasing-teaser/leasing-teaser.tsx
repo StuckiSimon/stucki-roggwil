@@ -5,6 +5,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 import { InlineSpacer, Spacer } from '@/visual-components/spacer/spacer';
 import { Typography } from '@/visual-components/typography/typography';
 import { formatNumber } from '@/modules/i18n/formatter';
+import { usePathBuilder } from '@/core/router/use-path-builder';
 
 type Props = {
   imageUrl: string;
@@ -25,6 +26,8 @@ export const LeasingTeaser: React.FC<Props> = ({
   totalKm,
   detailsUrl,
 }) => {
+  const { contactPath } = usePathBuilder();
+
   return (
     <div className={styles.root}>
       <div className={styles.imageContainer}>
@@ -54,7 +57,7 @@ export const LeasingTeaser: React.FC<Props> = ({
           </Typography>
         </span>
         <Spacer size="06" />
-        <ButtonLink href="/contact">Kontakt</ButtonLink>
+        <ButtonLink href={contactPath()}>Kontakt</ButtonLink>
         <InlineSpacer size="05" />
         <Link href={detailsUrl} className={styles.detailsLink}>
           Fahrzeuginfos
