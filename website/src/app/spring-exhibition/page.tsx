@@ -6,6 +6,7 @@ import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { ButtonLink } from '@/visual-components/button/button';
+import { SectionLead } from '@/visual-components/section-lead/section-lead';
 
 export const metadata: Metadata = {
   title: 'Frühlingsausstellung – 30 Jahre Garage Stucki AG während der Autoexpo Langenthal',
@@ -20,15 +21,10 @@ export default async function SpringExhibition() {
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
-          <Typography variant="title-3" color="blue">
-            Feiern Sie mit uns 30 Jahre!
-          </Typography>
-          <Spacer size="03" />
-          <Typography variant="text">
-            Wir feiern unser 30-jähriges Jubiläum! Besuchen Sie uns an der diesjährigen Autoexpo Langenthal und erleben
-            Sie unsere Frühlingsausstellung mit vielen Highlights, attraktiven Jubiläumsangeboten und spannenden
-            Neuheiten rund ums Auto.
-          </Typography>
+          <SectionLead
+            lead="Feiern Sie mit uns 30 Jahre!"
+            leadText="Wir feiern unser 30-jähriges Jubiläum! Besuchen Sie uns an der diesjährigen Autoexpo Langenthal und erleben Sie unsere Frühlingsausstellung mit vielen Highlights, attraktiven Jubiläumsangeboten und spannenden Neuheiten rund ums Auto."
+          />
           <Spacer size="07" />
         </GridItem>
         <GridItem span="8">

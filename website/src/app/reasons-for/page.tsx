@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
-import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
 import { Fact } from '@/visual-components/fact/fact';
 import { ButtonLink } from '@/visual-components/button/button';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { FactGrid } from '@/visual-components/fact-grid/fact-grid';
+import { SectionLead } from '@/visual-components/section-lead/section-lead';
 
 export const metadata: Metadata = {
   title: 'Warum Garage Stucki? | Garage Stucki AG',
@@ -22,14 +22,10 @@ export default async function ReasonsFor() {
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
-          <Typography variant="title-3" color="blue">
-            Ihre Vorteile bei der Garage Stucki
-          </Typography>
-          <Spacer size="03" />
-          <Typography variant="text">
-            Wir sind Ihr zuverlässiger Partner rund ums Auto – mit persönlicher Beratung, langjähriger Erfahrung und
-            umfassendem Service.
-          </Typography>
+          <SectionLead
+            lead="Ihre Vorteile bei der Garage Stucki"
+            leadText="Wir sind Ihr zuverlässiger Partner rund ums Auto – mit persönlicher Beratung, langjähriger Erfahrung und umfassendem Service."
+          />
           <Spacer size="07" />
         </GridItem>
         <GridItem>

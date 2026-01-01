@@ -3,7 +3,6 @@ import { fetchSanityData } from '@/sanity/client';
 import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
-import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
 import { FactList } from '@/visual-components/fact-list-scrollable/fact-list';
 import { Fact } from '@/visual-components/fact/fact';
@@ -11,6 +10,7 @@ import { ButtonLink } from '@/visual-components/button/button';
 import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { LeasingTeaser } from '@/visual-components/leasing-teaser/leasing-teaser';
 import { LeasingTeaserLayout } from '@/visual-components/leasing-teaser-layout/leasing-teaser-layout';
+import { SectionLead } from '@/visual-components/section-lead/section-lead';
 
 export const metadata: Metadata = {
   title: 'All Inclusive Leasing | Garage Stucki AG',
@@ -49,13 +49,10 @@ export default async function AllInclusiveLeasing() {
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
-          <Typography variant="title-3" color="blue">
-            7 Vorteile bei einem All-Inclusive Leasing mit uns
-          </Typography>
-          <Spacer size="03" />
-          <Typography variant="text">
-            Erfahren Sie, weshalb das All-Inclusive Leasing Ihr perfekter Einstieg in die Elektromobilität ist.
-          </Typography>
+          <SectionLead
+            lead="7 Vorteile bei einem All-Inclusive Leasing mit uns"
+            leadText="Erfahren Sie, weshalb das All-Inclusive Leasing Ihr perfekter Einstieg in die Elektromobilität ist."
+          />
           <Spacer size="07" />
         </GridItem>
         <GridItem>
@@ -99,11 +96,10 @@ export default async function AllInclusiveLeasing() {
           <Spacer size="09" />
         </GridItem>
         <GridItem>
-          <Typography variant="title-3" color="blue">
-            Unsere All-Inclusive Fahrzeuge
-          </Typography>
-          <Spacer size="03" />
-          <Typography variant="text">Wir haben das passende Angebot für Ihr Nutzungsprofil.</Typography>
+          <SectionLead
+            lead="Unsere All-Inclusive Fahrzeuge"
+            leadText="Wir haben das passende Angebot für Ihr Nutzungsprofil."
+          />
           <Spacer size="09" />
         </GridItem>
         <GridItem span="8" spanTablet="6">
