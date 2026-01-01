@@ -18,6 +18,7 @@ const HOME_QUERY = `
 const LINK_TARGET_MAP = {
   job: '/mech-job',
   'all-inclusive-leasing': '/all-inclusive-leasing',
+  'spring-exhibition': '/spring-exhibition',
 };
 
 export default async function Home() {
