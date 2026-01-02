@@ -4,6 +4,8 @@
   display: block;
   width: var(--stucki-icon-size);
   height: var(--stucki-icon-size);
+  min-width: var(--stucki-icon-size);
+  min-height: var(--stucki-icon-size);
 }
 
 .loader {
