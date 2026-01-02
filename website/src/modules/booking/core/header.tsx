@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
       <Typography variant="title-2" color="blue">
         Online Termin buchen
       </Typography>
-      <Spacer size="05" />
+      <Spacer size="08" />
     </GridItem>
   );
 };
