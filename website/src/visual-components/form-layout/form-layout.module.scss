@@ -1,0 +1,13 @@
+.root {
+  & > div:first-child {
+    margin-bottom: var(--stucki-spacing-06);
+  }
+
+  & > div {
+    margin-bottom: var(--stucki-spacing-04);
+  }
+
+  & > div:last-child {
+    margin-bottom: var(--stucki-spacing-07);
+  }
+}
