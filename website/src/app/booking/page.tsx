@@ -30,7 +30,7 @@ export default async function OnlineBooking() {
           <Spacer size="07" />
           <SectionLead
             lead="So funktionierts"
-            leadText="In nur drei Schritten zum Termin – starten Sie direkt unten mit Ihrer Buchung."
+            leadText="In nur drei Schritten zu Ihrem Termin – starten Sie unten direkt mit Ihrer Buchung."
           />
           <Spacer size="07" />
         </GridItem>
@@ -79,7 +79,7 @@ export default async function OnlineBooking() {
               picto="picto-vehicle-check-list"
               href={bookingServicePath(ServiceType.VehicleCheck)}
               title="Check"
-              description="Saisonabhängige Checks – egal welches Wetter kommt"
+              description="Saisonabhängige Checks – sicher unterwegs bei jedem Wetter"
             />
             <CtaPictoLink
               picto="picto-vehicle-on-lift"
