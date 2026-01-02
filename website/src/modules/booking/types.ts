@@ -1,1 +1,6 @@
-export type ServiceType = 'service' | 'tire-change' | 'vehicle-check' | 'motor-vehicle-inspection';
+export enum ServiceType {
+  Service = 'service',
+  TireChange = 'tire-change',
+  VehicleCheck = 'vehicle-check',
+  MotorVehicleInspection = 'motor-vehicle-inspection',
+}

@@ -11,6 +11,7 @@ import { Fact } from '@/visual-components/fact/fact.tsx';
 import { CtaPictoLink } from '@/visual-components/cta-picto-link/cta-picto-link.tsx';
 import { usePathBuilder } from '@/core/router/use-path-builder';
 import { CtaPictoLinkGrid } from '@/visual-components/cta-picto-link-grid/cta-picto-link-grid.tsx';
+import { ServiceType } from '@/modules/booking/types.ts';
 
 export const metadata: Metadata = {
   title: 'Online Buchung – Garage Stucki AG',
@@ -64,25 +65,25 @@ export default async function OnlineBooking() {
           <CtaPictoLinkGrid>
             <CtaPictoLink
               picto="picto-wrench-in-circle"
-              href={bookingServicePath('service')}
+              href={bookingServicePath(ServiceType.Service)}
               title="Service"
               description="Regelmässige Wartung und Inspektion Ihres Fahrzeugs"
             />
             <CtaPictoLink
               picto="picto-tire"
-              href={bookingServicePath('tire-change')}
+              href={bookingServicePath(ServiceType.TireChange)}
               title="Radwechsel"
               description="Saisonaler Wechsel zwischen Sommer- und Winterreifen"
             />
             <CtaPictoLink
               picto="picto-vehicle-check-list"
-              href={bookingServicePath('vehicle-check')}
+              href={bookingServicePath(ServiceType.VehicleCheck)}
               title="Check"
               description="Saisonabhängige Checks – egal welches Wetter kommt"
             />
             <CtaPictoLink
               picto="picto-vehicle-on-lift"
-              href={bookingServicePath('motor-vehicle-inspection')}
+              href={bookingServicePath(ServiceType.MotorVehicleInspection)}
               title="MFK-Prüfung"
               description="MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts"
             />
