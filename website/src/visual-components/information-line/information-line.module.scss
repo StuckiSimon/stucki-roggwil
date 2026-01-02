@@ -1,0 +1,15 @@
+.root {
+  border-radius: var(--stucki-radius-m);
+  padding: var(--stucki-spacing-03) var(--stucki-spacing-04);
+  margin: var(--stucki-spacing-05) 0;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: row;
+  gap: var(--stucki-spacing-03);
+}
+
+.error {
+  background: var(--stucki-error-bg);
+  border-color: var(--stucki-error-border);
+  color: var(--stucki-error-text);
+}
