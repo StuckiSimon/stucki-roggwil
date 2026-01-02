@@ -13,6 +13,7 @@
   --stucki-spacing-10: 80px;
 
   --stucki-blue: #2b64ad;
+  --stucki-mid-blue: #4a90e2;
   --stucki-light-blue: #f3f8ff;
   --stucki-white: #ffffff;
   --stucki-light-grey: #d1d1d6;
@@ -33,4 +34,7 @@
   --stucki-error-bg: #ffeaea;
   --stucki-error-border: #ff3b30;
   --stucki-error-text: #a80000;
+
+  --stucki-animation-default-duration: 0.2s;
+  --stucki-animation-default-easing: ease-in-out;
 }
