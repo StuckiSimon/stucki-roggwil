@@ -2,7 +2,7 @@ import React from 'react';
 
 export type SVGComponent = React.FC<React.SVGProps<SVGSVGElement>>;
 
-export type IconVariant = 'checkmark' | 'chevron-right';
+export type IconVariant = 'checkmark' | 'chevron-right' | 'warning';
 export type PictogramVariant =
   | 'picto-tire'
   | 'picto-vehicle-check-list'
@@ -15,6 +15,7 @@ const PictoTire = React.lazy(() => import('./assets/picto-tire.tsx'));
 const PictoVehicleCheckList = React.lazy(() => import('./assets/picto-vehicle-check-list.tsx'));
 const PictoVehicleOnLift = React.lazy(() => import('./assets/picto-vehicle-on-lift.tsx'));
 const PictoWrenchInCircle = React.lazy(() => import('./assets/picto-wrench-in-circle.tsx'));
+const Warning = React.lazy(() => import('./assets/warning.tsx'));
 
 export const ICON_TYPE_COMPONENT_MAP: Record<IconVariant | PictogramVariant, SVGComponent> = {
   checkmark: Checkmark,
@@ -23,4 +24,5 @@ export const ICON_TYPE_COMPONENT_MAP: Record<IconVariant | PictogramVariant, SVG
   'picto-vehicle-check-list': PictoVehicleCheckList,
   'picto-vehicle-on-lift': PictoVehicleOnLift,
   'picto-wrench-in-circle': PictoWrenchInCircle,
+  warning: Warning,
 };
