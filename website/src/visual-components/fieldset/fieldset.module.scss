@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stucki-spacing-04);
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  > legend {
+    padding-bottom: var(--stucki-spacing-05);
+  }
+}
