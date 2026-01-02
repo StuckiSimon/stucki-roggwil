@@ -2,7 +2,15 @@ import React, { JSX } from 'react';
 import classNames from 'classnames';
 import styles from './typography.module.scss';
 
-export type TypographyVariant = 'title-1' | 'title-2' | 'title-3' | 'sub-title' | 'buttontext' | 'text' | 'sub-text';
+export type TypographyVariant =
+  | 'title-1'
+  | 'title-2'
+  | 'title-3'
+  | 'sub-title'
+  | 'buttontext'
+  | 'sub-buttontext'
+  | 'text'
+  | 'sub-text';
 
 export type TypographyColor = 'black' | 'blue' | 'white' | 'grey';
 
@@ -12,6 +20,7 @@ const VARIANT_DEFAULT_TAG_MAP: Record<TypographyVariant, keyof JSX.IntrinsicElem
   'title-3': 'h2',
   'sub-title': 'h2',
   buttontext: 'p',
+  'sub-buttontext': 'p',
   text: 'p',
   'sub-text': 'span',
 };
