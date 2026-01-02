@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--stucki-light-blue);
+  padding: var(--stucki-spacing-07);
+  align-items: center;
+  border-radius: var(--stucki-radius-l);
+  border: 1px solid var(--stucki-mid-blue);
+  transition: background-color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+
+  &:hover {
+    background-color: var(--stucki-blue);
+    cursor: pointer;
+
+    .title,
+    .description {
+      color: var(--stucki-white);
+    }
+  }
+}
+
+.title {
+  padding-bottom: var(--stucki-spacing-04);
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+}
