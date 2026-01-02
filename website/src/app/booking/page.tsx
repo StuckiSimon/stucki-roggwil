@@ -15,7 +15,7 @@ import { CtaPictoLinkGrid } from '@/visual-components/cta-picto-link-grid/cta-pi
 export const metadata: Metadata = {
   title: 'Online Buchung – Garage Stucki AG',
   description:
-    'Buchen Sie Ihre Dienstleistung direkt online. Schnell, einfach und zuverlässig – reservieren Sie jetzt Ihren Termin!',
+    'Service, Radwechsel, MFK-Prüfung und Fahrzeug-Check bequem online buchen bei Garage Stucki AG. Jetzt Termin reservieren – schnell und unkompliziert.',
 };
 
 export default async function OnlineBooking() {
@@ -23,11 +23,14 @@ export default async function OnlineBooking() {
 
   return (
     <Layout>
-      <PageHero title="Online Buchung" subline="Schnell und einfach Termin abmachen" />
+      <PageHero title="Online Buchung" subline="Ihren Termin in wenigen Schritten online vereinbaren" />
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
-          <SectionLead lead="So funktionierts" leadText="In 3 Schritten zum Termin – weiter unten geht's direkt los." />
+          <SectionLead
+            lead="So funktionierts"
+            leadText="In nur drei Schritten zum Termin – starten Sie direkt unten mit Ihrer Buchung."
+          />
           <Spacer size="07" />
         </GridItem>
         <GridItem>
@@ -35,17 +38,17 @@ export default async function OnlineBooking() {
             <Fact
               id={1}
               title="Dienstleistung auswählen"
-              description="Benötigen Sie Service, Radwechsel oder steht die nächste MFK-Prüfung an? Wählen Sie die gewünschte Dienstleistung einfach aus."
+              description="Brauchen Sie einen Service, einen Radwechsel oder steht die nächste MFK-Prüfung bevor? Definieren Sie die passende Dienstleistung."
             />
             <Fact
               id={2}
               title="Termin festlegen"
-              description="Wählen Sie Datum und Uhrzeit, die Ihnen am besten passen. Unser Kalender zeigt Ihnen die verfügbaren Termine an."
+              description="Wählen Sie das für Sie passende Datum und die Uhrzeit aus. Unser Kalender zeigt Ihnen alle verfügbaren Termine."
             />
             <Fact
               id={3}
               title="Kontaktdaten angeben"
-              description="Geben Sie Ihre Kontaktdaten ein, damit wir Ihre Buchung bestätigen und Sie bei Bedarf kontaktieren können."
+              description="Tragen Sie Ihre Kontaktdaten ein, damit wir Ihre Buchung bestätigen und Sie bei Rückfragen erreichen können."
             />
           </FactList>
         </GridItem>
@@ -81,15 +84,15 @@ export default async function OnlineBooking() {
               picto="picto-vehicle-on-lift"
               href={bookingServicePath('motor-vehicle-inspection')}
               title="MFK-Prüfung"
-              description="Durchführung der MFK-Prüfung bei Aufgebot des Strassen&shy;verkehrsamts"
+              description="MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts"
             />
           </CtaPictoLinkGrid>
         </GridItem>
         <GridItem>
           <Spacer size="09" />
           <CallToActionFragment
-            title="Nicht die passende Dienstleistung?"
-            text="Melden Sie sich bei uns – auch bei Fällen wie Lackschäden, grösseren Arbeiten oder Notfällen sind wir für Sie da."
+            title="Ihre gewünschte Dienstleistung ist nicht dabei?"
+            text="Kontaktieren Sie uns – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
           >
             <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
           </CallToActionFragment>
