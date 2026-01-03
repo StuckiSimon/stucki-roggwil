@@ -1,13 +1,13 @@
 .root {
   & > div:first-child {
-    margin-bottom: var(--stucki-spacing-06);
+    margin-bottom: var(--stucki-spacing-07);
   }
 
   & > div {
-    margin-bottom: var(--stucki-spacing-04);
+    margin-bottom: var(--stucki-spacing-06);
   }
 
   & > div:last-child {
-    margin-bottom: var(--stucki-spacing-07);
+    margin-bottom: var(--stucki-spacing-08);
   }
 }
