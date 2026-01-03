@@ -16,10 +16,9 @@
   padding: var(--stucki-spacing-05) var(--stucki-spacing-07);
   display: inline-block;
 
-  transition:
-    background-color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+  transition: background-color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    border-color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
 
   &.secondary {
     --stucki-button-bg-color: transparent;
