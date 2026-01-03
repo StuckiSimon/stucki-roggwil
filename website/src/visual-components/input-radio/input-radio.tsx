@@ -5,14 +5,14 @@ import styles from './input-radio.module.scss';
 import classNames from 'classnames';
 import { Typography } from '@/visual-components/typography/typography.tsx';
 
-export type InputRadioProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
+type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
   label: string;
   subLabel?: string;
   error?: string | boolean;
   ref?: React.Ref<HTMLInputElement>;
 };
 
-export const InputRadio: React.FC<InputRadioProps> = ({ label, error, ref, id, subLabel, ...rest }) => {
+export const InputRadio: React.FC<Props> = ({ label, error, ref, id, subLabel, ...rest }) => {
   const inputId = id || `input-radio-${rest.name}-${rest.value}`;
   return (
     <div className={classNames(styles.root)}>
