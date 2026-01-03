@@ -1,8 +1,8 @@
 @use '../styles/typography-helpers' as *;
 
 .root {
-  --stucki-link-color: var(--stucki-black);
-  --stucki-link-hover-color: var(--stucki-blue);
+  --stucki-link-color: var(--stucki-blue);
+  --stucki-link-hover-color: var(--stucki-dark-blue);
 
   @include static-font('buttontext');
   color: var(--stucki-link-color);
