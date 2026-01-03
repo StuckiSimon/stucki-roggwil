@@ -11,6 +11,8 @@ import { useServiceStorageData } from '@/modules/booking/service/use-service-sto
 import { BookingStep, VehicleServiceType } from '@/modules/booking/types.ts';
 import { useStepperConfig } from '@/modules/booking/core/use-stepper-config.ts';
 import { BookingLayout } from '@/modules/booking/core/booking-layout.tsx';
+import { Link } from '@/visual-components/link/link.tsx';
+import { ProcessNavigationLayout } from '@/visual-components/process-navigation-layout/process-navigation-layout.tsx';
 
 const SERVICE_OPTIONS = [
   {
@@ -75,7 +77,12 @@ export const VehicleService: React.FC = () => {
               ))}
             </Fieldset>,
           ]}
-          submitBlock={<Button type="submit">Weiter</Button>}
+          submitBlock={
+            <ProcessNavigationLayout
+              left={<Link href={bookingServicePath()}>Zurück</Link>}
+              right={<Button type="submit">Auswählen</Button>}
+            />
+          }
         />
       </form>
     </BookingLayout>

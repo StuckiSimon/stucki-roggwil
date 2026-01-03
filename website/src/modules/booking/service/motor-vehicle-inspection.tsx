@@ -11,6 +11,8 @@ import { BookingLayout } from '@/modules/booking/core/booking-layout.tsx';
 import { Typography } from '@/visual-components/typography/typography.tsx';
 import { Spacer } from '@/visual-components/spacer/spacer.tsx';
 import { InformationBox } from '@/visual-components/information-box/information-box.tsx';
+import { ProcessNavigationLayout } from '@/visual-components/process-navigation-layout/process-navigation-layout.tsx';
+import { Link } from '@/visual-components/link/link.tsx';
 
 export const MotorVehicleInspection: React.FC = () => {
   const { setMotorVehicleInspectionData } = useServiceStorageData();
@@ -65,7 +67,12 @@ export const MotorVehicleInspection: React.FC = () => {
               description="Der Termin bezieht sich auf den Zeitpunkt der Vorbereitung. Die Durchführung der Reparaturen wird separat eingeplant."
             />,
           ]}
-          submitBlock={<Button type="submit">Weiter</Button>}
+          submitBlock={
+            <ProcessNavigationLayout
+              left={<Link href={bookingServicePath()}>Zurück</Link>}
+              right={<Button type="submit">Auswählen</Button>}
+            />
+          }
         />
       </form>
     </BookingLayout>

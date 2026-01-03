@@ -12,8 +12,12 @@ import { SummaryCard } from '@/visual-components/summary-card/summary-card.tsx';
 import { Typography } from '@/visual-components/typography/typography.tsx';
 import { Spacer } from '@/visual-components/spacer/spacer.tsx';
 import { SummaryCardList } from '@/visual-components/summary-card-list/summary-card-list.tsx';
+import { Link } from '@/visual-components/link/link.tsx';
+import { ProcessNavigationLayout } from '@/visual-components/process-navigation-layout/process-navigation-layout.tsx';
+import { usePathBuilder } from '@/core/router/use-path-builder.ts';
 
 export const Default: React.FC = () => {
+  const { bookingPath } = usePathBuilder();
   const { hasBookableServiceConfigured, hasServiceConfigured, getServiceTypeData, setServiceTypeData } =
     useServiceStorageData();
 
@@ -70,9 +74,10 @@ export const Default: React.FC = () => {
           </>,
         ]}
         submitBlock={
-          <Button type="submit" disabled={!canContinue}>
-            Weiter
-          </Button>
+          <ProcessNavigationLayout
+            left={<Link href={bookingPath()}>Zurück</Link>}
+            right={<Button type="submit">Auswählen</Button>}
+          />
         }
       />
     </BookingLayout>
