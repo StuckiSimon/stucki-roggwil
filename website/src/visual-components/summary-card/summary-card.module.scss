@@ -1,0 +1,12 @@
+.root {
+  border: 1px solid var(--stucki-light-grey);
+  border-radius: var(--stucki-radius-m);
+  padding: var(--stucki-spacing-05);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--stucki-spacing-04);
+}
