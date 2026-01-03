@@ -30,3 +30,31 @@ export const Link: React.FC<Props> = ({
     </NextLink>
   );
 };
+
+type LinkButtonProps = ComponentProps<'button'> & {
+  accent?: boolean;
+  active?: boolean;
+  small?: boolean;
+};
+
+export const LinkButton: React.FC<LinkButtonProps> = ({
+  className,
+  children,
+  accent = false,
+  active = false,
+  small = false,
+  ...rest
+}) => {
+  return (
+    <button
+      className={classNames(className, styles.root, styles.animatedUnderline, {
+        [styles.accent]: accent,
+        [styles.active]: active,
+        [styles.small]: small,
+      })}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+};
