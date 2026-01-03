@@ -7,6 +7,7 @@ type Props = ComponentProps<typeof NextLink> & {
   accent?: boolean;
   animated?: boolean;
   active?: boolean;
+  small?: boolean;
 };
 
 export const Link: React.FC<Props> = ({
@@ -15,6 +16,7 @@ export const Link: React.FC<Props> = ({
   accent = false,
   animated = false,
   active = false,
+  small = false,
   ...rest
 }) => {
   return (
@@ -23,6 +25,7 @@ export const Link: React.FC<Props> = ({
         [styles.accent]: accent,
         [styles.animatedUnderline]: animated,
         [styles.active]: active,
+        [styles.small]: small,
       })}
       {...rest}
     >
