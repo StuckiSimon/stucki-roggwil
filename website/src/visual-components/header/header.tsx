@@ -55,7 +55,7 @@ export const Header: React.FC<Props> = ({ accent = false, activePath }) => {
             <ul className={styles.nav}>
               {navItems.map((item) => (
                 <li key={item.target}>
-                  <Link href={item.target} accent animated active={activePath === item.target}>
+                  <Link href={item.target} accent active={activePath === item.target}>
                     {item.label}
                   </Link>
                 </li>
