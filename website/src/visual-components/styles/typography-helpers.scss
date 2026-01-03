@@ -132,8 +132,8 @@ $font-definitions: (
  * This is intended for use in visual-components for static text
  */
 @mixin static-font($typography) {
-  @if $typography != 'buttontext' and $typography != 'text' {
-    @error 'static-font mixin is intended for buttontext and text only';
+  @if $typography != 'buttontext' and $typography != 'sub-buttontext' and $typography != 'text' {
+    @error 'static-font mixin is intended for buttontext, sub-buttontext and text only';
   }
   $font-definition: map.get($font-definitions, $typography);
   $font-size-definition: map.get($font-definition, 'font-size');
