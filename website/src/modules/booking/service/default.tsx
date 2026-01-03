@@ -13,11 +13,12 @@ import { Typography } from '@/visual-components/typography/typography.tsx';
 import { Spacer } from '@/visual-components/spacer/spacer.tsx';
 
 export const Default: React.FC = () => {
-  const { hasBookableServiceConfigured, hasServiceConfigured, setServiceTypeData } = useServiceStorageData();
+  const { hasBookableServiceConfigured, hasServiceConfigured, getServiceTypeData, setServiceTypeData } =
+    useServiceStorageData();
 
   const stepperConfig = useStepperConfig(BookingStep.ServiceSelection);
 
-  const serviceTypes = useServiceTypes();
+  const { list: serviceTypes } = useServiceTypes();
 
   const chosenServices = serviceTypes.filter((service) => hasServiceConfigured(service.type));
   const notYetConfiguredServices = serviceTypes.filter((service) => !hasServiceConfigured(service.type));
@@ -34,16 +35,19 @@ export const Default: React.FC = () => {
         }
         formElements={[
           <>
-            {chosenServices.map((service) => (
-              <SummaryCard
-                key={service.type}
-                title={service.title}
-                description={service.description}
-                onDismiss={() => {
-                  setServiceTypeData(service.type, undefined);
-                }}
-              />
-            ))}
+            {chosenServices.map((service) => {
+              const data = getServiceTypeData(service.type);
+              return (
+                <SummaryCard
+                  key={service.type}
+                  title={service.title}
+                  description={service.getServiceDescriptionText(data as any)}
+                  onDismiss={() => {
+                    setServiceTypeData(service.type, undefined);
+                  }}
+                />
+              );
+            })}
             {chosenServices.length === 0 && (
               <Typography color="grey">Es wurden noch keine Dienstleistungen ausgewählt.</Typography>
             )}
