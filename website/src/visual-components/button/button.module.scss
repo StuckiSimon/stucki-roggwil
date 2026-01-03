@@ -48,4 +48,12 @@
     background-color: var(--stucki-button-hover-bg-color);
     border-color: var(--stucki-button-hover-border-color);
   }
+
+  &:disabled {
+    --stucki-button-bg-color: transparent;
+    --stucki-button-border-color: var(--stucki-grey);
+    --stucki-button-text-color: var(--stucki-grey);
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }
