@@ -3,7 +3,8 @@ import { StorageKey } from '@/core/storage/storage-key.ts';
 import { ServiceStorageData, ServiceType } from '@/modules/booking/types.ts';
 import { notNil } from '@/core/util/is-nil.ts';
 import { useEffect } from 'react';
-import { SERVICE_TYPE_KEY_MAP } from '@/modules/booking/service/config.ts';
+import { SERVICE_TYPE_KEY_MAP, ServiceTypeKeyMap } from '@/modules/booking/service/config.ts';
+import { ServiceTypeConfiguration } from '@/modules/booking/service/use-service-types.ts';
 
 // Maximum age of stored data: 7 days
 const MAX_AGE_MS = 1000 * 60 * 60 * 24 * 7;
@@ -36,7 +37,7 @@ export function useServiceStorageData() {
 
   function getServiceTypeData<T extends ServiceType>(
     serviceType: T,
-  ): ServiceStorageData[(typeof SERVICE_TYPE_KEY_MAP)[T]] | undefined {
+  ): ServiceStorageData[ServiceTypeKeyMap[T]] | undefined {
     const key = SERVICE_TYPE_KEY_MAP[serviceType];
     return serviceStorageData?.[key];
   }
