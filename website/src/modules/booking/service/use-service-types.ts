@@ -62,7 +62,7 @@ export function useServiceTypes() {
     title: 'MFK-Prüfung',
     description: 'MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts',
     getServiceDescriptionText: (data) => {
-      return '';
+      return 'Abklärungstermin';
     },
   };
 
