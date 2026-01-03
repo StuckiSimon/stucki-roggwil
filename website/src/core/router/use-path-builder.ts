@@ -1,4 +1,6 @@
 import { ServiceType } from '@/modules/booking/types.ts';
+import { buildQueryParams } from '@/core/router/build-query-params.ts';
+import { SearchParam } from '@/core/router/search-param.ts';
 
 export const usePathBuilder = () => {
   return {
@@ -7,8 +9,8 @@ export const usePathBuilder = () => {
     adminPath: () => '/admin',
     allInclusiveLeasingPath: () => '/all-inclusive-leasing',
     bookingPath: () => '/booking',
-    bookingServicePath: (serviceType: ServiceType) =>
-      `/booking/service?${new URLSearchParams({ service: serviceType })}`,
+    bookingServicePath: (serviceType?: ServiceType) =>
+      `/booking/service${buildQueryParams([SearchParam.service, serviceType])}`,
     contactPath: () => '/contact',
     homePath: () => '/',
     mechJobPath: () => '/mech-job',
