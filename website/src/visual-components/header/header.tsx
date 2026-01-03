@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './header.module.scss';
+import NextLink from 'next/link';
 import logoSvg from '@/visual-components/shared-assets/logo.svg';
 import { Link } from '@/visual-components/link/link';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
@@ -49,9 +50,9 @@ export const Header: React.FC<Props> = ({ accent = false, activePath }) => {
       <GridContainer>
         <GridItem>
           <div className={styles.container}>
-            <Link href={homePath()}>
+            <NextLink href={homePath()}>
               <img src={logoSvg.src} alt="Garage Stucki AG" className={styles.logo} />
-            </Link>
+            </NextLink>
             <ul className={styles.nav}>
               {navItems.map((item) => (
                 <li key={item.target}>
