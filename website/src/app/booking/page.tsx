@@ -11,7 +11,7 @@ import { Fact } from '@/visual-components/fact/fact.tsx';
 import { CtaPictoLink } from '@/visual-components/cta-picto-link/cta-picto-link.tsx';
 import { usePathBuilder } from '@/core/router/use-path-builder';
 import { CtaPictoLinkGrid } from '@/visual-components/cta-picto-link-grid/cta-picto-link-grid.tsx';
-import { ServiceType } from '@/modules/booking/types.ts';
+import { useServiceTypes } from '@/modules/booking/service/use-service-types.ts';
 
 export const metadata: Metadata = {
   title: 'Online Buchung – Garage Stucki AG',
@@ -20,7 +20,8 @@ export const metadata: Metadata = {
 };
 
 export default async function OnlineBooking() {
-  const { contactPath, bookingServicePath } = usePathBuilder();
+  const { contactPath } = usePathBuilder();
+  const ctaPictoLinks = useServiceTypes();
 
   return (
     <Layout>
@@ -63,30 +64,15 @@ export default async function OnlineBooking() {
         </GridItem>
         <GridItem>
           <CtaPictoLinkGrid>
-            <CtaPictoLink
-              picto="picto-wrench-in-circle"
-              href={bookingServicePath(ServiceType.Service)}
-              title="Service"
-              description="Regelmässige Wartung und Inspektion Ihres Fahrzeugs"
-            />
-            <CtaPictoLink
-              picto="picto-tire"
-              href={bookingServicePath(ServiceType.TireChange)}
-              title="Radwechsel"
-              description="Saisonaler Wechsel zwischen Sommer- und Winterreifen"
-            />
-            <CtaPictoLink
-              picto="picto-vehicle-check-list"
-              href={bookingServicePath(ServiceType.VehicleCheck)}
-              title="Check"
-              description="Saisonabhängige Checks – sicher unterwegs bei jedem Wetter"
-            />
-            <CtaPictoLink
-              picto="picto-vehicle-on-lift"
-              href={bookingServicePath(ServiceType.MotorVehicleInspection)}
-              title="MFK-Prüfung"
-              description="MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts"
-            />
+            {ctaPictoLinks.map((link) => (
+              <CtaPictoLink
+                key={link.picto}
+                picto={link.picto}
+                href={link.href}
+                title={link.title}
+                description={link.description}
+              />
+            ))}
           </CtaPictoLinkGrid>
         </GridItem>
         <GridItem>
