@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default async function OnlineBooking() {
   const { contactPath } = usePathBuilder();
-  const ctaPictoLinks = useServiceTypes();
+  const { list: ctaPictoLinks } = useServiceTypes();
 
   return (
     <Layout>
