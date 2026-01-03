@@ -1,5 +1,13 @@
 import { usePathBuilder } from '@/core/router/use-path-builder';
-import { ServiceStorageData, ServiceType, VehicleServiceType } from '@/modules/booking/types';
+import {
+  ServiceStorageData,
+  ServiceType,
+  TireAction,
+  TireCondition,
+  TireLocation,
+  TireType,
+  VehicleServiceType,
+} from '@/modules/booking/types';
 import { PictogramVariant } from '@/visual-components/icon/icon-data.tsx';
 import { ServiceTypeKeyMap } from '@/modules/booking/service/config.ts';
 
@@ -40,7 +48,54 @@ export function useServiceTypes() {
     title: 'Radwechsel',
     description: 'Saisonaler Wechsel zwischen Sommer- und Winterreifen',
     getServiceDescriptionText: (data) => {
-      return '';
+      let phrase = '';
+      switch (data.tireLocation) {
+        case TireLocation.Stored:
+          phrase += 'Wir haben';
+          break;
+        case TireLocation.BringYourOwn:
+          phrase += 'Sie bringen';
+          break;
+        case TireLocation.NeedNewTires:
+          phrase += 'Sie benötigen';
+          break;
+      }
+      switch (data.tireType) {
+        case TireType.CompleteWheel:
+          phrase += ' Kompletträder';
+          break;
+        case TireType.TireOnly:
+          phrase += ' Reifen';
+          break;
+      }
+
+      if (data.tireLocation !== TireLocation.NeedNewTires) {
+        switch (data.tireCondition) {
+          case TireCondition.Good:
+            phrase += ' in gutem Zustand.';
+            break;
+          case TireCondition.Unsafe:
+            phrase += ' in abgenutzem Zustand.';
+            break;
+          case TireCondition.Uncertain:
+            break;
+        }
+      }
+
+      phrase += ' Die derzeit montierten Reifen ';
+      switch (data.tireAction) {
+        case TireAction.CleanAndStore:
+          phrase += ' sollen gereinigt und eingelagert werden.';
+          break;
+        case TireAction.TakeWithYou:
+          phrase += ' werden von Ihnen mitgenommen.';
+          break;
+        case TireAction.Dispose:
+          phrase += ' von uns entsorgt.';
+          break;
+      }
+
+      return phrase;
     },
   };
 

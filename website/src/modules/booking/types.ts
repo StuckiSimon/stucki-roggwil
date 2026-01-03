@@ -20,6 +20,7 @@ export enum VehicleServiceType {
 export enum TireLocation {
   Stored = 'stored',
   BringYourOwn = 'bringYourOwn',
+  NeedNewTires = 'needNewTires',
 }
 
 export enum TireType {
@@ -47,7 +48,7 @@ export type ServiceStorageData = {
   vehicleCheck?: boolean;
   motorVehicleInspection?: boolean;
   tireChange?: {
-    tireLocation: TireLocation | null;
+    tireLocation: TireLocation;
     tireType: TireType;
     tireCondition: TireCondition;
     tireAction: TireAction;
