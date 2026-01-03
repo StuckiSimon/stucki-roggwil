@@ -11,6 +11,7 @@ import { CtaPictoLink } from '@/visual-components/cta-picto-link/cta-picto-link.
 import { SummaryCard } from '@/visual-components/summary-card/summary-card.tsx';
 import { Typography } from '@/visual-components/typography/typography.tsx';
 import { Spacer } from '@/visual-components/spacer/spacer.tsx';
+import { SummaryCardList } from '@/visual-components/summary-card-list/summary-card-list.tsx';
 
 export const Default: React.FC = () => {
   const { hasBookableServiceConfigured, hasServiceConfigured, getServiceTypeData, setServiceTypeData } =
@@ -35,19 +36,23 @@ export const Default: React.FC = () => {
         }
         formElements={[
           <>
-            {chosenServices.map((service) => {
-              const data = getServiceTypeData(service.type);
-              return (
-                <SummaryCard
-                  key={service.type}
-                  title={service.title}
-                  description={service.getServiceDescriptionText(data as any)}
-                  onDismiss={() => {
-                    setServiceTypeData(service.type, undefined);
-                  }}
-                />
-              );
-            })}
+            {chosenServices.length > 0 ? (
+              <SummaryCardList>
+                {chosenServices.map((service) => {
+                  const data = getServiceTypeData(service.type);
+                  return (
+                    <SummaryCard
+                      key={service.type}
+                      title={service.title}
+                      description={service.getServiceDescriptionText(data as any)}
+                      onDismiss={() => {
+                        setServiceTypeData(service.type, undefined);
+                      }}
+                    />
+                  );
+                })}
+              </SummaryCardList>
+            ) : null}
             {chosenServices.length === 0 && (
               <Typography color="grey">Es wurden noch keine Dienstleistungen ausgewählt.</Typography>
             )}
