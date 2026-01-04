@@ -45,14 +45,17 @@ const TIRE_TYPE_OPTIONS = [
 const TIRE_CONDITION_OPTIONS = [
   {
     label: 'Reifen in gutem Zustand',
+    subLabel: 'Die Reifen verfügen über ausreichend Profil und sind frei von Beschädigungen für die Saison.',
     value: TireCondition.Good,
   },
   {
     label: 'Reifen unsicher',
+    subLabel: 'Die Reifen haben wenig Profil oder Beschädigungen, die Ihre Sicherheit beeinträchtigen.',
     value: TireCondition.Unsafe,
   },
   {
     label: 'Ich bin unsicher',
+    subLabel: 'Ich weiss nicht, in welchem Zustand sich meine Reifen befinden.',
     value: TireCondition.Uncertain,
   },
 ];
@@ -60,6 +63,7 @@ const TIRE_CONDITION_OPTIONS = [
 const TIRE_ACTION_OPTIONS = [
   {
     label: 'Reifen reinigen und einlagern',
+    subLabel: 'Wir reinigen Ihre Reifen und lagern diese fachgerecht ein.',
     value: TireAction.CleanAndStore,
   },
   {
@@ -68,6 +72,7 @@ const TIRE_ACTION_OPTIONS = [
   },
   {
     label: 'Reifen entsorgen',
+    subLabel: 'Wir entsorgen Ihre alten Reifen umweltgerecht für Sie.',
     value: TireAction.Dispose,
   },
 ];
@@ -144,6 +149,7 @@ export const TireChange: React.FC = () => {
                   })}
                   value={option.value}
                   label={option.label}
+                  subLabel={option.subLabel}
                   error={i === TIRE_CONDITION_OPTIONS.length - 1 ? errors.tireCondition?.message : undefined}
                 />
               ))}
@@ -157,6 +163,7 @@ export const TireChange: React.FC = () => {
                   })}
                   value={option.value}
                   label={option.label}
+                  subLabel={option.subLabel ?? undefined}
                   error={i === TIRE_ACTION_OPTIONS.length - 1 ? errors.tireAction?.message : undefined}
                 />
               ))}
