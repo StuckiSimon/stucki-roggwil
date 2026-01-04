@@ -18,12 +18,12 @@ const SERVICE_OPTIONS = [
   {
     label: 'Kleiner Service',
     value: VehicleServiceType.SmallService,
-    subLabel: 'Ölwechsel, Filter, Sichtprüfung, Flüssigkeiten',
+    subLabel: 'Grundlegende Wartungsarbeiten gemäss Herstellervorgaben wie Ölwechsel, Filter, etc.',
   },
   {
     label: 'Grosser Service',
     value: VehicleServiceType.LargeService,
-    subLabel: 'Alle Leistungen des kleinen Service plus umfassende Kontrolle und Austausch wichtiger Komponenten',
+    subLabel: 'Umfassendere Arbeiten sowie möglicher Austausch wichtiger Komponenten',
   },
   {
     label: 'Ich weiss es nicht',
@@ -65,7 +65,7 @@ export const VehicleService: React.FC = () => {
             />
           }
           formElements={[
-            <Fieldset title="Welcher Service soll durchgeführt werden?">
+            <Fieldset title="Welcher Service steht an?">
               {SERVICE_OPTIONS.map((option, i) => (
                 <InputRadio
                   key={option.value}
