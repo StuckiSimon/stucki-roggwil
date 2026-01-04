@@ -4,7 +4,7 @@ import { useStepperConfig } from '@/modules/booking/core/use-stepper-config.ts';
 import { BookingStep } from '@/modules/booking/types.ts';
 import { BookingLayout } from '@/modules/booking/core/booking-layout.tsx';
 import { FormLayout } from '@/visual-components/form-layout/form-layout.tsx';
-import { Button } from '@/visual-components/button/button.tsx';
+import { Button, ButtonLink } from '@/visual-components/button/button.tsx';
 import { useServiceTypes } from '@/modules/booking/service/use-service-types.ts';
 import { CtaPictoLinkGrid } from '@/visual-components/cta-picto-link-grid/cta-picto-link-grid.tsx';
 import { CtaPictoLink } from '@/visual-components/cta-picto-link/cta-picto-link.tsx';
@@ -15,9 +15,10 @@ import { SummaryCardList } from '@/visual-components/summary-card-list/summary-c
 import { Link } from '@/visual-components/link/link.tsx';
 import { ProcessNavigationLayout } from '@/visual-components/process-navigation-layout/process-navigation-layout.tsx';
 import { usePathBuilder } from '@/core/router/use-path-builder.ts';
+import { InformationBox } from '@/visual-components/information-box/information-box.tsx';
 
 export const Default: React.FC = () => {
-  const { bookingPath } = usePathBuilder();
+  const { bookingPath, bookingSlotPath } = usePathBuilder();
   const { hasBookableServiceConfigured, hasServiceConfigured, getServiceTypeData, setServiceTypeData } =
     useServiceStorageData();
 
@@ -58,7 +59,11 @@ export const Default: React.FC = () => {
               </SummaryCardList>
             ) : null}
             {chosenServices.length === 0 && (
-              <Typography color="grey">Es wurden noch keine Dienstleistungen ausgewählt.</Typography>
+              <InformationBox
+                variant="info"
+                title="Keine Dienstleistungen ausgewählt"
+                description="Bitte wählen Sie mindestens eine Dienstleistung aus, um mit der Buchung fortzufahren."
+              />
             )}
           </>,
           <>
@@ -76,7 +81,9 @@ export const Default: React.FC = () => {
         submitBlock={
           <ProcessNavigationLayout
             left={<Link href={bookingPath()}>Zurück</Link>}
-            right={<Button type="submit">Auswählen</Button>}
+            right={
+              canContinue ? <ButtonLink href={bookingSlotPath()}>Weiter</ButtonLink> : <Button disabled>Weiter</Button>
+            }
           />
         }
       />
