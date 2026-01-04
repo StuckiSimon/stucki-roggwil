@@ -8,11 +8,12 @@ import { Typography } from '@/visual-components/typography/typography.tsx';
 type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
   label: string;
   subLabel?: string;
+  sideLabel?: string;
   error?: string | boolean;
   ref?: React.Ref<HTMLInputElement>;
 };
 
-export const InputRadio: React.FC<Props> = ({ label, error, ref, id, subLabel, ...rest }) => {
+export const InputRadio: React.FC<Props> = ({ label, error, ref, id, subLabel, sideLabel, ...rest }) => {
   const inputId = id || `input-radio-${rest.name}-${rest.value}`;
   return (
     <div className={classNames(styles.root)}>
@@ -26,7 +27,14 @@ export const InputRadio: React.FC<Props> = ({ label, error, ref, id, subLabel, .
       />
       <label htmlFor={inputId} className={styles.label}>
         <div className={styles.text}>
-          <Typography variant="sub-buttontext">{label}</Typography>
+          <div className={styles.title}>
+            <Typography variant="sub-buttontext">{label}</Typography>
+            {notNil(sideLabel) ? (
+              <Typography variant="sub-text" tag="span" className={styles.sideLabel}>
+                {sideLabel}
+              </Typography>
+            ) : null}
+          </div>
           {notNil(subLabel) ? (
             <Typography variant="sub-text" tag="span" className={styles.subLabel}>
               {subLabel}
