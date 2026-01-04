@@ -32,7 +32,7 @@ export const MotorVehicleInspection: React.FC = () => {
       <form onSubmit={onSubmit}>
         <FormLayout
           descriptionBlock={
-            <FormDescription title="MFK-Prüfung" description="MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts" />
+            <FormDescription title="MFK-Prüfung" description="MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts." />
           }
           formElements={[
             <Typography>

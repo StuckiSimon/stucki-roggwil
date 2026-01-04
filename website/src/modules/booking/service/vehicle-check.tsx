@@ -42,7 +42,7 @@ export const VehicleCheck: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormLayout
           descriptionBlock={
-            <FormDescription title="Fahrzeug-Check" description="Schnelle Kontrolle und Reinigung Ihres Fahrzeugs" />
+            <FormDescription title="Fahrzeug-Check" description="Schnelle Kontrolle und Reinigung Ihres Fahrzeugs." />
           }
           formElements={[
             <Fieldset title="Welches Paket möchten Sie buchen?">
