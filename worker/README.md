@@ -7,6 +7,7 @@
 
 ```
 ADMIN_KEY=your_admin_key
+MAILTRAP_API_KEY=your_mailtrap_api_key
 ```
 
 
