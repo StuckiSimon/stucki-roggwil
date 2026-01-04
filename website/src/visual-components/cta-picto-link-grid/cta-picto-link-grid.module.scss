@@ -3,4 +3,9 @@
   display: grid;
   gap: var(--stucki-spacing-05);
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+
+  &.small {
+    gap: var(--stucki-spacing-04);
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  }
 }

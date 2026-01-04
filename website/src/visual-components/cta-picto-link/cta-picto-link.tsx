@@ -3,21 +3,28 @@ import { PictogramVariant } from '@/visual-components/icon/icon-data.tsx';
 import Link from 'next/link';
 import { Pictogram } from '@/visual-components/icon/icon.tsx';
 import { Typography } from '@/visual-components/typography/typography.tsx';
-import styles from './cta-picto-link.module.scss';
 import { notNil } from '@/core/util/is-nil.ts';
+import classNames from 'classnames';
+import styles from './cta-picto-link.module.scss';
 
 type Props = {
   href: string;
   picto: PictogramVariant;
   title: string;
   description?: string;
+  small: boolean;
 };
 
-export const CtaPictoLink: React.FC<Props> = ({ href, picto, title, description }) => {
+export const CtaPictoLink: React.FC<Props> = ({ href, picto, title, description, small = false }) => {
   return (
-    <Link href={href} className={styles.root}>
-      <Pictogram size="64" variant={picto} className={styles.picto} />
-      <Typography variant="title-3" color="blue" className={styles.title}>
+    <Link
+      href={href}
+      className={classNames(styles.root, {
+        [styles.small]: small,
+      })}
+    >
+      <Pictogram size={small ? '48' : '64'} variant={picto} className={styles.picto} />
+      <Typography variant={small ? 'buttontext' : 'title-3'} color="blue" className={styles.title}>
         {title}
       </Typography>
       {notNil(description) ? <Typography className={styles.description}>{description}</Typography> : null}

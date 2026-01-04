@@ -8,6 +8,10 @@
   border: 1px solid var(--stucki-mid-blue);
   transition: background-color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
 
+  &.small {
+    padding: var(--stucki-spacing-05);
+  }
+
   &:hover {
     background-color: var(--stucki-blue);
     cursor: pointer;
@@ -22,6 +26,10 @@
 .title {
   padding-bottom: var(--stucki-spacing-04);
   text-align: center;
+
+  .small & {
+    padding-bottom: var(--stucki-spacing-02);
+  }
 }
 
 .description {
