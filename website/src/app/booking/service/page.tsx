@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Layout } from '@/modules/layout/layout';
 import { Index } from '@/modules/booking/service';
@@ -11,7 +12,9 @@ export const metadata: Metadata = {
 export default async function Service() {
   return (
     <Layout>
-      <Index />
+      <Suspense fallback={null}>
+        <Index />
+      </Suspense>
     </Layout>
   );
 }
