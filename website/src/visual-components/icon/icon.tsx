@@ -4,7 +4,7 @@ import { ICON_TYPE_COMPONENT_MAP, IconVariant, PictogramVariant } from './icon-d
 import isNil from '@/core/util/is-nil';
 import styles from './icon.module.scss';
 
-type Size = '12' | '14' | '16' | '24' | '32' | '64' | '128';
+type Size = '12' | '14' | '16' | '24' | '32' | '48' | '64' | '128';
 
 type Props = {
   className?: string;
