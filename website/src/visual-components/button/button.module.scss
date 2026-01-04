@@ -41,8 +41,8 @@
     --stucki-button-hover-border-color: var(--stucki-white);
   }
 
-  &:hover,
-  &:focus {
+  &:hover:not(.loading),
+  &:focus:not(.loading) {
     color: var(--stucki-button-hover-text-color);
     background-color: var(--stucki-button-hover-bg-color);
     border-color: var(--stucki-button-hover-border-color);
