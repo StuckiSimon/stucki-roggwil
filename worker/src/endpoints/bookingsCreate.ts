@@ -20,7 +20,6 @@ export default (app: Hono<{ Bindings: Env }>) => {
     async (c) => {
       const booking = c.req.valid('json');
 
-      console.log(booking);
       const API_KEY = env(c).MAILTRAP_API_KEY;
 
       const client = new MailtrapClient({
