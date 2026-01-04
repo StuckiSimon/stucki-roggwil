@@ -12,7 +12,7 @@ export const BookingLayout: React.FC<Props> = ({ children, stepperConfig }) => {
   return (
     <GridContainer>
       <Header />
-      <GridItem span="3">
+      <GridItem span="4">
         <StepperNavigation steps={stepperConfig} />
       </GridItem>
       <GridItem span="6">{children}</GridItem>
