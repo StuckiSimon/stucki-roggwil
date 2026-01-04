@@ -3,6 +3,7 @@ import { env } from 'hono/adapter';
 import { basicAuth } from 'hono/basic-auth';
 import { cors } from 'hono/cors';
 import auth from './endpoints/auth';
+import bookingsCreate from './endpoints/bookingsCreate';
 import bookingsUpsert from './endpoints/bookingsUpsert';
 import capacitiesUpsert from './endpoints/capacitiesUpsert';
 import capacitiesList from './endpoints/capacitiesList';
@@ -31,6 +32,7 @@ app.use('/api/private/*', async (c, next) => {
 });
 
 auth(app);
+bookingsCreate(app);
 bookingsUpsert(app);
 capacitiesList(app);
 capacitiesUpsert(app);
