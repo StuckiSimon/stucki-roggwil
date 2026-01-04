@@ -22,7 +22,6 @@ export const InputTextarea: React.FC<Props> = ({ label, error, ref, id, ...rest 
       </label>
       <textarea
         {...rest}
-        type="text"
         id={inputId}
         ref={ref}
         aria-invalid={!!error}
