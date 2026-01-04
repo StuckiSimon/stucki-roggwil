@@ -1,0 +1,20 @@
+@use '../styles/typography-helpers' as *;
+
+.root {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--stucki-blue);
+  border-radius: var(--stucki-radius-m);
+  padding: var(--stucki-spacing-05);
+  background-color: var(--stucki-light-blue);
+  transition: background-color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+  @include static-font('text');
+
+  &:hover {
+    border-color: var(--stucki-black);
+  }
+}
