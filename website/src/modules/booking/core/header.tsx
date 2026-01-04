@@ -7,9 +7,7 @@ export const Header: React.FC = () => {
   return (
     <GridItem>
       <Spacer size="07" />
-      <Typography variant="title-2" color="blue">
-        Online Termin buchen
-      </Typography>
+      <Typography variant="title-2">Online Termin buchen</Typography>
       <Spacer size="08" />
     </GridItem>
   );
