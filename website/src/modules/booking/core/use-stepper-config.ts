@@ -6,7 +6,7 @@ const STEP_ORDER = [BookingStep.ServiceSelection, BookingStep.SlotSelection, Boo
 
 export function useStepperConfig(activeStep: BookingStep) {
   const router = useRouter();
-  const { bookingServicePath } = usePathBuilder();
+  const { bookingServicePath, bookingSlotPath, bookingDataPath } = usePathBuilder();
 
   const currentStepIndex = STEP_ORDER.indexOf(activeStep);
 
@@ -31,8 +31,7 @@ export function useStepperConfig(activeStep: BookingStep) {
       isActive: currentStepIndex === 1,
       onStepClick: isSlotSelectionReached
         ? () => {
-            // TODO: @Simon
-            //router.push(bookingServicePath());
+            router.push(bookingSlotPath());
           }
         : undefined,
     },
@@ -42,8 +41,7 @@ export function useStepperConfig(activeStep: BookingStep) {
       isActive: currentStepIndex === 2,
       onStepClick: isCustomerDetailsReached
         ? () => {
-            // TODO: @Simon
-            //router.push(bookingServicePath());
+            router.push(bookingDataPath());
           }
         : undefined,
     },
