@@ -6,16 +6,19 @@ import { LinkButton } from '@/visual-components/link/link.tsx';
 type Props = {
   title: string;
   description: string;
-  onDismiss: () => void;
+  interaction: {
+    label: string;
+    onClick: () => void;
+  };
 };
 
-export const SummaryCard: React.FC<Props> = ({ title, description, onDismiss }) => {
+export const SummaryCard: React.FC<Props> = ({ title, description, interaction }) => {
   return (
     <div className={styles.root}>
       <div className={styles.titleBar}>
         <Typography variant="buttontext">{title}</Typography>
-        <LinkButton small onClick={onDismiss}>
-          Entfernen
+        <LinkButton small onClick={interaction.onClick}>
+          {interaction.label}
         </LinkButton>
       </div>
       <Typography>{description}</Typography>
