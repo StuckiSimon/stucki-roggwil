@@ -40,12 +40,23 @@ export enum TireAction {
   Dispose = 'dispose',
 }
 
+export enum VehicleCheckPackage {
+  FK = 'fk',
+  CHRE = 'chre',
+  FKWASCH = 'fkwasch',
+  FKCHRE = 'fkchre',
+  FPLIGHT = 'fplight',
+  FPSTANDARD = 'fpstandard',
+  FPSPEZ = 'fpspez',
+  FPLUX = 'fplux',
+}
+
 export type ServiceStorageData = {
   initialSetDate: string;
   vehicleService?: {
     type: VehicleServiceType;
   };
-  vehicleCheck?: boolean;
+  vehicleCheck?: VehicleCheckPackage;
   motorVehicleInspection?: boolean;
   tireChange?: {
     tireLocation: TireLocation;

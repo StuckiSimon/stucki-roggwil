@@ -9,7 +9,7 @@ import {
   VehicleServiceType,
 } from '@/modules/booking/types';
 import { PictogramVariant } from '@/visual-components/icon/icon-data.tsx';
-import { ServiceTypeKeyMap } from '@/modules/booking/service/config.ts';
+import { ServiceTypeKeyMap, VEHICLE_CHECK_PACKAGE_OPTIONS } from '@/modules/booking/service/config.ts';
 
 export type ServiceTypeConfiguration<T extends ServiceType> = {
   type: T;
@@ -106,7 +106,9 @@ export function useServiceTypes() {
     title: 'Check',
     description: 'Saisonabhängige Checks – sicher unterwegs bei jedem Wetter',
     getServiceDescriptionText: (data) => {
-      return '';
+      const packageConfig =
+        VEHICLE_CHECK_PACKAGE_OPTIONS[VEHICLE_CHECK_PACKAGE_OPTIONS.findIndex((option) => option.value === data)];
+      return packageConfig.label;
     },
   };
 
