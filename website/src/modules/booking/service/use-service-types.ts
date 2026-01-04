@@ -18,6 +18,7 @@ export type ServiceTypeConfiguration<T extends ServiceType> = {
   title: string;
   description: string;
   getServiceDescriptionText: (data: Exclude<ServiceStorageData[ServiceTypeKeyMap[T]], undefined>) => string;
+  getServiceDurationMinutes?: (data: Exclude<ServiceStorageData[ServiceTypeKeyMap[T]], undefined>) => number;
 };
 
 export function useServiceTypes() {
@@ -37,6 +38,16 @@ export function useServiceTypes() {
           return 'Grosser Service';
         case VehicleServiceType.Unknown:
           return 'Umfang noch zu klären';
+      }
+    },
+    getServiceDurationMinutes: (data) => {
+      switch (data.type) {
+        case VehicleServiceType.SmallService:
+          return 240;
+        case VehicleServiceType.LargeService:
+          return 360;
+        case VehicleServiceType.Unknown:
+          return 360;
       }
     },
   };
@@ -97,6 +108,9 @@ export function useServiceTypes() {
 
       return phrase;
     },
+    getServiceDurationMinutes: () => {
+      return 60;
+    },
   };
 
   const vehicleCheckConfig: ServiceTypeConfiguration<ServiceType.VehicleCheck> = {
@@ -110,6 +124,9 @@ export function useServiceTypes() {
         VEHICLE_CHECK_PACKAGE_OPTIONS[VEHICLE_CHECK_PACKAGE_OPTIONS.findIndex((option) => option.value === data)];
       return packageConfig.label;
     },
+    getServiceDurationMinutes: () => {
+      return 60;
+    },
   };
 
   const motorVehicleInspectionConfig: ServiceTypeConfiguration<ServiceType.MotorVehicleInspection> = {
@@ -120,6 +137,9 @@ export function useServiceTypes() {
     description: 'MFK-Prüfung gemäss Aufgebot des Strassenverkehrsamts',
     getServiceDescriptionText: (data) => {
       return 'Abklärungstermin';
+    },
+    getServiceDurationMinutes: () => {
+      return 60;
     },
   };
 

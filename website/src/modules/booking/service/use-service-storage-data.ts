@@ -4,11 +4,13 @@ import { ServiceStorageData, ServiceType } from '@/modules/booking/types.ts';
 import { notNil } from '@/core/util/is-nil.ts';
 import { useEffect } from 'react';
 import { SERVICE_TYPE_KEY_MAP, ServiceTypeKeyMap } from '@/modules/booking/service/config.ts';
+import { useServiceTypes } from '@/modules/booking/service/use-service-types.ts';
 
 // Maximum age of stored data: 7 days
 const MAX_AGE_MS = 1000 * 60 * 60 * 24 * 7;
 
 export function useServiceStorageData() {
+  const { list } = useServiceTypes();
   const [serviceStorageData, setServiceStorageData] = useLocalStorage<ServiceStorageData>(StorageKey.BookingService, {
     initialSetDate: new Date().toISOString(),
   });
@@ -66,6 +68,15 @@ export function useServiceStorageData() {
     },
     setMotorVehicleInspectionData: (data: ServiceStorageData['motorVehicleInspection'] | undefined) => {
       setServiceTypeData(ServiceType.MotorVehicleInspection, data);
+    },
+    getSelectedServiceDuration: () => {
+      return list.reduce((totalDuration, service) => {
+        const data = getServiceTypeData(service.type);
+        if (data && service.getServiceDurationMinutes) {
+          return totalDuration + service.getServiceDurationMinutes(data as never);
+        }
+        return totalDuration;
+      }, 0);
     },
   };
 }
