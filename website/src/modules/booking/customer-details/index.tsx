@@ -23,6 +23,7 @@ import { useRouter } from 'next/navigation';
 import { useSlotStorageData } from '@/modules/booking/slot/use-slot-storage-data.ts';
 import { notNil } from '@/core/util/is-nil.ts';
 import { InformationBox } from '@/visual-components/information-box/information-box.tsx';
+import { usePostBookingAnonymous } from '@/modules/worker/use-post-booking-anonymous.ts';
 
 type FormValues = {
   firstName: string;
@@ -52,8 +53,29 @@ export const Index: React.FC = () => {
 
   const chosenServices = serviceTypes.filter((service) => hasServiceConfigured(service.type));
 
-  const onSubmit = (data: FormValues) => {
-    // TODO: @Simon Integrate backend submit
+  const { trigger: postBookingAnonymous, error: postBookingError } = usePostBookingAnonymous();
+  const onSubmit = async (data: FormValues) => {
+    if (!serviceStorageData) {
+      return;
+    }
+    const services = chosenServices.map(
+      (service) => `${service.title}: ${service.getServiceDescriptionText(getServiceTypeData(service.type) as never)}`,
+    );
+    const slot = {
+      date: serviceStorageData.date,
+      startHour: serviceStorageData.startHour,
+      endHour: serviceStorageData.endHour,
+    };
+    try {
+      await postBookingAnonymous({
+        ...data,
+        services,
+        slot,
+      });
+      // TODO: Show success message
+    } catch (e) {
+      // Message is shown via postBookingError
+    }
   };
 
   return (
@@ -197,6 +219,13 @@ export const Index: React.FC = () => {
               title="Nächste Schritte"
               description="Wir werden uns nach der Buchung mit Ihnen für allfällige Rückfragen in Verbindung setzen."
             />,
+            notNil(postBookingError) ? (
+              <InformationBox
+                variant="error"
+                title="Fehler bei der Buchung"
+                description="Beim Buchen Ihres Termins ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+              />
+            ) : null,
           ]}
           submitBlock={
             <ProcessNavigationLayout
