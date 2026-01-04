@@ -49,7 +49,7 @@ export const Default: React.FC = () => {
                     <SummaryCard
                       key={service.type}
                       title={service.title}
-                      description={service.getServiceDescriptionText(data as any)}
+                      description={service.getServiceDescriptionText(data as never)}
                       onDismiss={() => {
                         setServiceTypeData(service.type, undefined);
                       }}
