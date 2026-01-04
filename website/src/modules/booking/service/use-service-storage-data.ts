@@ -52,6 +52,10 @@ export function useServiceStorageData() {
   return {
     hasBookableServiceConfigured,
     getServiceTypeData,
+    resetServiceStorageData: () =>
+      setServiceStorageData({
+        initialSetDate: new Date().toISOString(),
+      }),
     setServiceTypeData,
     hasServiceConfigured: (serviceType: ServiceType) => {
       const key = SERVICE_TYPE_KEY_MAP[serviceType];

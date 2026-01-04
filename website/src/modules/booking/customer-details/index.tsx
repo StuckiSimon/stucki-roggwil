@@ -41,8 +41,8 @@ type FormValues = {
 export const Index: React.FC = () => {
   const { bookingSlotPath, bookingServicePath, homePath } = usePathBuilder();
   const stepperConfig = useStepperConfig(BookingStep.CustomerDetails);
-  const { hasServiceConfigured, getServiceTypeData } = useServiceStorageData();
-  const { serviceStorageData } = useSlotStorageData();
+  const { hasServiceConfigured, getServiceTypeData, resetServiceStorageData } = useServiceStorageData();
+  const { serviceStorageData, setServiceStorageData } = useSlotStorageData();
 
   const {
     register,
@@ -74,7 +74,8 @@ export const Index: React.FC = () => {
         services,
         slot,
       });
-      // TODO: Show success message
+      resetServiceStorageData();
+      setServiceStorageData(null);
     } catch (e) {
       // Message is shown via postBookingError
     }
