@@ -11,6 +11,8 @@ export const usePathBuilder = () => {
     bookingPath: () => '/booking',
     bookingServicePath: (serviceType?: ServiceType) =>
       `/booking/service${buildQueryParams([SearchParam.service, serviceType])}`,
+    bookingSlotPath: () => '/booking/slot',
+    bookingDataPath: () => '/booking/data',
     contactPath: () => '/contact',
     homePath: () => '/',
     mechJobPath: () => '/mech-job',
