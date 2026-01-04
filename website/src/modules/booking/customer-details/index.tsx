@@ -55,7 +55,12 @@ export const Index: React.FC = () => {
 
   const chosenServices = serviceTypes.filter((service) => hasServiceConfigured(service.type));
 
-  const { trigger: postBookingAnonymous, error: postBookingError, data: postBookingData } = usePostBookingAnonymous();
+  const {
+    trigger: postBookingAnonymous,
+    error: postBookingError,
+    data: postBookingData,
+    isMutating: postBookingIsMutating,
+  } = usePostBookingAnonymous();
   const onSubmit = async (data: FormValues) => {
     if (!serviceStorageData) {
       return;
@@ -250,7 +255,11 @@ export const Index: React.FC = () => {
           submitBlock={
             <ProcessNavigationLayout
               left={<Link href={bookingSlotPath()}>Zurück</Link>}
-              right={<Button type="submit">Termin buchen</Button>}
+              right={
+                <Button type="submit" loading={postBookingIsMutating}>
+                  Termin buchen
+                </Button>
+              }
             />
           }
         />
