@@ -1,0 +1,113 @@
+.calendarRoot {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--stucki-radius-m);
+  border: 1px solid var(--stucki-blue);
+}
+
+.calendarHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--stucki-spacing-04);
+  padding: var(--stucki-spacing-04);
+}
+
+.calendarWeekNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--stucki-spacing-04);
+  border-bottom: 1px solid var(--stucki-blue);
+  padding: 0 0 var(--stucki-spacing-03) 0;
+}
+
+.calendarArrowButton {
+  --stucki-scale-factor: 1;
+  --stucki-rotate-degree: 0deg;
+  transition: color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    transform var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+  color: var(--stucki-blue);
+  cursor: pointer;
+  opacity: 1;
+  transform: scale(var(--stucki-scale-factor)) rotate(var(--stucki-rotate-degree));
+
+  &:hover {
+    color: var(--stucki-dark-blue);
+    --stucki-scale-factor: 1.1;
+  }
+
+  &.prev {
+    --stucki-rotate-degree: 180deg;
+  }
+
+  &:disabled {
+    color: var(--stucki-light-grey);
+    cursor: not-allowed;
+  }
+}
+
+.calendarDayButton {
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: border 0.15s, background 0.15s;
+  opacity: 1;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  &.active {
+    .dayNumber {
+      background: var(--stucki-blue);
+      color: var(--stucki-white);
+    }
+  }
+}
+
+.dayNumber {
+  margin-top: var(--stucki-spacing-01);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarSlots {
+  padding: var(--stucki-spacing-04);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendarSlotsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 100%;
+  gap: var(--stucki-spacing-05);
+}
+
+.calendarSlotButton {
+  padding: var(--stucki-spacing-03) var(--stucki-spacing-04);
+  border-radius: var(--stucki-radius-l);
+  border: 1px solid var(--stucki-blue);
+  background: var(--stucki-light-blue);
+  cursor: pointer;
+  transition: color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    background var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+
+  &.selected {
+    background: var(--stucki-blue);
+    color: var(--stucki-white);
+  }
+}
