@@ -6,15 +6,26 @@ import styles from './button.module.scss';
 type Props = ComponentProps<'button'> & {
   secondary?: boolean;
   accent?: boolean;
+  loading?: boolean;
 };
 
-export const Button: React.FC<Props> = ({ className, children, secondary = false, accent = false, ...rest }) => {
+export const Button: React.FC<Props> = ({
+  className,
+  children,
+  secondary = false,
+  accent = false,
+  loading = false,
+  disabled = false,
+  ...rest
+}) => {
   return (
     <button
       className={classNames(className, styles.root, {
         [styles.secondary]: secondary,
         [styles.accent]: accent,
+        [styles.loading]: loading,
       })}
+      disabled={disabled || loading}
       {...rest}
     >
       {children}

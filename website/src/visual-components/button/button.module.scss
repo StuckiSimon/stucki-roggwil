@@ -48,11 +48,45 @@
     border-color: var(--stucki-button-hover-border-color);
   }
 
-  &:disabled {
+  &.loading {
+    pointer-events: none;
+    cursor: wait;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--stucki-spacing-03);
+    color: var(--stucki-blue);
+    position: relative;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1.2em;
+      height: 1.2em;
+      border: 2px solid var(--stucki-white);
+      border-top: 2px solid var(--stucki-blue);
+      border-radius: 50%;
+      animation: button-spinner-spin 0.7s linear infinite;
+      background: none;
+      z-index: 2;
+      transform: translateY(-50%) translateX(-50%);
+    }
+  }
+
+  &:disabled:not(.loading) {
     --stucki-button-bg-color: transparent;
     --stucki-button-border-color: var(--stucki-grey);
     --stucki-button-text-color: var(--stucki-grey);
     pointer-events: none;
     cursor: not-allowed;
+  }
+}
+
+@keyframes button-spinner-spin {
+  100% {
+    transform: translateY(-50%) translateX(-50%) rotate(360deg);
   }
 }
