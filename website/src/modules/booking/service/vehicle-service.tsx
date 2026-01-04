@@ -59,7 +59,10 @@ export const VehicleService: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormLayout
           descriptionBlock={
-            <FormDescription title="Service" description="Regelmässige Wartung und Inspektion Ihres Fahrzeugs" />
+            <FormDescription
+              title="Service"
+              description="Regelmässige Wartung und Inspektion Ihres Fahrzeugs gemäss den Herstellervorgaben."
+            />
           }
           formElements={[
             <Fieldset title="Welcher Service soll durchgeführt werden?">
