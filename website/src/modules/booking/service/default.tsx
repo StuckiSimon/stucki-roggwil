@@ -50,8 +50,11 @@ export const Default: React.FC = () => {
                       key={service.type}
                       title={service.title}
                       description={service.getServiceDescriptionText(data as never)}
-                      onDismiss={() => {
-                        setServiceTypeData(service.type, undefined);
+                      interaction={{
+                        label: 'Entfernen',
+                        onClick: () => {
+                          setServiceTypeData(service.type, undefined);
+                        },
                       }}
                     />
                   );
