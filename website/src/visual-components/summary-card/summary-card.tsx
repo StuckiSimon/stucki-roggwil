@@ -17,7 +17,7 @@ export const SummaryCard: React.FC<Props> = ({ title, description, interaction }
     <div className={styles.root}>
       <div className={styles.titleBar}>
         <Typography variant="buttontext">{title}</Typography>
-        <LinkButton small onClick={interaction.onClick}>
+        <LinkButton small onClick={interaction.onClick} type="button">
           {interaction.label}
         </LinkButton>
       </div>
