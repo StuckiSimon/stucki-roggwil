@@ -5,7 +5,7 @@ import { FormLayout } from '@/visual-components/form-layout/form-layout.tsx';
 import { Typography } from '@/visual-components/typography/typography.tsx';
 import { ProcessNavigationLayout } from '@/visual-components/process-navigation-layout/process-navigation-layout.tsx';
 import { Link } from '@/visual-components/link/link.tsx';
-import { Button } from '@/visual-components/button/button.tsx';
+import { Button, ButtonLink } from '@/visual-components/button/button.tsx';
 import { BookingLayout } from '@/modules/booking/core/booking-layout.tsx';
 import { useStepperConfig } from '@/modules/booking/core/use-stepper-config.ts';
 import { BookingStep } from '@/modules/booking/types.ts';
@@ -24,6 +24,8 @@ import { useSlotStorageData } from '@/modules/booking/slot/use-slot-storage-data
 import { notNil } from '@/core/util/is-nil.ts';
 import { InformationBox } from '@/visual-components/information-box/information-box.tsx';
 import { usePostBookingAnonymous } from '@/modules/worker/use-post-booking-anonymous.ts';
+import { GridContainer, GridItem } from '@/visual-components/grid/grid.tsx';
+import { Header } from '@/modules/booking/core/header.tsx';
 
 type FormValues = {
   firstName: string;
@@ -37,7 +39,7 @@ type FormValues = {
 };
 
 export const Index: React.FC = () => {
-  const { bookingSlotPath, bookingServicePath } = usePathBuilder();
+  const { bookingSlotPath, bookingServicePath, homePath } = usePathBuilder();
   const stepperConfig = useStepperConfig(BookingStep.CustomerDetails);
   const { hasServiceConfigured, getServiceTypeData } = useServiceStorageData();
   const { serviceStorageData } = useSlotStorageData();
@@ -53,7 +55,7 @@ export const Index: React.FC = () => {
 
   const chosenServices = serviceTypes.filter((service) => hasServiceConfigured(service.type));
 
-  const { trigger: postBookingAnonymous, error: postBookingError } = usePostBookingAnonymous();
+  const { trigger: postBookingAnonymous, error: postBookingError, data: postBookingData } = usePostBookingAnonymous();
   const onSubmit = async (data: FormValues) => {
     if (!serviceStorageData) {
       return;
@@ -77,6 +79,23 @@ export const Index: React.FC = () => {
       // Message is shown via postBookingError
     }
   };
+
+  if (notNil(postBookingData)) {
+    return (
+      <GridContainer>
+        <Header />
+        <GridItem span="6">
+          <InformationBox
+            variant="success"
+            title="Buchung erfolgreich"
+            description="Ihr Termin wurde angefragt. Wir werden uns in Kürze mit Ihnen in Verbindung setzen und den Termin bestätigen."
+          />
+          <ButtonLink href={homePath()}>Zur Startseite</ButtonLink>
+          <Spacer size="07" />
+        </GridItem>
+      </GridContainer>
+    );
+  }
 
   return (
     <BookingLayout stepperConfig={stepperConfig}>
