@@ -7,6 +7,7 @@ import isNil from '@/core/util/is-nil.ts';
 import styles from './slot-calendar.module.scss';
 import classNames from 'classnames';
 import { Icon } from '@/visual-components/icon/icon.tsx';
+import { Spinner } from '@/visual-components/spinner/spinner.tsx';
 
 const WEEK_DAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
@@ -22,7 +23,7 @@ export const SlotCalendar: React.FC<Props> = ({ activeDay, setActiveDay, slots, 
   const weekStart = activeDay ? startOfWeek(activeDay, { weekStartsOn: 1 }) : null;
 
   if (isNil(weekStart) || isNil(activeDay)) {
-    return null;
+    return <Spinner />;
   }
 
   const days = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
