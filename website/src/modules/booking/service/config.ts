@@ -14,50 +14,50 @@ export const VEHICLE_CHECK_PACKAGE_OPTIONS = [
     label: 'Frühlingskontrolle',
     value: VehicleCheckPackage.FK,
     subLabel: 'Technische Kontrolle aller wichtigen Funktionen und Niveaus',
-    price: 'Fr. 59.–',
+    price: 'Fr. 59.–',
   },
   {
     label: 'Unterbodenwäsche',
     value: VehicleCheckPackage.CHRE,
     subLabel: 'Unterboden abdampfen, Fahrzeug waschen',
-    price: 'Fr. 69.–',
+    price: 'Fr. 69.–',
   },
   {
     label: 'Frühlingskontrolle inkl. Waschen',
     value: VehicleCheckPackage.FKWASCH,
     subLabel: 'Frühlingskontrolle und Fahrzeug waschen',
-    price: 'Fr. 74.–',
+    price: 'Fr. 74.–',
   },
   {
     label: 'Frühlingskontrolle inkl. Unterbodenwäsche',
     value: VehicleCheckPackage.FKCHRE,
     subLabel: 'Frühlingskontrolle inkl. Unterbodenwäsche und Fahrzeug waschen',
-    price: 'Fr. 128.–',
+    price: 'Fr. 128.–',
   },
   {
     label: 'Frühlingsputz Light',
     value: VehicleCheckPackage.FPLIGHT,
     subLabel: 'grobe Innenreinigung, Fahrzeug waschen, Türfälze reinigen',
-    price: 'Fr. 79.–',
+    price: 'Fr. 79.–',
   },
   {
     label: 'Frühlingsputz Standard',
     value: VehicleCheckPackage.FPSTANDARD,
     subLabel: 'Frühlingskontrolle, Innenreinigung, Fahrzeug waschen, Türfälze reinigen',
-    price: 'Fr. 119.–',
+    price: 'Fr. 119.–',
   },
   {
     label: 'Frühlingsputz Spezial',
     value: VehicleCheckPackage.FPSPEZ,
     subLabel:
       'Frühlingskontrolle, Innenreinigung, Fahrzeug waschen, Türfälze reinigen, Unterboden und Motorraum abdampfen',
-    price: 'Fr. 199.–',
+    price: 'Fr. 199.–',
   },
   {
     label: 'Frühlingsputz Luxus',
     value: VehicleCheckPackage.FPLUX,
     subLabel:
       'Frühlingskontrolle, Innenreinigung, Fahrzeug waschen, Türfälze reinigen, Unterboden und Motorraum abdampfen, Polieren und Einwachsen des Lackes',
-    price: 'ab Fr. 299.–',
+    price: 'ab Fr. 299.–',
   },
 ];
