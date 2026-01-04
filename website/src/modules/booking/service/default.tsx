@@ -74,9 +74,15 @@ export const Default: React.FC = () => {
               Weitere Dienstleistungen hinzufügen
             </Typography>
             <Spacer size="05" />
-            <CtaPictoLinkGrid>
+            <CtaPictoLinkGrid small>
               {notYetConfiguredServices.map((service) => (
-                <CtaPictoLink key={service.type} href={service.href} picto={service.picto} title={service.title} />
+                <CtaPictoLink
+                  small
+                  key={service.type}
+                  href={service.href}
+                  picto={service.picto}
+                  title={service.title}
+                />
               ))}
             </CtaPictoLinkGrid>
           </>,
