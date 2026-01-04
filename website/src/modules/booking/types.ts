@@ -65,3 +65,10 @@ export type ServiceStorageData = {
     tireAction: TireAction;
   };
 };
+
+export type SlotStorageData = {
+  initialSetDate: string;
+  date: string;
+  startHour: string;
+  endHour: string;
+};
