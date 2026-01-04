@@ -12,7 +12,7 @@ type Props = {
   picto: PictogramVariant;
   title: string;
   description?: string;
-  small: boolean;
+  small?: boolean;
 };
 
 export const CtaPictoLink: React.FC<Props> = ({ href, picto, title, description, small = false }) => {
