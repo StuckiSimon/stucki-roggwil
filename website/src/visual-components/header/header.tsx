@@ -20,15 +20,15 @@ export type NavItem = {
 };
 
 export const Header: React.FC<Props> = ({ accent = false, activePath }) => {
-  const { homePath, aboutPath, stockPath, servicesPath, contactPath } = usePathBuilder();
+  const { homePath, aboutPath, stockPath, bookingPath, contactPath } = usePathBuilder();
   const navItems = [
     {
       target: stockPath(),
       label: 'Lagerfahrzeuge',
     },
     {
-      target: servicesPath(),
-      label: 'Dienstleistungen',
+      target: bookingPath(),
+      label: 'Termin buchen',
     },
     {
       target: aboutPath(),
