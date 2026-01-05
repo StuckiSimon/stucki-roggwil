@@ -19,7 +19,7 @@ export const CallToActionFragment: React.FC<Props> = ({ title, text, children })
         <Spacer size="03" />
         <Typography variant="text">{text}</Typography>
       </div>
-      <div>{children}</div>
+      <div className={styles.action}>{children}</div>
     </div>
   );
 };
