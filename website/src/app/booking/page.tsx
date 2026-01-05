@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function OnlineBooking() {
-  const { contactPath } = usePathBuilder();
+  const { servicesPath } = usePathBuilder();
   const { list: ctaPictoLinks } = useServiceTypes();
 
   return (
@@ -79,9 +79,9 @@ export default async function OnlineBooking() {
           <Spacer size="09" />
           <CallToActionFragment
             title="Ihre gewünschte Dienstleistung ist nicht dabei?"
-            text="Kontaktieren Sie uns direkt – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
+            text="Schauen Sie sich alle Dienstleistungen an – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
           >
-            <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
+            <ButtonLink href={servicesPath()}>Übersicht Dienstleistungen</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>
