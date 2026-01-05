@@ -25,7 +25,7 @@ export default async function OnlineBooking() {
 
   return (
     <Layout activePath={bookingPath()}>
-      <PageHero title="Online Buchung" subline="Vereinbaren Sie Ihren Termin in wenigen Schritten online" />
+      <PageHero title="Online Buchung" subline="Vereinbaren Sie Ihren Termin in wenigen Schritten online." />
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
