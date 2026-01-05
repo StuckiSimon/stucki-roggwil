@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 };
 
 export default async function OnlineBooking() {
-  const { servicesPath } = usePathBuilder();
+  const { bookingPath, servicesPath } = usePathBuilder();
   const { list: ctaPictoLinks } = useServiceTypes();
 
   return (
-    <Layout>
+    <Layout activePath={bookingPath()}>
       <PageHero title="Online Buchung" subline="Vereinbaren Sie Ihren Termin in wenigen Schritten online" />
       <GridContainer>
         <GridItem span="6">
