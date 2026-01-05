@@ -5,6 +5,9 @@ import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Profile, ProfileContainer } from '@/visual-components/profile/profile';
 import { usePathBuilder } from '@/core/router/use-path-builder';
+import { Spacer } from '@/visual-components/spacer/spacer.tsx';
+import { ButtonLink } from '@/visual-components/button/button.tsx';
+import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment.tsx';
 
 export const metadata: Metadata = {
   title: 'Über Uns | Garage Stucki AG',
@@ -22,7 +25,7 @@ const EMPLOYEES_QUERY = `
   `;
 
 export default async function About() {
-  const { aboutPath, mechJobPath } = usePathBuilder();
+  const { aboutPath, mechJobPath, bookingPath } = usePathBuilder();
   const employees = await fetchSanityData<
     {
       firstName: string;
@@ -48,6 +51,16 @@ export default async function About() {
             ))}
             <Profile title="Wir suchen!" subtitle="Du auch?" href={mechJobPath()} image={null} />
           </ProfileContainer>
+        </GridItem>
+        <GridItem>
+          <Spacer size="09" />
+          <CallToActionFragment
+            title="Können wir Ihnen weiterhelfen?"
+            text="Vereinbaren Sie noch heute einen Termin mit uns und erleben Sie unseren erstklassigen Service."
+          >
+            <ButtonLink href={bookingPath()}>Termin vereinbaren</ButtonLink>
+          </CallToActionFragment>
+          <Spacer size="09" />
         </GridItem>
       </GridContainer>
     </Layout>
