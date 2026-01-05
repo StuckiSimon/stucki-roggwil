@@ -25,7 +25,7 @@ export default async function OnlineBooking() {
 
   return (
     <Layout>
-      <PageHero title="Online Buchung" subline="Ihren Termin in wenigen Schritten online vereinbaren" />
+      <PageHero title="Online Buchung" subline="Vereinbaren Sie Ihren Termin in wenigen Schritten online" />
       <GridContainer>
         <GridItem span="6">
           <Spacer size="07" />
@@ -58,7 +58,7 @@ export default async function OnlineBooking() {
           <Spacer size="09" />
           <SectionLead
             lead="Welche Dienstleistung benötigen Sie?"
-            leadText="Wählen Sie die gewünschte Dienstleistung aus"
+            leadText="Wählen Sie die gewünschte Dienstleistung aus."
           />
           <Spacer size="07" />
         </GridItem>
@@ -79,7 +79,7 @@ export default async function OnlineBooking() {
           <Spacer size="09" />
           <CallToActionFragment
             title="Ihre gewünschte Dienstleistung ist nicht dabei?"
-            text="Kontaktieren Sie uns – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
+            text="Kontaktieren Sie uns direkt – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
           >
             <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
           </CallToActionFragment>
