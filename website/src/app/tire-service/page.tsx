@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function TireService() {
-  const { contactPath } = usePathBuilder();
+  const { bookingPath } = usePathBuilder();
 
   return (
     <Layout>
@@ -67,14 +67,11 @@ export default async function TireService() {
           <Spacer size="09" />
         </GridItem>
         <GridItem>
-          <Spacer size="09" />
-        </GridItem>
-        <GridItem>
           <CallToActionFragment
             title="Jetzt Termin vereinbaren"
-            text="Am 25. Oktober und 8. November finden unsere beliebten Reifenwechsel-Samstage statt."
+            text="Ganz einfach online Ihren nächsten Termin abmachen."
           >
-            <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
+            <ButtonLink href={bookingPath()}>Termin buchen</ButtonLink>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>
