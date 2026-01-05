@@ -7,6 +7,8 @@ import { fetchSanityData } from '@/sanity/client';
 import { notNil } from '@/core/util/is-nil';
 import Link from 'next/link';
 import { usePathBuilder } from '@/core/router/use-path-builder';
+import { Card, CardContainer } from '@/visual-components/card/card.tsx';
+import { useServiceLinks } from '@/modules/services/use-service-links.ts';
 
 const HOME_QUERY = `
   *[_type == "homeTeaser" && isActive == true][0]{
@@ -16,6 +18,16 @@ const HOME_QUERY = `
   }
   `;
 
+const SERVICES_QUERY = `
+  *[_type== "service"]{
+    title,
+    description,
+    linkTarget,
+    "imageUrl": image.asset->url,
+    order
+  } | order(order asc)
+  `;
+
 export default async function Home() {
   const { servicesPath, contactPath, mechJobPath, allInclusiveLeasingPath, springExhibitionPath } = usePathBuilder();
   const homeTeasers = await fetchSanityData<{
@@ -23,6 +35,17 @@ export default async function Home() {
     assetUrl?: string;
     linkTarget?: string;
   }>(HOME_QUERY);
+
+  const services = await fetchSanityData<
+    {
+      title: string;
+      description: string;
+      linkTarget: string;
+      imageUrl: string;
+    }[]
+  >(SERVICES_QUERY);
+
+  const { getLink } = useServiceLinks();
 
   const LINK_TARGET_MAP = {
     job: mechJobPath(),
@@ -66,6 +89,21 @@ export default async function Home() {
           ) : null}
         </GridContainer>
       </div>
+      <GridContainer>
+        <GridItem>
+          <CardContainer>
+            {services.result.map((service) => (
+              <Card
+                key={service.title}
+                title={service.title}
+                image={service.imageUrl}
+                text={service.description}
+                cta={getLink(service.linkTarget)}
+              />
+            ))}
+          </CardContainer>
+        </GridItem>
+      </GridContainer>
     </Layout>
   );
 }
