@@ -57,7 +57,7 @@ export const MotorVehicleInspection: React.FC = () => {
                     Durchführung Reparaturen und MFK
                   </Typography>{' '}
                   Nach der Vorbereitung vereinbaren wir einen weiteren Termin für die Reparaturen und die eigentliche
-                  MFK-Prüfung.
+                  MFK-Prüfung beim Strassenverkehrsamt.
                 </li>
               </ol>
             </Typography>,
