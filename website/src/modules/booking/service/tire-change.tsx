@@ -24,7 +24,7 @@ const TIRE_LOCATION_OPTIONS = [
     value: TireLocation.BringYourOwn,
   },
   {
-    label: 'Neuer Reifensatz',
+    label: 'Ich benötige neue Reifen',
     value: TireLocation.NeedNewTires,
   },
 ];
@@ -70,11 +70,6 @@ const TIRE_ACTION_OPTIONS = [
   {
     label: 'Räder mitnehmen',
     value: TireAction.TakeWithYou,
-  },
-  {
-    label: 'Reifen entsorgen',
-    subLabel: 'Wir entsorgen Ihre alten Reifen umweltgerecht für Sie.',
-    value: TireAction.Dispose,
   },
 ];
 

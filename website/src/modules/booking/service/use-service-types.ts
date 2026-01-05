@@ -101,9 +101,6 @@ export function useServiceTypes() {
         case TireAction.TakeWithYou:
           phrase += ' werden von Ihnen mitgenommen.';
           break;
-        case TireAction.Dispose:
-          phrase += ' von uns entsorgt.';
-          break;
       }
 
       return phrase;

@@ -37,7 +37,6 @@ export enum TireCondition {
 export enum TireAction {
   CleanAndStore = 'cleanAndStore',
   TakeWithYou = 'takeWithYou',
-  Dispose = 'dispose',
 }
 
 export enum VehicleCheckPackage {
