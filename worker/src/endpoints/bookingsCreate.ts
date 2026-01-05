@@ -34,6 +34,9 @@ export default (app: Hono<{ Bindings: Env }>) => {
         {
           email: 'info@stuckiroggwil.ch',
         },
+        {
+          email: 'info@stucki-roggwil.ch',
+        },
       ];
 
       await client.send({
