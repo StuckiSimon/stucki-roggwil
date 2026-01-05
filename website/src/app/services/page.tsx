@@ -6,6 +6,9 @@ import { Card, CardContainer } from '@/visual-components/card/card';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { usePathBuilder } from '@/core/router/use-path-builder';
 import { useServiceLinks } from '@/modules/services/use-service-links.ts';
+import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment.tsx';
+import { ButtonLink } from '@/visual-components/button/button.tsx';
+import { Spacer } from '@/visual-components/spacer/spacer.tsx';
 
 export const metadata: Metadata = {
   title: 'Dienstleistungen | Garage Stucki AG',
@@ -33,7 +36,7 @@ export default async function Services() {
     }[]
   >(SERVICES_QUERY);
 
-  const { servicesPath } = usePathBuilder();
+  const { servicesPath, contactPath } = usePathBuilder();
 
   const { getLink } = useServiceLinks();
 
@@ -53,6 +56,16 @@ export default async function Services() {
               />
             ))}
           </CardContainer>
+        </GridItem>
+        <GridItem>
+          <Spacer size="09" />
+          <CallToActionFragment
+            title="Sie benötigen weitere Informationen?"
+            text="Kontaktieren Sie uns – wir helfen Ihnen gerne weiter."
+          >
+            <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
+          </CallToActionFragment>
+          <Spacer size="09" />
         </GridItem>
       </GridContainer>
     </Layout>
