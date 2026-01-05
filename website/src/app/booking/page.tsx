@@ -3,7 +3,10 @@ import { PageHero } from '@/visual-components/page-hero/page-hero';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Spacer } from '@/visual-components/spacer/spacer';
-import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
+import {
+  CallToActionFragment,
+  MultiActionContainer,
+} from '@/visual-components/call-to-action-fragment/call-to-action-fragment';
 import { ButtonLink } from '@/visual-components/button/button';
 import { SectionLead } from '@/visual-components/section-lead/section-lead.tsx';
 import { FactList } from '@/visual-components/fact-list-scrollable/fact-list.tsx';
@@ -12,6 +15,7 @@ import { CtaPictoLink } from '@/visual-components/cta-picto-link/cta-picto-link.
 import { usePathBuilder } from '@/core/router/use-path-builder';
 import { CtaPictoLinkGrid } from '@/visual-components/cta-picto-link-grid/cta-picto-link-grid.tsx';
 import { useServiceTypes } from '@/modules/booking/service/use-service-types.ts';
+import { Link } from '@/visual-components/link/link.tsx';
 
 export const metadata: Metadata = {
   title: 'Online Buchung – Garage Stucki AG',
@@ -20,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default async function OnlineBooking() {
-  const { bookingPath, servicesPath } = usePathBuilder();
+  const { bookingPath, contactPath, servicesPath } = usePathBuilder();
   const { list: ctaPictoLinks } = useServiceTypes();
 
   return (
@@ -79,9 +83,12 @@ export default async function OnlineBooking() {
           <Spacer size="09" />
           <CallToActionFragment
             title="Ihre gewünschte Dienstleistung ist nicht dabei?"
-            text="Schauen Sie sich alle Dienstleistungen an – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
+            text="Kontaktieren Sie uns direkt – auch bei Fällen wie Lackschäden, grösseren Reparaturen oder Notfällen helfen wir Ihnen gerne weiter."
           >
-            <ButtonLink href={servicesPath()}>Übersicht Dienstleistungen</ButtonLink>
+            <MultiActionContainer>
+              <ButtonLink href={contactPath()}>Kontaktieren Sie uns</ButtonLink>
+              <Link href={servicesPath()}>Dienstleistungsangebot</Link>
+            </MultiActionContainer>
           </CallToActionFragment>
           <Spacer size="09" />
         </GridItem>
