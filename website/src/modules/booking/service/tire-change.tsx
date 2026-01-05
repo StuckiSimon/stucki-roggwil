@@ -20,7 +20,7 @@ const TIRE_LOCATION_OPTIONS = [
     value: TireLocation.Stored,
   },
   {
-    label: 'Eigene Reifen mitbringen',
+    label: 'Eigene Räder mitbringen',
     value: TireLocation.BringYourOwn,
   },
   {
@@ -62,12 +62,12 @@ const TIRE_CONDITION_OPTIONS = [
 
 const TIRE_ACTION_OPTIONS = [
   {
-    label: 'Reifen reinigen und einlagern',
-    subLabel: 'Wir reinigen Ihre Reifen und lagern diese fachgerecht ein.',
+    label: 'Räder reinigen und einlagern',
+    subLabel: 'Wir reinigen Ihre Räder und lagern diese fachgerecht ein.',
     value: TireAction.CleanAndStore,
   },
   {
-    label: 'Reifen mitnehmen',
+    label: 'Räder mitnehmen',
     value: TireAction.TakeWithYou,
   },
   {
@@ -113,7 +113,7 @@ export const TireChange: React.FC = () => {
             />
           }
           formElements={[
-            <Fieldset title="Wo befinden sich Ihre Reifen?">
+            <Fieldset title="Wo befinden sich Ihre Räder?">
               {TIRE_LOCATION_OPTIONS.map((option, i) => (
                 <InputRadio
                   key={option.value}
@@ -126,7 +126,7 @@ export const TireChange: React.FC = () => {
                 />
               ))}
             </Fieldset>,
-            <Fieldset title="Welcher Typ Reifen?">
+            <Fieldset title="Welcher Typ Räder?">
               {TIRE_TYPE_OPTIONS.map((option, i) => (
                 <InputRadio
                   key={option.value}
@@ -154,7 +154,7 @@ export const TireChange: React.FC = () => {
                 />
               ))}
             </Fieldset>,
-            <Fieldset title="Was soll mit Ihren Reifen nach dem Wechsel geschehen?">
+            <Fieldset title="Was soll mit Ihren Rädern nach dem Wechsel geschehen?">
               {TIRE_ACTION_OPTIONS.map((option, i) => (
                 <InputRadio
                   key={option.value}
