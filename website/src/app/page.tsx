@@ -29,7 +29,7 @@ const SERVICES_QUERY = `
   `;
 
 export default async function Home() {
-  const { servicesPath, contactPath, mechJobPath, allInclusiveLeasingPath, springExhibitionPath } = usePathBuilder();
+  const { bookingPath, contactPath, mechJobPath, allInclusiveLeasingPath, springExhibitionPath } = usePathBuilder();
   const homeTeasers = await fetchSanityData<{
     ctaText: string;
     assetUrl?: string;
@@ -68,8 +68,8 @@ export default async function Home() {
                 Wir sind die Antwort auf Ihre Fragen.
               </Typography>
               <div className={styles.buttonContainer}>
-                <ButtonLink href={servicesPath()} accent>
-                  Dienstleistungen
+                <ButtonLink href={bookingPath()} accent>
+                  Termin buchen
                 </ButtonLink>
                 <ButtonLink href={contactPath()} accent secondary>
                   Kontakt
