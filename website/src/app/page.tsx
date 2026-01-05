@@ -34,36 +34,38 @@ export default async function Home() {
   const hasTeaser = notNil(teaser);
 
   return (
-    <Layout className={styles.root} accent>
-      <GridContainer>
-        <GridItem>
-          <div className={styles.container}>
-            <div className={styles.question}>Auto?</div>
-            <div className={styles.answer}>Auto.</div>
-            <Typography variant="sub-title" color="white">
-              Wir sind die Antwort auf Ihre Fragen.
-            </Typography>
-            <div className={styles.buttonContainer}>
-              <ButtonLink href={servicesPath()} accent>
-                Dienstleistungen
-              </ButtonLink>
-              <ButtonLink href={contactPath()} accent secondary>
-                Kontakt
-              </ButtonLink>
-            </div>
-          </div>
-        </GridItem>
-        {hasTeaser ? (
+    <Layout>
+      <div className={styles.root}>
+        <GridContainer>
           <GridItem>
-            <Link
-              className={styles.teaser}
-              href={teaser.assetUrl ?? LINK_TARGET_MAP[teaser.linkTarget as keyof typeof LINK_TARGET_MAP] ?? '#'}
-            >
-              <span className={styles.teaserText}>{teaser.ctaText}</span>
-            </Link>
+            <div className={styles.container}>
+              <div className={styles.question}>Auto?</div>
+              <div className={styles.answer}>Auto.</div>
+              <Typography variant="sub-title" color="white">
+                Wir sind die Antwort auf Ihre Fragen.
+              </Typography>
+              <div className={styles.buttonContainer}>
+                <ButtonLink href={servicesPath()} accent>
+                  Dienstleistungen
+                </ButtonLink>
+                <ButtonLink href={contactPath()} accent secondary>
+                  Kontakt
+                </ButtonLink>
+              </div>
+            </div>
           </GridItem>
-        ) : null}
-      </GridContainer>
+          {hasTeaser ? (
+            <GridItem>
+              <Link
+                className={styles.teaser}
+                href={teaser.assetUrl ?? LINK_TARGET_MAP[teaser.linkTarget as keyof typeof LINK_TARGET_MAP] ?? '#'}
+              >
+                <span className={styles.teaserText}>{teaser.ctaText}</span>
+              </Link>
+            </GridItem>
+          ) : null}
+        </GridContainer>
+      </div>
     </Layout>
   );
 }
