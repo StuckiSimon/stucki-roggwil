@@ -49,8 +49,9 @@ const TIRE_CONDITION_OPTIONS = [
     value: TireCondition.Good,
   },
   {
-    label: 'Reifen unsicher',
-    subLabel: 'Die Reifen haben wenig Profil oder Beschädigungen, die Ihre Sicherheit beeinträchtigen.',
+    label: 'Reifen unsicher - benötigen Ersatz',
+    subLabel:
+      'Die Reifen haben wenig Profil oder Beschädigungen, die Ihre Sicherheit beeinträchtigen. Die alten Reifen müssen entsorgt werden und neue Reifen werden benötigt.',
     value: TireCondition.Unsafe,
   },
   {
