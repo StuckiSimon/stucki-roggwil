@@ -4,10 +4,13 @@ import { GridContainer, GridItem } from '@/visual-components/grid/grid';
 import { Layout } from '@/modules/layout/layout';
 import { Typography } from '@/visual-components/typography/typography';
 import { Spacer } from '@/visual-components/spacer/spacer';
-import positionImg from './position.png';
 import { fetchSanityData } from '@/sanity/client';
 import { notNil } from '@/core/util/is-nil';
 import { usePathBuilder } from '@/core/router/use-path-builder';
+import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment.tsx';
+import { ButtonLink } from '@/visual-components/button/button.tsx';
+import positionImg from './position.png';
+import styles from './page.module.scss';
 
 export const metadata: Metadata = {
   title: 'Kontakt | Garage Stucki AG',
@@ -23,7 +26,7 @@ const OPENING_HOUR_EXCEPTION_QUERY = `
   `;
 
 export default async function Contact() {
-  const { contactPath } = usePathBuilder();
+  const { bookingPath, contactPath } = usePathBuilder();
   const openingHourExceptionData = await fetchSanityData<{
     title: string;
     text: string;
@@ -65,7 +68,7 @@ export default async function Contact() {
               href="https://www.google.com/maps/dir/?api=1&destination=Garage%20Stucki%20AG%2C%20Sankt%20Urbanstrasse%2035%2C%204914%20Roggwil"
               target="_blank"
             >
-              <img src={positionImg.src} alt="" />
+              <img src={positionImg.src} alt="" className={styles.image} />
             </a>
             <Spacer size="08" />
           </GridItem>
@@ -99,6 +102,15 @@ export default async function Contact() {
               <Spacer size="08" />
             </>
           ) : null}
+        </GridItem>
+        <GridItem>
+          <CallToActionFragment
+            title="Sind wir gerade nicht erreichbar?"
+            text="Buchen Sie Ihren nächsten Termin ganz einfach online."
+          >
+            <ButtonLink href={bookingPath()}>Online buchen</ButtonLink>
+          </CallToActionFragment>
+          <Spacer size="09" />
         </GridItem>
       </GridContainer>
     </Layout>
