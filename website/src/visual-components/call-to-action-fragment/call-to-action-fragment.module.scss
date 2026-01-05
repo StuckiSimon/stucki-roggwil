@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   gap: var(--stucki-spacing-06);
+  align-items: center;
 
   @media (max-width: $breakpoint-s) {
     flex-direction: column;
