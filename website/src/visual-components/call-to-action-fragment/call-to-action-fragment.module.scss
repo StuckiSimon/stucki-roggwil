@@ -14,3 +14,14 @@
     flex: 0 0 auto;
   }
 }
+
+.multiActionContainer {
+  display: flex;
+  gap: var(--stucki-spacing-07);
+  align-items: center;
+
+  @media (max-width: $breakpoint-m) {
+    gap: var(--stucki-spacing-05);
+    flex-direction: column;
+  }
+}

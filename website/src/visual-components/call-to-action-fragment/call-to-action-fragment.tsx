@@ -23,3 +23,7 @@ export const CallToActionFragment: React.FC<Props> = ({ title, text, children })
     </div>
   );
 };
+
+export const MultiActionContainer: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <div className={styles.multiActionContainer}>{children}</div>;
+};
