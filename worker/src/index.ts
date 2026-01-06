@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { basicAuth } from 'hono/basic-auth';
 import { cors } from 'hono/cors';
+import * as Sentry from '@sentry/cloudflare';
 import auth from './endpoints/auth';
 import bookingsCreate from './endpoints/bookingsCreate';
 import bookingsUpsert from './endpoints/bookingsUpsert';
@@ -38,4 +39,13 @@ capacitiesList(app);
 capacitiesUpsert(app);
 slotsList(app);
 
-export default app;
+const SENTRY_DSN = 'https://731b6dad945cbbb9f99d02491ef9840d@o4510661858164736.ingest.de.sentry.io/4510661873565776';
+
+export default Sentry.withSentry((env: Env) => {
+  const { id: versionId } = env.CF_VERSION_METADATA;
+
+  return {
+    dsn: SENTRY_DSN,
+    release: versionId,
+  };
+}, app);

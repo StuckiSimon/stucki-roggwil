@@ -9,6 +9,7 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@sentry/cloudflare": "^10.32.1",
     "date-fns": "^4.1.0",
     "hono": "^4.11.3",
     "mailtrap": "^4.4.0",
