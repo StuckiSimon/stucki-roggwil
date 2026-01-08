@@ -26,8 +26,8 @@ export default async function MechJob() {
             "name": "Garage Stucki AG",
             "value": "1"
           },
-          "datePosted" : "2025-07-02",
-          "validThrough" : "2025-12-31T00:00",
+          "datePosted" : "2026-01-08",
+          "validThrough" : "2026-12-31T00:00",
           "employmentType" : ["FULL_TIME", "PART_TIME"],
           "hiringOrganization" : {
             "@type" : "Organization",
