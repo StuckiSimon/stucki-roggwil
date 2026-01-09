@@ -40,15 +40,9 @@ export function useServiceTypes() {
           return 'Umfang noch zu klären';
       }
     },
-    getServiceDurationMinutes: (data) => {
-      switch (data.type) {
-        case VehicleServiceType.SmallService:
-          return 240;
-        case VehicleServiceType.LargeService:
-          return 360;
-        case VehicleServiceType.Unknown:
-          return 360;
-      }
+    getServiceDurationMinutes: () => {
+      // Reserve sufficient time to be sure to be able to offer the slot, independent of what needs to be done
+      return 360;
     },
   };
 
