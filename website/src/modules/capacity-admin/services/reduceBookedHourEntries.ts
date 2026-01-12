@@ -10,6 +10,9 @@ export function reduceBookedHourEntries(entries: CapacityEntry[]): CapacityEntry
   const reducedEntries: CapacityEntry[] = Array.from(aggregatedMap, ([date, capacityHours]) => ({
     date,
     capacityHours,
+  })).map((entry) => ({
+    ...entry,
+    capacityHours: Math.round(entry.capacityHours * 100) / 100,
   }));
 
   return reducedEntries.filter((entry) => entry.capacityHours > 0);
