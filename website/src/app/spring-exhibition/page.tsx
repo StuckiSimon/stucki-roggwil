@@ -31,10 +31,21 @@ export default async function SpringExhibition() {
           <Spacer size="07" />
         </GridItem>
         <GridItem span="8">
-          <Typography variant="buttontext">
-            Datum: Samstag, 21. März bis Sonntag, 22. März 2026
-            <Spacer size="04" />
-            Ort: St. Urbanstrasse 35, 4914 Roggwil (BE)
+          <Typography>
+            <Typography variant="buttontext" tag="span">
+              Datum:
+            </Typography>{' '}
+            Samstag, 21. März bis Sonntag, 22. März 2026
+            <Spacer size="03" />
+            <Typography variant="buttontext" tag="span">
+              Zeit:
+            </Typography>{' '}
+            jeweils von 10:00 bis 16:00 Uhr
+            <Spacer size="03" />
+            <Typography variant="buttontext" tag="span">
+              Ort:
+            </Typography>{' '}
+            St. Urbanstrasse 35, 4914 Roggwil (BE)
           </Typography>
           <Spacer size="06" />
           <Typography variant="buttontext">Das erwartet Sie:</Typography>
