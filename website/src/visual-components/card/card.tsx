@@ -19,7 +19,11 @@ export const Card: React.FC<Props> = ({ title, image, text, cta }) => {
   return (
     <div className={styles.root}>
       <div>
-        {hasImage ? <img className={styles.image} src={`${image}?w=600&h=450&fit=crop`} alt={title} /> : null}
+        {hasImage ? (
+          <picture>
+            <img className={styles.image} src={`${image}?w=600&h=450&fit=crop`} alt={title} />
+          </picture>
+        ) : null}
         <div className={styles.wrapper}>
           <Typography variant="sub-title" color="blue" className={styles.title}>
             {title}
