@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { usePathBuilder } from '@/core/router/use-path-builder';
 import { Card, CardContainer } from '@/visual-components/card/card.tsx';
 import { useServiceLinks } from '@/modules/services/use-service-links.ts';
+import { CallToActionFragment } from '@/visual-components/call-to-action-fragment/call-to-action-fragment.tsx';
+import { Spacer } from '@/visual-components/spacer/spacer.tsx';
 
 const HOME_QUERY = `
   *[_type == "homeTeaser" && isActive == true][0]{
@@ -102,6 +104,16 @@ export default async function Home() {
               />
             ))}
           </CardContainer>
+        </GridItem>
+        <GridItem>
+          <Spacer size="05" />
+          <CallToActionFragment
+            title="Nicht das Passende gefunden?"
+            text="Kontaktieren Sie uns direkt, wir beraten Sie gerne zu unseren Leistungen."
+          >
+            <ButtonLink href={contactPath()}>Kontakt</ButtonLink>
+          </CallToActionFragment>
+          <Spacer size="09" />
         </GridItem>
       </GridContainer>
     </Layout>
