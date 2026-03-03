@@ -1,35 +1,75 @@
 @use '../styles/variables' as *;
 
 .root {
+  --stucki-card-bg-color: var(--stucki-light-blue);
+  --stucki-card-content-color: var(--stucki-blue);
+  --stucki-card-secondary-color: var(--stucki-black);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--stucki-light-blue);
-  border-radius: 10px;
+  background-color: var(--stucki-card-bg-color);
+  border-radius: var(--stucki-radius-l);
+  box-shadow: var(--stucki-shadow-default);
   gap: var(--stucki-spacing-03);
+  overflow: hidden;
+  transition: background-color var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    box-shadow var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+  border: 1px solid var(--stucki-mid-blue);
+  position: relative;
+
+  &:hover {
+    box-shadow: var(--stucki-shadow-hover);
+    --stucki-card-bg-color: var(--stucki-blue);
+    --stucki-card-content-color: var(--stucki-white);
+    --stucki-card-secondary-color: var(--stucki-white);
+  }
+}
+
+.picture {
+  display: block;
+  background-color: rgba(20, 50, 100, 0.4);
 }
 
 .image {
-  border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(43, 100, 173, 0.08);
+  transition: transform var(--stucki-animation-default-duration) var(--stucki-animation-default-easing),
+    opacity var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+
+  .root:hover & {
+    transform: scale(1.06);
+    opacity: 0.75;
+  }
 }
 
 .wrapper {
-  padding: var(--stucki-spacing-06);
+  padding: var(--stucki-spacing-05) var(--stucki-spacing-06);
+  padding-right: calc(var(--stucki-spacing-07) + var(--stucki-spacing-05));
 }
 
 .title {
   padding-bottom: var(--stucki-spacing-04);
+  color: var(--stucki-card-content-color);
+}
+
+.text {
+  margin-bottom: var(--stucki-spacing-05);
+  color: var(--stucki-card-secondary-color);
 }
 
 .footer {
-  padding: 0 var(--stucki-spacing-04) var(--stucki-spacing-04) var(--stucki-spacing-04);
+  display: flex;
+  justify-content: center;
+  padding: 0 0 var(--stucki-spacing-05) 0;
 }
 
 .container {
   --stucki-card-container-template-columns: repeat(3, 1fr);
   padding: var(--stucki-spacing-08) 0;
   display: grid;
-  gap: var(--stucki-spacing-04);
+  gap: var(--stucki-spacing-06);
   grid-template-columns: var(--stucki-card-container-template-columns);
 
   @media (max-width: $breakpoint-s) {
@@ -39,4 +79,20 @@
   @media (max-width: $breakpoint-xs) {
     --stucki-card-container-template-columns: repeat(1, 1fr);
   }
+}
+
+.chevron {
+  position: absolute;
+  right: var(--stucki-spacing-05);
+  bottom: var(--stucki-spacing-05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform var(--stucki-animation-default-duration) var(--stucki-animation-default-easing);
+  color: var(--stucki-card-content-color);
+}
+
+.root:hover .chevron {
+  transform: translateX(4px) scale(1.08);
 }
