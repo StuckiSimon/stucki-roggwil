@@ -52,7 +52,9 @@ export default async function SpringExhibition() {
           <Spacer size="03" />
           <ul>
             <li>
-              <Typography>Exklusive Jubiläumsaktionen und Sonderangebote auf ausgewählte Fahrzeuge</Typography>
+              <Typography>
+                Exklusive Jubiläumsaktionen und Sonderangebote auf ausgewählte Fahrzeuge sowie ein Gewinnspiel
+              </Typography>
             </li>
             <Spacer size="02" />
             <li>
