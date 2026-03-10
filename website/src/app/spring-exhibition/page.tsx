@@ -10,9 +10,9 @@ import { SectionLead } from '@/visual-components/section-lead/section-lead';
 import { usePathBuilder } from '@/core/router/use-path-builder';
 
 export const metadata: Metadata = {
-  title: 'Frühlingsausstellung – 30 Jahre Garage Stucki AG während der Autoexpo Langenthal',
+  title: 'Frühlingsausstellung – 30 Jahre Garage Stucki AG während der Autoexpo',
   description:
-    'Feiern Sie mit uns 30 Jahre Garage Stucki AG! Besuchen Sie unsere Frühlingsausstellung während der Autoexpo Langenthal und entdecken Sie attraktive Angebote und Neuheiten.',
+    'Feiern Sie mit uns 30 Jahre Garage Stucki AG! Besuchen Sie unsere Frühlingsausstellung während der Autoexpo und entdecken Sie attraktive Angebote und Neuheiten.',
 };
 
 export default async function SpringExhibition() {
@@ -26,7 +26,7 @@ export default async function SpringExhibition() {
           <Spacer size="07" />
           <SectionLead
             lead="Feiern Sie mit uns 30 Jahre!"
-            leadText="Wir feiern unser 30-jähriges Jubiläum! Besuchen Sie uns an der diesjährigen Autoexpo Langenthal und erleben Sie unsere Frühlingsausstellung mit vielen Highlights, attraktiven Jubiläumsangeboten und spannenden Neuheiten rund ums Auto."
+            leadText="Wir feiern unser 30-jähriges Jubiläum! Besuchen Sie uns an der diesjährigen Autoexpo und erleben Sie unsere Frühlingsausstellung mit vielen Highlights, attraktiven Jubiläumsangeboten und spannenden Neuheiten rund ums Auto."
           />
           <Spacer size="07" />
         </GridItem>
