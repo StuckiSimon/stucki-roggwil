@@ -1,0 +1,31 @@
+@use '../styles/variables' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--stucki-radius-l);
+  border: 1px solid var(--stucki-blue);
+  overflow: hidden;
+}
+
+.logoWrapper {
+  background-color: var(--stucki-white);
+  padding: var(--stucki-spacing-07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.logo {
+  max-height: 80px;
+  max-width: 180px;
+  width: auto;
+  object-fit: contain;
+}
+
+.content {
+  padding: var(--stucki-spacing-06);
+  background-color: var(--stucki-bg-color);
+  flex-grow: 1;
+}

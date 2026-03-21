@@ -9,6 +9,7 @@ import { CallToActionFragment } from '@/visual-components/call-to-action-fragmen
 import { FactGrid } from '@/visual-components/fact-grid/fact-grid';
 import { SectionLead } from '@/visual-components/section-lead/section-lead';
 import { usePathBuilder } from '@/core/router/use-path-builder';
+import { TireBrands } from '@/modules/tire-brands/tire-brands';
 
 export const metadata: Metadata = {
   title: 'Alles rund um Reifen | Garage Stucki AG',
@@ -64,6 +65,17 @@ export default async function TireService() {
               description="Professioneller Wechsel von Kompletträdern für maximale Sicherheit und Komfort."
             />
           </FactGrid>
+          <Spacer size="09" />
+        </GridItem>
+        <GridItem span="6">
+          <SectionLead
+            lead="Unsere Reifenmarken"
+            leadText="Wir führen ein sorgfältig ausgewähltes Sortiment renommierter Reifenmarken für höchste Qualität und Sicherheit. Selbstverständlich beraten wir Sie auch gerne für weitere Marken."
+          />
+        </GridItem>
+        <GridItem>
+          <Spacer size="07" />
+          <TireBrands />
           <Spacer size="09" />
         </GridItem>
         <GridItem>

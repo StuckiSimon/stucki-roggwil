@@ -1,0 +1,7 @@
+@use '../../visual-components/styles/variables' as *;
+
+.grid {
+  display: grid;
+  gap: var(--stucki-spacing-07);
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
