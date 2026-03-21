@@ -58,7 +58,9 @@ export default async function SpringExhibition() {
             </li>
             <Spacer size="02" />
             <li>
-              <Typography>Präsentation der neuesten Modelle von KGM</Typography>
+              <Typography>
+                Präsentation der neuesten Modelle von KGM – vereinbaren Sie direkt vor Ort eine Probefahrt!
+              </Typography>
             </li>
             <Spacer size="02" />
             <li>
@@ -66,7 +68,7 @@ export default async function SpringExhibition() {
             </li>
             <Spacer size="02" />
             <li>
-              <Typography>Überraschungen für Gross und Klein</Typography>
+              <Typography>Unterhaltung für Gross und Klein, sowie kleines Apéro</Typography>
             </li>
           </ul>
           <Spacer size="06" />
