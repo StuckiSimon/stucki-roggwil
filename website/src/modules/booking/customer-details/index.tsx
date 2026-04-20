@@ -23,9 +23,12 @@ import { useRouter } from 'next/navigation';
 import { useSlotStorageData } from '@/modules/booking/slot/use-slot-storage-data.ts';
 import { notNil } from '@/core/util/is-nil.ts';
 import { InformationBox } from '@/visual-components/information-box/information-box.tsx';
+import { InformationLine } from '@/visual-components/information-line/information-line.tsx';
 import { usePostBookingAnonymous } from '@/modules/worker/use-post-booking-anonymous.ts';
+import { InputRadio } from '@/visual-components/input-radio/input-radio.tsx';
 import { GridContainer, GridItem } from '@/visual-components/grid/grid.tsx';
 import { Header } from '@/modules/booking/core/header.tsx';
+import { Fieldset } from '@/visual-components/fieldset/fieldset.tsx';
 
 type FormValues = {
   firstName: string;
@@ -36,6 +39,7 @@ type FormValues = {
   brand?: string;
   model?: string;
   licensePlate?: string;
+  waitingOption: 'warten' | 'flexibel' | 'vorabend';
 };
 
 export const Index: React.FC = () => {
@@ -201,6 +205,29 @@ export const Index: React.FC = () => {
               placeholder="Müssen wir etwas Besonderes wissen?"
               {...register('comment')}
             />,
+            <Fieldset title="Wie passt der Termin in Ihren Tag?">
+              <InputRadio
+                label="Warten"
+                subLabel="Ich warte vor Ort bis der Termin vorbei ist"
+                value="warten"
+                {...register('waitingOption', { required: 'Bitte eine Option wählen' })}
+              />
+              <InputRadio
+                label="Flexibel"
+                subLabel="Ich bringe das Auto kurz vor dem Termin und hole es am Abend"
+                value="flexibel"
+                {...register('waitingOption', { required: 'Bitte eine Option wählen' })}
+              />
+              <InputRadio
+                label="Ich bringe das Fahrzeug schon am Vorabend"
+                subLabel="Ich werfe den Schlüssel am Vorabend schon ein und hole das Auto am nächsten Tag"
+                value="vorabend"
+                {...register('waitingOption', { required: 'Bitte eine Option wählen' })}
+              />
+              {errors.waitingOption ? (
+                <InformationLine variant="error" message={errors.waitingOption.message ?? 'Fehler'} />
+              ) : null}
+            </Fieldset>,
             <>
               <Typography variant="sub-title">Zusammenfassung</Typography>
               <Spacer size="04" />
