@@ -50,6 +50,7 @@ export default (app: Hono<{ Bindings: Env }>) => {
           email: booking.email,
           phone: booking.phone,
           comment: booking.comment ?? 'Keine Angaben',
+          waitingOption: booking.waitingOption ?? 'Keine Angaben',
           brand: booking.brand ?? 'Keine Angaben',
           model: booking.model ?? 'Keine Angaben',
           licensePlate: booking.licensePlate ?? 'Keine Angaben',

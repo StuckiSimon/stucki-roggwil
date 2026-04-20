@@ -25,6 +25,7 @@ export const userBookingSchema = z.object({
   brand: z.string().optional(),
   model: z.string().optional(),
   licensePlate: z.string().optional(),
+  waitingOption: z.string(),
   services: z.array(z.string()),
   slot: slotSchema,
 });
