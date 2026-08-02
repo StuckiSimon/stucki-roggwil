@@ -1,8 +1,15 @@
 import { usePathBuilder } from '@/core/router/use-path-builder.ts';
 
 export function useServiceLinks() {
-  const { stockPath, allInclusiveLeasingPath, tireServicePath, vehicleRentPath, reasonsForPath, contactPath } =
-    usePathBuilder();
+  const {
+    stockPath,
+    allInclusiveLeasingPath,
+    tireServicePath,
+    vehicleRentPath,
+    reasonsForPath,
+    contactPath,
+    motorhomePath,
+  } = usePathBuilder();
 
   function getLink(linkTarget: string): { href: string; text: string } {
     switch (linkTarget) {
@@ -30,6 +37,11 @@ export function useServiceLinks() {
         return {
           href: allInclusiveLeasingPath(),
           text: 'All-Inclusive Leasing',
+        };
+      case 'motorhome':
+        return {
+          href: motorhomePath(),
+          text: 'Wohnmobil kaufen',
         };
       case 'tire-service':
         return {

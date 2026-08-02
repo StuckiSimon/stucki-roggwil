@@ -22,5 +22,6 @@ export const usePathBuilder = () => {
     stockPath: () => '/stock',
     tireServicePath: () => '/tire-service',
     vehicleRentPath: () => '/vehicle-rent',
+    motorhomePath: () => '/wohnmobil',
   };
 };
