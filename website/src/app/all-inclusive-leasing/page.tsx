@@ -12,6 +12,7 @@ import { LeasingTeaser } from '@/visual-components/leasing-teaser/leasing-teaser
 import { LeasingTeaserLayout } from '@/visual-components/leasing-teaser-layout/leasing-teaser-layout';
 import { SectionLead } from '@/visual-components/section-lead/section-lead';
 import { usePathBuilder } from '@/core/router/use-path-builder';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'All Inclusive Leasing | Garage Stucki AG',
@@ -30,6 +31,8 @@ const ALL_INCLUSIVE_LEASING_VEHICLES_QUERY = `
   `;
 
 export default async function AllInclusiveLeasing() {
+  notFound();
+
   const { contactPath } = usePathBuilder();
   const vehicles = await fetchSanityData<
     {
