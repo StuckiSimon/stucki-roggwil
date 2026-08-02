@@ -6,6 +6,7 @@ import {allInclusiveLeasingVehicleType} from './all-inclusive-leasing-vehicle'
 import {teaserVehicleType} from './teaser-vehicle'
 import {rentalVehicleType} from './rental-vehicle'
 import {openingHourExceptionType} from './openingHourException'
+import {motorhomeVehicleType} from './motorhome-vehicle'
 
 export const schemaTypes = [
   allInclusiveLeasingVehicleType,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   serviceType,
   rentalVehicleType,
   teaserVehicleType,
+  motorhomeVehicleType,
 ]

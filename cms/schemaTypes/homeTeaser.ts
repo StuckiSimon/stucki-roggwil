@@ -25,6 +25,7 @@ export const homeTeaserType = defineType({
         list: [
           {title: 'Job', value: 'job'},
           {title: 'All-Inclusive Leasing', value: 'all-inclusive-leasing'},
+          {title: 'Wohnmobil kaufen', value: 'motorhome'},
           {title: 'Frühlingsausstellung', value: 'spring-exhibition'},
         ],
       },
