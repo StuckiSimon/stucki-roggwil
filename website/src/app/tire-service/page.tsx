@@ -81,7 +81,7 @@ export default async function TireService() {
         <GridItem>
           <CallToActionFragment
             title="Jetzt Termin vereinbaren"
-            text="Ganz einfach online Ihren nächsten Termin abmachen."
+            text="Am 24. Oktober und 7. November finden unsere beliebten Reifenwechsel-Samstage statt."
           >
             <ButtonLink href={bookingPath()}>Termin buchen</ButtonLink>
           </CallToActionFragment>
