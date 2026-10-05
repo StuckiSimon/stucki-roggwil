@@ -1,4 +1,4 @@
-import { parse, addHours, format } from 'date-fns';
+import { parse, parseISO, addHours, format, isSaturday } from 'date-fns';
 import { Slot } from './types';
 
 // Everything longer than MINIMUM_DURATION_HOUR is considered a half-day booking
@@ -12,6 +12,14 @@ const oneHourStartTimes = ['07:30', '11:00', '13:30', '16:30'];
 const halfDayStartTimes = ['07:30', '13:30'];
 
 export function getSlotsForDuration(day: string, duration: number): Slot[] {
+  if (isSaturday(parseISO(day))) {
+    return [
+      { date: day, startHour: '07:30', endHour: '10:00' },
+      { date: day, startHour: '10:00', endHour: '12:00' },
+      { date: day, startHour: '13:00', endHour: '15:00' },
+    ];
+  }
+
   if (duration > HALF_DAY_HOURS) {
     return [
       {

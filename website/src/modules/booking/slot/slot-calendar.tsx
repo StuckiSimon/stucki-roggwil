@@ -1,6 +1,6 @@
 import React from 'react';
 import { Slot } from '@/modules/worker/use-slots';
-import { addWeeks, subWeeks, startOfWeek, addDays, isSameDay, format } from 'date-fns';
+import { addWeeks, subWeeks, startOfWeek, addDays, isSameDay, isSaturday, format } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { Typography } from '@/visual-components/typography/typography';
 import isNil from '@/core/util/is-nil.ts';
@@ -8,6 +8,7 @@ import styles from './slot-calendar.module.scss';
 import classNames from 'classnames';
 import { Icon } from '@/visual-components/icon/icon.tsx';
 import { Spinner } from '@/visual-components/spinner/spinner.tsx';
+import { InformationBox } from '@/visual-components/information-box/information-box.tsx';
 
 const WEEK_DAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
@@ -152,6 +153,13 @@ export const SlotCalendar: React.FC<Props> = ({ activeDay, setActiveDay, slots, 
               Keine verfügbaren Termine für diesen Tag
             </Typography>
           ))}
+        {isSaturday(activeDay) && (
+          <InformationBox
+            variant="info"
+            title="Hinweis zu Samstagsterminen"
+            description="Die Zeitfenster am Samstag sind ungefähre Angaben und ausschliesslich für Rad- und Reifenwechsel. Den genauen Zeitslot erhalten Sie in der Bestätigungsmail."
+          />
+        )}
       </div>
     </div>
   );

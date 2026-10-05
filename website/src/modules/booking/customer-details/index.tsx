@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { format } from 'date-fns';
+import { format, isSaturday, parseISO } from 'date-fns';
 import { FormLayout } from '@/visual-components/form-layout/form-layout.tsx';
 import { Typography } from '@/visual-components/typography/typography.tsx';
 import { ProcessNavigationLayout } from '@/visual-components/process-navigation-layout/process-navigation-layout.tsx';
@@ -235,9 +235,11 @@ export const Index: React.FC = () => {
                 {notNil(serviceStorageData) ? (
                   <SummaryCard
                     title="Gewählter Termin"
-                    description={`Am ${format(serviceStorageData.date, 'dd.MM.yyyy')} um ${
-                      serviceStorageData?.startHour
-                    } Uhr`}
+                    description={
+                      isSaturday(parseISO(serviceStorageData.date))
+                        ? `Am ${format(serviceStorageData.date, 'dd.MM.yyyy')} zwischen ${serviceStorageData.startHour} und ${serviceStorageData.endHour} Uhr`
+                        : `Am ${format(serviceStorageData.date, 'dd.MM.yyyy')} um ${serviceStorageData.startHour} Uhr`
+                    }
                     interaction={{
                       label: 'Ändern',
                       onClick: () => {
