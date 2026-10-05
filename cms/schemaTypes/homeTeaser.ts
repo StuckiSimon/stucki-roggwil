@@ -27,6 +27,7 @@ export const homeTeaserType = defineType({
           {title: 'All-Inclusive Leasing', value: 'all-inclusive-leasing'},
           {title: 'Wohnmobil kaufen', value: 'motorhome'},
           {title: 'Frühlingsausstellung', value: 'spring-exhibition'},
+          {title: 'Reifenservice', value: 'tire-service'},
         ],
       },
     }),

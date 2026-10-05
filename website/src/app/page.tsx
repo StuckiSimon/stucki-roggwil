@@ -31,8 +31,15 @@ const SERVICES_QUERY = `
   `;
 
 export default async function Home() {
-  const { bookingPath, contactPath, mechJobPath, allInclusiveLeasingPath, motorhomePath, springExhibitionPath } =
-    usePathBuilder();
+  const {
+    bookingPath,
+    contactPath,
+    mechJobPath,
+    allInclusiveLeasingPath,
+    motorhomePath,
+    springExhibitionPath,
+    tireServicePath,
+  } = usePathBuilder();
   const homeTeasers = await fetchSanityData<{
     ctaText: string;
     assetUrl?: string;
@@ -55,6 +62,7 @@ export default async function Home() {
     'all-inclusive-leasing': allInclusiveLeasingPath(),
     wohnmobil: motorhomePath(),
     'spring-exhibition': springExhibitionPath(),
+    'tire-service': tireServicePath(),
   };
 
   const teaser = homeTeasers.result;
